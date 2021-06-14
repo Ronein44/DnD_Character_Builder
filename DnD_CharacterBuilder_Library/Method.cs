@@ -80,9 +80,7 @@ namespace DnD_CharacterBuilder_Library
 
         }
         public static void NewCha()
-        {           
-            ClassDTO.SetClassLoad(false);
-            RaceDTO.SetRaceLoad(false);
+        {
             AbilityDTO.SetStrength(1);
             AbilityDTO.SetDexterity(1);
             AbilityDTO.SetConstitution(1);
