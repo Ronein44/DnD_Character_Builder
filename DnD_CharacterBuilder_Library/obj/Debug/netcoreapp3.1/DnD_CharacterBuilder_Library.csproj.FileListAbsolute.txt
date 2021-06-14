@@ -1,0 +1,9 @@
+F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_Library\bin\Debug\netcoreapp3.1\DnD_CharacterBuilder_Library.deps.json
+F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_Library\bin\Debug\netcoreapp3.1\DnD_CharacterBuilder_Library.dll
+F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_Library\bin\Debug\netcoreapp3.1\DnD_CharacterBuilder_Library.pdb
+F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_Library\obj\Debug\netcoreapp3.1\DnD_CharacterBuilder_Library.AssemblyInfoInputs.cache
+F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_Library\obj\Debug\netcoreapp3.1\DnD_CharacterBuilder_Library.AssemblyInfo.cs
+F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_Library\obj\Debug\netcoreapp3.1\DnD_CharacterBuilder_Library.csproj.CoreCompileInputs.cache
+F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_Library\obj\Debug\netcoreapp3.1\DnD_CharacterBuilder_Library.dll
+F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_Library\obj\Debug\netcoreapp3.1\DnD_CharacterBuilder_Library.pdb
+F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_Library\obj\Debug\netcoreapp3.1\DnD_CharacterBuilder_Library.csprojAssemblyReference.cache

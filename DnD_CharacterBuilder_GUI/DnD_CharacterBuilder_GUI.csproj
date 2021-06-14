@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="DnD_Character_Builder_db.db" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="DnD_Character_Builder_db.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Data.SQLite.Core" Version="1.0.114.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DnD_CharacterBuilder_Library\DnD_CharacterBuilder_Library.csproj" />
+  </ItemGroup>
+
+</Project>
