@@ -66,19 +66,19 @@ namespace DnD_CharacterBuilder_GUI.Forms
             ChangeLabel(LStrMod, AbilityDTO.GetStrMod()) ;
 
             Texts(LDex, AbilityDTO.GetDexterity(), AbilityDTO.SetDexMod);
-            ChangeLabel(LDexMod, AbilityDTO.GetStrMod());
+            ChangeLabel(LDexMod, AbilityDTO.GetDexMod());
 
             Texts(LCon, AbilityDTO.GetConstitution(), AbilityDTO.SetConMod);
-            ChangeLabel(LConMod, AbilityDTO.GetStrMod());
+            ChangeLabel(LConMod, AbilityDTO.GetConMod());
 
             Texts(LInt, AbilityDTO.GetIntelligence(), AbilityDTO.SetConMod);
-            ChangeLabel(LIntMod, AbilityDTO.GetStrMod());
+            ChangeLabel(LIntMod, AbilityDTO.GetIntMod());
 
             Texts(LWis, AbilityDTO.GetWisdom(), AbilityDTO.SetWisMod);
-            ChangeLabel(LWisMod, AbilityDTO.GetStrMod());
+            ChangeLabel(LWisMod, AbilityDTO.GetWisMod());
 
             Texts(LCha, AbilityDTO.GetCharisma(), AbilityDTO.SetChaMod);
-            ChangeLabel(LChaMod, AbilityDTO.GetStrMod());
+            ChangeLabel(LChaMod, AbilityDTO.GetChaMod());
 
         }
 
@@ -130,14 +130,15 @@ namespace DnD_CharacterBuilder_GUI.Forms
         {
             if (AbilityDTO.GetDexterity() > 1 && AbilityDTO.GetDexterity() <= 20)
             {
-                More20(true);
-            }
-            else
-            {
+                if (AbilityDTO.GetDexterity() == 20)
+                {
+                    More20(false);
+                }              
                 AbilityDTO.SetDexterity(AbilityDTO.GetDexterity() - 1);
                 LDex.Text = AbilityDTO.GetDexterity().ToString();
                 AbilityDTO.SetDexMod(Method.PcModif(AbilityDTO.GetDexterity()));
                 ChangeLabel(LDexMod, AbilityDTO.GetDexMod());
+                
             }
         }
 
@@ -159,14 +160,15 @@ namespace DnD_CharacterBuilder_GUI.Forms
         {
             if (AbilityDTO.GetConstitution() > 1 && AbilityDTO.GetConstitution() <= 20)
             {
-                More20(true);
-            }
-            else
-            {
-                AbilityDTO.SetConstitution(AbilityDTO.GetConstitution() + 1);
+                if (AbilityDTO.GetConstitution() == 20)
+                {
+                    More20(false);
+                }
+                AbilityDTO.SetConstitution(AbilityDTO.GetConstitution() - 1);
                 LCon.Text = AbilityDTO.GetConstitution().ToString();
                 AbilityDTO.SetConMod(Method.PcModif(AbilityDTO.GetConstitution()));
                 ChangeLabel(LConMod, AbilityDTO.GetConMod());
+
             }
         }
 
@@ -188,11 +190,11 @@ namespace DnD_CharacterBuilder_GUI.Forms
         {
             if (AbilityDTO.GetIntelligence() > 1 && AbilityDTO.GetIntelligence() <= 20)
             {
-                More20(true);
-            }
-            else
-            {
-                AbilityDTO.SetIntelligence(AbilityDTO.GetIntelligence() + 1);
+                if (AbilityDTO.GetIntelligence() == 20)
+                {
+                    More20(false);
+                }
+                AbilityDTO.SetIntelligence(AbilityDTO.GetIntelligence() - 1);
                 LInt.Text = AbilityDTO.GetIntelligence().ToString();
                 AbilityDTO.SetIntMod(Method.PcModif(AbilityDTO.GetIntelligence()));
                 ChangeLabel(LIntMod, AbilityDTO.GetIntMod());
@@ -217,11 +219,11 @@ namespace DnD_CharacterBuilder_GUI.Forms
         {
             if (AbilityDTO.GetWisdom() > 1 && AbilityDTO.GetWisdom() <= 20)
             {
-                More20(true);
-            }
-            else
-            {
-                AbilityDTO.SetWisdom(AbilityDTO.GetWisdom() + 1);
+                if (AbilityDTO.GetWisdom() == 20)
+                {
+                    More20(false);
+                }
+                AbilityDTO.SetWisdom(AbilityDTO.GetWisdom() - 1);
                 LWis.Text = AbilityDTO.GetWisdom().ToString();
                 AbilityDTO.SetWisMod(Method.PcModif(AbilityDTO.GetWisdom()));
                 ChangeLabel(LWisMod, AbilityDTO.GetWisMod());
@@ -246,11 +248,11 @@ namespace DnD_CharacterBuilder_GUI.Forms
         {
             if (AbilityDTO.GetCharisma() > 1 && AbilityDTO.GetCharisma() <= 20)
             {
-                More20(true);
-            }
-            else
-            {
-                AbilityDTO.SetCharisma(AbilityDTO.GetCharisma() + 1);
+                if (AbilityDTO.GetCharisma() == 20)
+                {
+                    More20(false);
+                }
+                AbilityDTO.SetCharisma(AbilityDTO.GetCharisma() - 1);
                 LCha.Text = AbilityDTO.GetCharisma().ToString();
                 AbilityDTO.SetChaMod(Method.PcModif(AbilityDTO.GetCharisma()));
                 ChangeLabel(LChaMod, AbilityDTO.GetChaMod());
@@ -272,10 +274,10 @@ namespace DnD_CharacterBuilder_GUI.Forms
                 Label.Text = Mod.ToString();
             }        
         }
-        private void More20(bool what)
+        private void More20(bool input)
         {
-            more20.Visible = what;
-            btnMore20.Visible = what;
+            more20.Visible = input;
+            btnMore20.Visible = input;
         }        
         private void Texts(Label label, int ability,Action<int> settermod)
         {
