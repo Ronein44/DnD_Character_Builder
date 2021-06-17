@@ -85,178 +85,57 @@ namespace DnD_CharacterBuilder_GUI.Forms
         // Up Down Buttons
         private void StrUp_Click(object sender, EventArgs e)
         {
-            if (AbilityDTO.GetStrength() == 20)
-            {
-                More20(true);
-            }
-            else
-            {
-                AbilityDTO.SetStrength(AbilityDTO.GetStrength() + 1);
-                LStr.Text = AbilityDTO.GetStrength().ToString();
-                AbilityDTO.SetStrMod(Method.PcModif(AbilityDTO.GetStrength()));
-                ChangeLabel(LStrMod, AbilityDTO.GetStrMod());
-            }
+            UpandDown(AbilityDTO.GetStrength(), AbilityDTO.SetStrength, AbilityDTO.SetStrMod, LStr, LStrMod, "Up");
+            
         }
         private void StrDown_Click(object sender, EventArgs e)
         {
-            if (AbilityDTO.GetStrength() > 1 && AbilityDTO.GetStrength() <= 20)
-            {
-                if (AbilityDTO.GetStrength() == 20)
-                {
-                    More20(false);
-                }
-                AbilityDTO.SetStrength(AbilityDTO.GetStrength() - 1);
-                LStr.Text = AbilityDTO.GetStrength().ToString();
-                AbilityDTO.SetStrMod(Method.PcModif(AbilityDTO.GetStrength()));
-                ChangeLabel(LStrMod, AbilityDTO.GetStrMod());
-            }
+            UpandDown(AbilityDTO.GetStrength(), AbilityDTO.SetStrength, AbilityDTO.SetStrMod, LStr, LStrMod, "Down");
         }
 
         private void DexUp_Click(object sender, EventArgs e)
         {
-            if (AbilityDTO.GetDexterity() == 20)
-            {
-                More20(true);
-            }
-            else
-            {
-                AbilityDTO.SetDexterity(AbilityDTO.GetDexterity() + 1);
-                LDex.Text = AbilityDTO.GetDexterity().ToString();
-                AbilityDTO.SetDexMod(Method.PcModif(AbilityDTO.GetDexterity()));
-                ChangeLabel(LDexMod, AbilityDTO.GetDexMod());
-            }
+            UpandDown(AbilityDTO.GetDexterity(), AbilityDTO.SetDexterity, AbilityDTO.SetDexMod, LDex, LDexMod, "Up");
         }
         private void DexDown_Click(object sender, EventArgs e)
         {
-            if (AbilityDTO.GetDexterity() > 1 && AbilityDTO.GetDexterity() <= 20)
-            {
-                if (AbilityDTO.GetDexterity() == 20)
-                {
-                    More20(false);
-                }              
-                AbilityDTO.SetDexterity(AbilityDTO.GetDexterity() - 1);
-                LDex.Text = AbilityDTO.GetDexterity().ToString();
-                AbilityDTO.SetDexMod(Method.PcModif(AbilityDTO.GetDexterity()));
-                ChangeLabel(LDexMod, AbilityDTO.GetDexMod());
-                
-            }
+            UpandDown(AbilityDTO.GetDexterity(), AbilityDTO.SetDexterity, AbilityDTO.SetDexMod, LDex, LDexMod, "Down");
         }
 
         private void ConUp_Click(object sender, EventArgs e)
         {
-            if (AbilityDTO.GetConstitution() == 20)
-            {
-                More20(true);
-            }
-            else
-            {
-                AbilityDTO.SetConstitution(AbilityDTO.GetConstitution() + 1);
-                LCon.Text = AbilityDTO.GetConstitution().ToString();
-                AbilityDTO.SetConMod(Method.PcModif(AbilityDTO.GetConstitution()));
-                ChangeLabel(LConMod, AbilityDTO.GetConMod());
-            }
+            UpandDown(AbilityDTO.GetConstitution(), AbilityDTO.SetConstitution, AbilityDTO.SetConMod, LCon, LConMod, "Up");
         }
         private void ConDown_Click(object sender, EventArgs e)
         {
-            if (AbilityDTO.GetConstitution() > 1 && AbilityDTO.GetConstitution() <= 20)
-            {
-                if (AbilityDTO.GetConstitution() == 20)
-                {
-                    More20(false);
-                }
-                AbilityDTO.SetConstitution(AbilityDTO.GetConstitution() - 1);
-                LCon.Text = AbilityDTO.GetConstitution().ToString();
-                AbilityDTO.SetConMod(Method.PcModif(AbilityDTO.GetConstitution()));
-                ChangeLabel(LConMod, AbilityDTO.GetConMod());
-
-            }
+            UpandDown(AbilityDTO.GetConstitution(), AbilityDTO.SetConstitution, AbilityDTO.SetConMod, LCon, LConMod, "Down");
         }
 
         private void IntUp_Click(object sender, EventArgs e)
         {
-            if (AbilityDTO.GetIntelligence() == 20)
-            {
-                More20(true);
-            }
-            else
-            {
-                AbilityDTO.SetIntelligence(AbilityDTO.GetIntelligence() + 1);
-                LInt.Text = AbilityDTO.GetIntelligence().ToString();
-                AbilityDTO.SetIntMod(Method.PcModif(AbilityDTO.GetIntelligence()));
-                ChangeLabel(LIntMod, AbilityDTO.GetIntMod());
-            }
+            UpandDown(AbilityDTO.GetIntelligence(), AbilityDTO.SetIntelligence, AbilityDTO.SetIntMod, LInt, LIntMod, "Up");
         }
         private void IntDown_Click(object sender, EventArgs e)
         {
-            if (AbilityDTO.GetIntelligence() > 1 && AbilityDTO.GetIntelligence() <= 20)
-            {
-                if (AbilityDTO.GetIntelligence() == 20)
-                {
-                    More20(false);
-                }
-                AbilityDTO.SetIntelligence(AbilityDTO.GetIntelligence() - 1);
-                LInt.Text = AbilityDTO.GetIntelligence().ToString();
-                AbilityDTO.SetIntMod(Method.PcModif(AbilityDTO.GetIntelligence()));
-                ChangeLabel(LIntMod, AbilityDTO.GetIntMod());
-            }
+            UpandDown(AbilityDTO.GetIntelligence(), AbilityDTO.SetIntelligence, AbilityDTO.SetIntMod, LInt, LIntMod, "Down");
         }
 
         private void WisUp_Click(object sender, EventArgs e)
         {
-            if (AbilityDTO.GetWisdom() == 20)
-            {
-                More20(true);
-            }
-            else
-            {
-                AbilityDTO.SetWisdom(AbilityDTO.GetWisdom() + 1);
-                LWis.Text = AbilityDTO.GetWisdom().ToString();
-                AbilityDTO.SetWisMod(Method.PcModif(AbilityDTO.GetWisdom()));
-                ChangeLabel(LWisMod, AbilityDTO.GetWisMod());
-            }
+            UpandDown(AbilityDTO.GetWisdom(), AbilityDTO.SetWisdom, AbilityDTO.SetWisMod, LWis, LWisMod, "Up");
         }
         private void WisDown_Click(object sender, EventArgs e)
         {
-            if (AbilityDTO.GetWisdom() > 1 && AbilityDTO.GetWisdom() <= 20)
-            {
-                if (AbilityDTO.GetWisdom() == 20)
-                {
-                    More20(false);
-                }
-                AbilityDTO.SetWisdom(AbilityDTO.GetWisdom() - 1);
-                LWis.Text = AbilityDTO.GetWisdom().ToString();
-                AbilityDTO.SetWisMod(Method.PcModif(AbilityDTO.GetWisdom()));
-                ChangeLabel(LWisMod, AbilityDTO.GetWisMod());
-            }
+            UpandDown(AbilityDTO.GetWisdom(), AbilityDTO.SetWisdom, AbilityDTO.SetWisMod, LWis, LWisMod, "Down");
         }
 
         private void ChaUp_Click(object sender, EventArgs e)
         {
-            if (AbilityDTO.GetCharisma() == 20)
-            {
-                More20(true);
-            }
-            else
-            {
-                AbilityDTO.SetCharisma(AbilityDTO.GetCharisma() + 1);
-                LCha.Text = AbilityDTO.GetCharisma().ToString();
-                AbilityDTO.SetChaMod(Method.PcModif(AbilityDTO.GetCharisma()));
-                ChangeLabel(LChaMod, AbilityDTO.GetChaMod());
-            }
+            UpandDown(AbilityDTO.GetCharisma(), AbilityDTO.SetCharisma, AbilityDTO.SetChaMod, LCha, LChaMod, "Up");
         }
         private void ChaDown_Click(object sender, EventArgs e)
         {
-            if (AbilityDTO.GetCharisma() > 1 && AbilityDTO.GetCharisma() <= 20)
-            {
-                if (AbilityDTO.GetCharisma() == 20)
-                {
-                    More20(false);
-                }
-                AbilityDTO.SetCharisma(AbilityDTO.GetCharisma() - 1);
-                LCha.Text = AbilityDTO.GetCharisma().ToString();
-                AbilityDTO.SetChaMod(Method.PcModif(AbilityDTO.GetCharisma()));
-                ChangeLabel(LChaMod, AbilityDTO.GetChaMod());
-            }
+            UpandDown(AbilityDTO.GetCharisma(), AbilityDTO.SetCharisma, AbilityDTO.SetChaMod, LCha, LChaMod, "Down");
         }
 
         private void BtnMore20_Click(object sender, EventArgs e)
@@ -287,6 +166,38 @@ namespace DnD_CharacterBuilder_GUI.Forms
             LStr.Text = AbilityDTO.GetStrength().ToString();
             AbilityDTO.SetStrMod(Method.PcModif(AbilityDTO.GetStrength()));
             */
+        }
+        private void UpandDown(int getability, Action<int> setability, Action<int> setabilitymod, Label abilitylabel, Label abilitymodlabel, string upordown)
+        {
+            int tempability = getability;
+            int tempabilitymod;
+            if (upordown =="Up")
+            {
+                if (getability == 20)
+                {
+                    More20(true);
+                }
+                else
+                {                    
+                    tempability = getability + 1;
+                }
+            }
+            else
+            {
+                if (getability > 1)
+                {
+                    if (getability == 20)
+                    {
+                        More20(false);
+                    }
+                    tempability = getability - 1;                   
+                }
+            }
+            tempabilitymod = Method.PcModif(tempability);
+            setability(tempability);
+            setabilitymod(tempabilitymod);
+            abilitylabel.Text = tempability.ToString();
+            ChangeLabel(abilitymodlabel, tempabilitymod);
         }
     }
 }
