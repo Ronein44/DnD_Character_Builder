@@ -71,11 +71,8 @@ namespace DnD_CharacterBuilder_GUI.Forms
                 case 8:
                    //RaceSwitch(DataBase.Barbarian.ClassDetails);
                    break;
-            }
-            
+            }            
             selected = listBoxRace.SelectedIndex;
-
-
         }
 
         private void BtnBack_Click(object sender, EventArgs e)
@@ -94,7 +91,6 @@ namespace DnD_CharacterBuilder_GUI.Forms
         {
             this.Close();
         }
-
         private void BtnExit2_Click(object sender, EventArgs e)
         {
             CharacterDTO.SetCRace(null);

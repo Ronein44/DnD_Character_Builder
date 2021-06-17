@@ -18,25 +18,18 @@ namespace DnD_CharacterBuilder_GUI.Forms
         {
             InitializeComponent();
             More20(false);
-                
-            LStr.Text = AbilityDTO.GetStrength().ToString();
-            ChangeLabel(LStrMod, AbilityDTO.GetStrMod());
 
-            LDex.Text = AbilityDTO.GetDexterity().ToString();
-            ChangeLabel(LDexMod, AbilityDTO.GetDexMod());
+            ChangeLabel(LStrMod, AbilityDTO.GetStrMod(), LStr, AbilityDTO.GetStrength());
 
-            LCon.Text = AbilityDTO.GetConstitution().ToString();
-            ChangeLabel(LConMod, AbilityDTO.GetConMod());
+            ChangeLabel(LDexMod, AbilityDTO.GetDexMod(), LDex, AbilityDTO.GetDexterity());
 
-            LInt.Text = AbilityDTO.GetIntelligence().ToString();
-            ChangeLabel(LIntMod, AbilityDTO.GetIntMod());
+            ChangeLabel(LConMod, AbilityDTO.GetConMod(), LCon, AbilityDTO.GetConstitution());
 
-            LWis.Text = AbilityDTO.GetWisdom().ToString();
-            ChangeLabel(LWisMod, AbilityDTO.GetWisMod());
+            ChangeLabel(LIntMod, AbilityDTO.GetIntMod(), LInt, AbilityDTO.GetIntelligence());
 
-            LCha.Text = AbilityDTO.GetCharisma().ToString();
-            ChangeLabel(LChaMod, AbilityDTO.GetChaMod());
-            
+            ChangeLabel(LWisMod, AbilityDTO.GetWisMod(), LWis, AbilityDTO.GetWisdom());
+
+            ChangeLabel(LChaMod, AbilityDTO.GetChaMod(), LCha, AbilityDTO.GetCharisma());
         }
 
         private void BtnBack_Click(object sender, EventArgs e)
@@ -62,8 +55,8 @@ namespace DnD_CharacterBuilder_GUI.Forms
             more20.Visible = false;
             btnMore20.Visible = false;
 
-            Texts(LStr, AbilityDTO.GetStrength(), AbilityDTO.SetStrMod);          
-            ChangeLabel(LStrMod, AbilityDTO.GetStrMod()) ;
+            Texts(LStr, AbilityDTO.GetStrength(), AbilityDTO.SetStrMod);
+            ChangeLabel(LStrMod, AbilityDTO.GetStrMod());
 
             Texts(LDex, AbilityDTO.GetDexterity(), AbilityDTO.SetDexMod);
             ChangeLabel(LDexMod, AbilityDTO.GetDexMod());
@@ -86,7 +79,6 @@ namespace DnD_CharacterBuilder_GUI.Forms
         private void StrUp_Click(object sender, EventArgs e)
         {
             UpandDown(AbilityDTO.GetStrength(), AbilityDTO.SetStrength, AbilityDTO.SetStrMod, LStr, LStrMod, "Up");
-            
         }
         private void StrDown_Click(object sender, EventArgs e)
         {
@@ -137,21 +129,34 @@ namespace DnD_CharacterBuilder_GUI.Forms
         {
             UpandDown(AbilityDTO.GetCharisma(), AbilityDTO.SetCharisma, AbilityDTO.SetChaMod, LCha, LChaMod, "Down");
         }
+        // End Up Down
 
         private void BtnMore20_Click(object sender, EventArgs e)
         {
             More20(false);
         }
-        private void ChangeLabel(Label Label, int Mod)
-        {           
-            if (Mod > 0)
+        private void ChangeLabel(Label abilitymodlabel, int abilitymod)
+        {
+            if (abilitymod > 0)
             {
-                Label.Text = $"+{Mod}";
+                abilitymodlabel.Text = $"+{abilitymod}";
             }
             else
             {
-                Label.Text = Mod.ToString();
-            }        
+                abilitymodlabel.Text = abilitymod.ToString();
+            }
+        }
+        private void ChangeLabel(Label abilitymodlabel, int abilitymod, Label abilitylabel, int getability)
+        {
+            abilitylabel.Text = getability.ToString();
+            if (abilitymod > 0)
+            {
+                abilitymodlabel.Text = $"+{abilitymod}";
+            }
+            else
+            {
+                abilitymodlabel.Text = abilitymod.ToString();
+            }
         }
         private void More20(bool input)
         {
@@ -196,8 +201,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             tempabilitymod = Method.PcModif(tempability);
             setability(tempability);
             setabilitymod(tempabilitymod);
-            abilitylabel.Text = tempability.ToString();
-            ChangeLabel(abilitymodlabel, tempabilitymod);
+            ChangeLabel(abilitymodlabel, tempabilitymod,abilitylabel, tempability);
         }
     }
 }

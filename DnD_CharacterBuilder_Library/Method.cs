@@ -59,7 +59,6 @@ namespace DnD_CharacterBuilder_Library
                 List<int> hp1 = new List<int>();
                 hp1.AddRange(Diceroll(Lvl - 1, ClassHp, AbilityDTO.GetConMod()));
                 hp2 = (hp1.Sum() + ClassHp + AbilityDTO.GetConMod());
-
             }
             else
             {
@@ -77,7 +76,6 @@ namespace DnD_CharacterBuilder_Library
                 i += 2;
             }
             return mod;
-
         }
         public static void NewCha()
         {

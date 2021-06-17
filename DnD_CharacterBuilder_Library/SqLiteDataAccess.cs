@@ -37,12 +37,10 @@ namespace DnD_CharacterBuilder_Library
                 {
                     Succes = true;
                 }
-
             }
             catch (Exception) {; }
             finally
             {
-
                 con.Close();
             }
             return Succes;
@@ -62,12 +60,10 @@ namespace DnD_CharacterBuilder_Library
             {
                  Succes = true;
             }
-
             }
             catch (Exception) { ; }
             finally
             {
-
                 con.Close();
             }
             return Succes;

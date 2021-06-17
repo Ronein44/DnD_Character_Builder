@@ -32,8 +32,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
                     }
                 }
                 load = true;
-            }
-            
+            }           
         }
 
         private void BtnExit_Click(object sender, EventArgs e)
