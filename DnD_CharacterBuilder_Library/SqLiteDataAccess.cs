@@ -26,19 +26,21 @@ namespace DnD_CharacterBuilder_Library
         public static bool Insert()
         {
             bool Succes = false;
-            try{ 
-            string sql = "INSERT INTO CHARACTER (CharacterName, PlayerName, CharacterLvl, CharacterGender, CharacterAge, CharacterWeight, CharacterHeight, CharacterAlignment) " +
+            try
+            { 
+                string sql = "INSERT INTO CHARACTER (CharacterName, PlayerName, CharacterLvl, CharacterGender, CharacterAge, CharacterWeight, CharacterHeight, CharacterAlignment) " +
                 "VALUES (@CharacterName, @PlayerName, @CharacterLvl, @CharacterGender, @CharacterAge, @CharacterWeight, @CharacterHeight, @CharacterAlignment)";
-            cmd = new SQLiteCommand(sql, con);
-            con.Open();
-            ParametersBase();
+                cmd = new SQLiteCommand(sql, con);
+                con.Open();
+                ParametersBase();
                 int rows = cmd.ExecuteNonQuery();
+                CharacterDTO.SetCharacterID(Lastid());
                 if (rows > 0)
                 {
                     Succes = true;
                 }
             }
-            catch (Exception) {; }
+            catch (Exception) { ; }
             finally
             {
                 con.Close();
@@ -102,7 +104,13 @@ namespace DnD_CharacterBuilder_Library
             cmd.Parameters.AddWithValue("@CharacterHeight", CharacterDTO.GetCHeight());
             cmd.Parameters.AddWithValue("@CharacterAlignment", CharacterDTO.GetCAlignment());
         }
-
-
+        public static int Lastid()
+        {
+             string sql = "SELECT last_insert_rowid()";
+             cmd = new SQLiteCommand(sql, con);
+             Int64 id64 = Convert.ToInt64(cmd.ExecuteScalar());        
+             int id = (int)id64; 
+             return id;   
+        }
     }
 }

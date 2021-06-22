@@ -20,34 +20,31 @@ namespace DnD_CharacterBuilder_GUI.Forms
             InitializeComponent();
             HideSubMenu();
             Unablebtn();
-
         }
         
-       
-
         private void BtnCharacter_Click(object sender, EventArgs e)
         {
-            ShowSubMenu(panelCharacterSubMenu);            
+            ShowSubMenu(panelCharacterSubMenu);          
         }
 
         //region CharacterSubMenu
         private void BtnNewCha_Click(object sender, EventArgs e)
-        {
-            
+        {        
             if (NewCharacter == true)
             {
                 DialogResult dialogResult = MessageBox.Show("Do you want to create a new character?", "Are you sure?", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
                     Method.NewCha();
-
+                    InsertEmpty();
                 }
                 else if (dialogResult == DialogResult.No){ ; }
             }
             else
             {
                 Method.NewCha();
-            }
+                InsertEmpty();
+            }                       
             OpenChildForm(new Base());
             NewCharacter = true;
             Unablebtn();
@@ -95,7 +92,6 @@ namespace DnD_CharacterBuilder_GUI.Forms
             }
         }
 
-        //Methods
         public static Form activeForm = null;
         public void OpenChildForm(Form childForm)
         {
@@ -115,13 +111,13 @@ namespace DnD_CharacterBuilder_GUI.Forms
             Application.Exit();
         }
 
-        private void BtnEnable(bool what)
+        private void BtnEnable(bool input)
         {            
-            btnBase.Enabled = what;
-            btnClass.Enabled = what;
-            btnRace.Enabled = what;
-            btnAbility.Enabled = what;
-            btnProficiencies.Enabled = what;
+            btnBase.Enabled = input;
+            btnClass.Enabled = input;
+            btnRace.Enabled = input;
+            btnAbility.Enabled = input;
+            btnProficiencies.Enabled = input;
             
         }
         private void Unablebtn()
@@ -148,6 +144,12 @@ namespace DnD_CharacterBuilder_GUI.Forms
             }
             else
                 subMenu.Visible = false;
+        }
+        private void InsertEmpty()
+        {
+            Base page2 = new Base();
+            page2.SetallText();
+            SqLiteDataAccess.Insert();
         }
     }
 }

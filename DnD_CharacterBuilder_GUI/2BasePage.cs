@@ -20,8 +20,10 @@ namespace DnD_CharacterBuilder_GUI.Forms
             txtAlignment.Items.AddRange(CharacterDTO.Alignment.ToArray());
             txtAlignment.SelectedIndex = 0;
             txtGender.Items.AddRange(CharacterDTO.Gender.ToArray());
-            txtGender.SelectedIndex = 0;           
+            txtGender.SelectedIndex = 0;
+            
         }
+
         private void BtnExit_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Are your sure?", "Exit", MessageBoxButtons.YesNo);
@@ -37,15 +39,22 @@ namespace DnD_CharacterBuilder_GUI.Forms
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            CharacterDTO.SetCName(txtCName.Text);
-            CharacterDTO.SetPName(txtPName.Text);
-            CharacterDTO.SetCLvl(Convert.ToInt32(txtLvl.Value));
-            CharacterDTO.SetCAge(Convert.ToInt32(txtAge.Value));
-            CharacterDTO.SetCWeight(Convert.ToInt32(txtWeight.Value));
-            CharacterDTO.SetCHeight(Convert.ToInt32(txtHeight.Value));
-            CharacterDTO.SetCGender(txtGender.Text);
-            CharacterDTO.SetCAlignment(txtAlignment.Text);
-            SqLiteDataAccess.Insert();
+            SetallText();
+            SqLiteDataAccess.Update();
         }
+        public void SetallText()
+        {
+            Base page2 = new Base();
+            CharacterDTO.SetCName(page2.txtCName.Text);
+            CharacterDTO.SetPName(page2.txtPName.Text);
+            CharacterDTO.SetCLvl(Convert.ToInt32(page2.txtLvl.Value));
+            CharacterDTO.SetCAge(Convert.ToInt32(page2.txtAge.Value));
+            CharacterDTO.SetCWeight(Convert.ToInt32(page2.txtWeight.Value));
+            CharacterDTO.SetCHeight(Convert.ToInt32(page2.txtHeight.Value));
+            CharacterDTO.SetCGender(page2.txtGender.Text);
+            CharacterDTO.SetCAlignment(page2.txtAlignment.Text);
+        }
+
+        
     }   
 }

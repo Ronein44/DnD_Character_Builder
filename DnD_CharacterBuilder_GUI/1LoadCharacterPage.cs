@@ -26,13 +26,11 @@ namespace DnD_CharacterBuilder_GUI.Forms
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-
             if (CharacterLoad.RowCount > 1)
             {
                 DialogResult dialogResult = MessageBox.Show("Are your sure?", "Delete", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-
                     CharacterDTO.SetCharacterID(Convert.ToInt32(CharacterLoad.CurrentRow.Cells[0].Value));
                     bool succes = SqLiteDataAccess.Delete();
                     if (succes == true)
@@ -44,10 +42,12 @@ namespace DnD_CharacterBuilder_GUI.Forms
                     else
                     {
                         MessageBox.Show("Not Deleted!");
-                    }
-                    
+                    }                    
                 }
-                else if (dialogResult == DialogResult.No) {; }
+                else if (dialogResult == DialogResult.No) 
+                {
+                    //Nothing
+                }
             }
             else
             {

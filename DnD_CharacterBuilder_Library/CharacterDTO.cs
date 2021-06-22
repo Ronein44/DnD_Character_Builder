@@ -138,6 +138,7 @@ namespace DnD_CharacterBuilder_Library
             cProficiencies = value;
         }
 
+
         public static List<string> Race = new List<string> { "Dragonborn", "Dwarf", "Elf", "Gnome", "Half-Elf", "Halfling", "Half-Orc", "Human", "Tiefling" };
         public static List<string> Class = new List<string> { "Barbarian", "Bard", "Cleric", "Druid", "Fighter", "Monk", "Paladin", "Ranger", "Rogue", "Sorcerer", "Warlock", "Wizard" };
         public static List<string> Stat = new List<string> { "Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma" };
