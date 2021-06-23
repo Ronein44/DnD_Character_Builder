@@ -17,7 +17,7 @@ namespace DnD_CharacterBuilder_GUI
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Forms.Main());
+            Application.Run(new Forms.MainPage());
         }
     }
 }

@@ -12,10 +12,10 @@ using DnD_CharacterBuilder_Library;
 
 namespace DnD_CharacterBuilder_GUI.Forms
 {
-    public partial class Race : Form
+    public partial class RacePage : Form
     {
         public static int selected = 0;
-        public Race()
+        public RacePage()
         {
             InitializeComponent();
             foreach (string item in CharacterDTO.Race)
@@ -77,13 +77,13 @@ namespace DnD_CharacterBuilder_GUI.Forms
 
         private void BtnBack_Click(object sender, EventArgs e)
         {
-            Class f2 = new Class();
+            ClassPage f2 = new ClassPage();
             this.Hide();
             f2.Show();
         }
         private void BtnNext_Click(object sender, EventArgs e)
         {
-            Ability f4 = new Ability();
+            AbilityPage f4 = new AbilityPage();
             this.Hide();
             f4.Show();
         }
@@ -113,7 +113,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
         }
         public static void RaceSwitch(string db)
         {
-            Race page4 = new Race();
+            RacePage page4 = new RacePage();
             page4.richTextBoxRace.Text = db;
             CharacterDTO.SetCRace(CharacterDTO.Race[page4.listBoxRace.SelectedIndex]);
         }

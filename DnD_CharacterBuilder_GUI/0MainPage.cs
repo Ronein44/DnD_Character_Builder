@@ -11,11 +11,11 @@ using DnD_CharacterBuilder_Library;
 
 namespace DnD_CharacterBuilder_GUI.Forms
 {
-    public partial class Main : Form
+    public partial class MainPage : Form
     {
         public bool NewCharacter = false;
         
-        public Main()
+        public MainPage()
         {
             InitializeComponent();
             HideSubMenu();
@@ -45,33 +45,33 @@ namespace DnD_CharacterBuilder_GUI.Forms
                 Method.NewCha();
                 InsertEmpty();
             }                       
-            OpenChildForm(new Base());
+            OpenChildForm(new BasePage());
             NewCharacter = true;
             Unablebtn();
         }
         private void BtnLoadCharacter_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new LoadCharacter());
+            OpenChildForm(new LoadCharacterPage());
         }
         private void BtnBase_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Base());
+            OpenChildForm(new BasePage());
         }
         private void BtnClass_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Class());
+            OpenChildForm(new ClassPage());
         }
         private void BtnRace_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Race());
+            OpenChildForm(new RacePage());
         }
         private void BtnAbility_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Ability());
+            OpenChildForm(new AbilityPage());
         }
         private void BtnProficiencies_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Proficiencies());
+            OpenChildForm(new ProficienciesPage());
         }
         //endregion
         
@@ -147,7 +147,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
         }
         private void InsertEmpty()
         {
-            Base page2 = new Base();
+            BasePage page2 = new BasePage();
             page2.SetallText();
             SqLiteDataAccess.Insert();
         }

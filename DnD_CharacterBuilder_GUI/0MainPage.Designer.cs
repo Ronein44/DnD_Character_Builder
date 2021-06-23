@@ -1,7 +1,7 @@
 ﻿
 namespace DnD_CharacterBuilder_GUI.Forms
 {
-    partial class Main
+    partial class MainPage
     {
         /// <summary>
         /// Required designer variable.

@@ -12,9 +12,9 @@ using DnD_CharacterBuilder_Library;
 namespace DnD_CharacterBuilder_GUI.Forms
 {
 
-    public partial class Base : Form
+    public partial class BasePage : Form
     {
-        public Base()
+        public BasePage()
         {
             InitializeComponent();
             txtAlignment.Items.AddRange(CharacterDTO.Alignment.ToArray());
@@ -44,7 +44,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
         }
         public void SetallText()
         {
-            Base page2 = new Base();
+            BasePage page2 = new BasePage();
             CharacterDTO.SetCName(page2.txtCName.Text);
             CharacterDTO.SetPName(page2.txtPName.Text);
             CharacterDTO.SetCLvl(Convert.ToInt32(page2.txtLvl.Value));

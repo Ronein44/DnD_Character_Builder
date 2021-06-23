@@ -1,7 +1,7 @@
 ﻿
 namespace DnD_CharacterBuilder_GUI.Forms
 {
-    partial class Race
+    partial class RacePage
     {
         /// <summary>
         /// Required designer variable.
@@ -193,7 +193,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             this.tableLayoutPanel3.Size = new System.Drawing.Size(187, 28);
             this.tableLayoutPanel3.TabIndex = 47;
             // 
-            // Race
+            // RacePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -202,7 +202,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.Name = "Race";
+            this.Name = "RacePage";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DnD_Character";

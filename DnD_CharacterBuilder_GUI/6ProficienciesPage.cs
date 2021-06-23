@@ -12,11 +12,11 @@ using DnD_CharacterBuilder_Library;
 
 namespace DnD_CharacterBuilder_GUI.Forms
 {
-    public partial class Proficiencies : Form
+    public partial class ProficienciesPage : Form
     {
         public static bool load = true;
         public static List<string> ChosedSkillProf = new List<string>();
-        public Proficiencies()
+        public ProficienciesPage()
         {
             InitializeComponent();
             ClassDTO.GetClassSkillnum();

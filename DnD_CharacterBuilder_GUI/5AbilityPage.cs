@@ -12,9 +12,9 @@ using DnD_CharacterBuilder_Library;
 
 namespace DnD_CharacterBuilder_GUI.Forms
 {
-    public partial class Ability : Form
+    public partial class AbilityPage : Form
     {
-        public Ability()
+        public AbilityPage()
         {
             InitializeComponent();
             More20(false);
@@ -34,7 +34,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
 
         private void BtnBack_Click(object sender, EventArgs e)
         {
-            Race f3 = new Race();
+            RacePage f3 = new RacePage();
             this.Hide();
             f3.Show();
         }

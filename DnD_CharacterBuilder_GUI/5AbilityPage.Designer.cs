@@ -1,7 +1,7 @@
 ﻿
 namespace DnD_CharacterBuilder_GUI.Forms
 {
-    partial class Ability
+    partial class AbilityPage
     {
         /// <summary>
         /// Required designer variable.

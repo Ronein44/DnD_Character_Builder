@@ -11,9 +11,9 @@ using DnD_CharacterBuilder_Library;
 
 namespace DnD_CharacterBuilder_GUI.Forms
 {
-    public partial class LoadCharacter : Form
+    public partial class LoadCharacterPage : Form
     {
-        public LoadCharacter()
+        public LoadCharacterPage()
         {
             InitializeComponent();
             CharacterLoad.DataSource = SqLiteDataAccess.Select();

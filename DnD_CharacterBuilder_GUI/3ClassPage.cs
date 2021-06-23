@@ -12,10 +12,10 @@ using DnD_CharacterBuilder_Library;
 
 namespace DnD_CharacterBuilder_GUI.Forms
 {
-    public partial class Class : Form
+    public partial class ClassPage : Form
     {
         public static int selected = 0;
-        public Class()
+        public ClassPage()
         {           
             InitializeComponent();
             foreach (string item in CharacterDTO.Class)
@@ -109,7 +109,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
         }
         public static void ClassSwitch(string db)
         {
-            Class page3 = new Class();
+            ClassPage page3 = new ClassPage();
             page3.richTextBoxClass.Text = db;
             CharacterDTO.SetCClass(CharacterDTO.Class[page3.listBoxClass.SelectedIndex]);
             //ClassDTO.SetClassSkillnum();
