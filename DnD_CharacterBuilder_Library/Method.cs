@@ -30,7 +30,7 @@ namespace DnD_CharacterBuilder_Library
 
             return rollvalue;
         }
-        public static List<int> StatRoll()
+        public static List<int> StatRoll()//Stat rolls
         {
             List<int> stats = new List<int>();
             for (int i = 0; i < 6; i++)
@@ -91,8 +91,19 @@ namespace DnD_CharacterBuilder_Library
             AbilityDTO.SetIntMod(-5);
             AbilityDTO.SetWisMod(-5);
             AbilityDTO.SetChaMod(-5);
+            CharacterDTO.SetCName("");
+            CharacterDTO.SetPName("");
+            CharacterDTO.SetCLvl(1);
+            CharacterDTO.SetCAge(1);
+            CharacterDTO.SetCWeight(1);
+            CharacterDTO.SetCHeight(1);
+            CharacterDTO.SetCGender("");
+            CharacterDTO.SetCAlignment("");
+            CharacterDTO.SetCClass("");
+            CharacterDTO.SetCRace("");
+            SqLiteDataAccess.Insert();
         }
-
+       
 
     }
 }

@@ -1,11 +1,4 @@
 F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_GUI\obj\Debug\netcoreapp3.1\DnD_CharacterBuilder_GUI.csprojAssemblyReference.cache
-F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_GUI\obj\Debug\netcoreapp3.1\DnD_CharacterBuilder_GUI.Forms.Main.resources
-F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_GUI\obj\Debug\netcoreapp3.1\DnD_CharacterBuilder_GUI.Forms.LoadCharacter.resources
-F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_GUI\obj\Debug\netcoreapp3.1\DnD_CharacterBuilder_GUI.Forms.Base.resources
-F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_GUI\obj\Debug\netcoreapp3.1\DnD_CharacterBuilder_GUI.Forms.Class.resources
-F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_GUI\obj\Debug\netcoreapp3.1\DnD_CharacterBuilder_GUI.Forms.Race.resources
-F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_GUI\obj\Debug\netcoreapp3.1\DnD_CharacterBuilder_GUI.Forms.Ability.resources
-F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_GUI\obj\Debug\netcoreapp3.1\DnD_CharacterBuilder_GUI.Forms.Proficiencies.resources
 F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_GUI\obj\Debug\netcoreapp3.1\DnD_CharacterBuilder_GUI.csproj.GenerateResource.cache
 F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_GUI\obj\Debug\netcoreapp3.1\DnD_CharacterBuilder_GUI.AssemblyInfoInputs.cache
 F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_GUI\obj\Debug\netcoreapp3.1\DnD_CharacterBuilder_GUI.AssemblyInfo.cs
@@ -30,3 +23,10 @@ F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_GUI\bin\Debug\netcor
 F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_GUI\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\SQLite.Interop.dll
 F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_GUI\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\SQLite.Interop.dll
 F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_GUI\bin\Debug\netcoreapp3.1\DnD_Character_Builder_db.db
+F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_GUI\obj\Debug\netcoreapp3.1\DnD_CharacterBuilder_GUI.Forms.MainPage.resources
+F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_GUI\obj\Debug\netcoreapp3.1\DnD_CharacterBuilder_GUI.Forms.LoadCharacterPage.resources
+F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_GUI\obj\Debug\netcoreapp3.1\DnD_CharacterBuilder_GUI.Forms.BasePage.resources
+F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_GUI\obj\Debug\netcoreapp3.1\DnD_CharacterBuilder_GUI.Forms.ClassPage.resources
+F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_GUI\obj\Debug\netcoreapp3.1\DnD_CharacterBuilder_GUI.Forms.RacePage.resources
+F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_GUI\obj\Debug\netcoreapp3.1\DnD_CharacterBuilder_GUI.Forms.AbilityPage.resources
+F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_GUI\obj\Debug\netcoreapp3.1\DnD_CharacterBuilder_GUI.Forms.ProficienciesPage.resources

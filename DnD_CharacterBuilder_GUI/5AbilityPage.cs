@@ -32,21 +32,9 @@ namespace DnD_CharacterBuilder_GUI.Forms
             ChangeLabel(LChaMod, AbilityDTO.GetChaMod(), LCha, AbilityDTO.GetCharisma());
         }
 
-        private void BtnBack_Click(object sender, EventArgs e)
-        {
-            RacePage f3 = new RacePage();
-            this.Hide();
-            f3.Show();
-        }
-
         private void BtnExit_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void BtnNext_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void BtnStats_Click(object sender, EventArgs e)
@@ -64,7 +52,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             Texts(LCon, AbilityDTO.GetConstitution(), AbilityDTO.SetConMod);
             ChangeLabel(LConMod, AbilityDTO.GetConMod());
 
-            Texts(LInt, AbilityDTO.GetIntelligence(), AbilityDTO.SetConMod);
+            Texts(LInt, AbilityDTO.GetIntelligence(), AbilityDTO.SetIntMod);
             ChangeLabel(LIntMod, AbilityDTO.GetIntMod());
 
             Texts(LWis, AbilityDTO.GetWisdom(), AbilityDTO.SetWisMod);
@@ -174,8 +162,8 @@ namespace DnD_CharacterBuilder_GUI.Forms
         }
         private void UpandDown(int getability, Action<int> setability, Action<int> setabilitymod, Label abilitylabel, Label abilitymodlabel, string upordown)
         {
-            int tempability = getability;
-            int tempabilitymod;
+            int temporaryability = getability;
+            int temporaryabilitymod;
             if (upordown =="Up")
             {
                 if (getability == 20)
@@ -184,7 +172,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
                 }
                 else
                 {                    
-                    tempability = getability + 1;
+                    temporaryability = getability + 1;
                 }
             }
             else
@@ -195,13 +183,18 @@ namespace DnD_CharacterBuilder_GUI.Forms
                     {
                         More20(false);
                     }
-                    tempability = getability - 1;                   
+                    temporaryability = getability - 1;                   
                 }
             }
-            tempabilitymod = Method.PcModif(tempability);
-            setability(tempability);
-            setabilitymod(tempabilitymod);
-            ChangeLabel(abilitymodlabel, tempabilitymod,abilitylabel, tempability);
+            temporaryabilitymod = Method.PcModif(temporaryability);
+            setability(temporaryability);
+            setabilitymod(temporaryabilitymod);
+            ChangeLabel(abilitymodlabel, temporaryabilitymod,abilitylabel, temporaryability);
+        }
+
+        private void BtnSaveAbility_Click(object sender, EventArgs e)
+        {
+            SqLiteDataAccess.Update();
         }
     }
 }

@@ -16,15 +16,15 @@ namespace DnD_CharacterBuilder_GUI.Forms
         public LoadCharacterPage()
         {
             InitializeComponent();
-            CharacterLoad.DataSource = SqLiteDataAccess.Select();
+            CharacterLoad.DataSource = SqLiteDataAccess.Select("SELECT * FROM Character");
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
+        private void BtnExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void BtnDelete_Click(object sender, EventArgs e)
         {
             if (CharacterLoad.RowCount > 1)
             {
@@ -36,7 +36,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
                     if (succes == true)
                     {
                         MessageBox.Show("Deleted!");
-                        DataTable dt = SqLiteDataAccess.Select();
+                        DataTable dt = SqLiteDataAccess.Select("SELECT * FROM Character");
                         CharacterLoad.DataSource = dt;
                     }
                     else
@@ -55,9 +55,13 @@ namespace DnD_CharacterBuilder_GUI.Forms
             }
         }
 
-        private void btnLoad_Click(object sender, EventArgs e)
+        private void BtnLoad_Click(object sender, EventArgs e)
         {
-
+            foreach (DataRow dr in SqLiteDataAccess.Select("SELECT * FROM Character").Rows)
+            {
+                CharacterDTO.SetCName(dr["CharacterName"].ToString());
+                //listBoxClass.Items.Add(dr["ClassName"].ToString());
+            }
         }
     }
 }

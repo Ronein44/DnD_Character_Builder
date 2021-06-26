@@ -18,11 +18,11 @@ namespace DnD_CharacterBuilder_GUI.Forms
         public RacePage()
         {
             InitializeComponent();
-            foreach (string item in CharacterDTO.Race)
+            foreach (DataRow dr in SqLiteDataAccess.Select("SELECT * FROM Race").Rows)
             {
-                listBoxRace.Items.Add(item);
+                listBoxRace.Items.Add(dr["RaceName"].ToString());
             }
-            if (CharacterDTO.GetCRace() == null)
+            if (CharacterDTO.GetCRace() == "")
             {
                 listBoxRace.SelectedIndex = -1;
                 listBoxRace.Visible = true;
@@ -42,58 +42,17 @@ namespace DnD_CharacterBuilder_GUI.Forms
         private void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {            
             richTextBoxRace.ResetText();
-            switch (listBoxRace.SelectedIndex)
-            {
-                case 0:
-                   //RaceSwitch(DataBase.Barbarian.ClassDetails);
-                   break;
-                case 1:
-                   //RaceSwitch(DataBase.Barbarian.ClassDetails);
-                   break;
-                case 2:
-                   //RaceSwitch(DataBase.Barbarian.ClassDetails);
-                   break;
-                case 3:
-                   //RaceSwitch(DataBase.Barbarian.ClassDetails);
-                   break;
-                case 4:
-                   //RaceSwitch(DataBase.Barbarian.ClassDetails);
-                   break;
-                case 5:
-                   //RaceSwitch(DataBase.Barbarian.ClassDetails);
-                   break;
-                case 6:
-                   //RaceSwitch(DataBase.Barbarian.ClassDetails);
-                   break;
-                case 7:
-                   //RaceSwitch(DataBase.Barbarian.ClassDetails);
-                   break;
-                case 8:
-                   //RaceSwitch(DataBase.Barbarian.ClassDetails);
-                   break;
-            }            
+            CharacterDTO.SetCRace(listBoxRace.SelectedItem.ToString());
             selected = listBoxRace.SelectedIndex;
         }
 
-        private void BtnBack_Click(object sender, EventArgs e)
-        {
-            ClassPage f2 = new ClassPage();
-            this.Hide();
-            f2.Show();
-        }
-        private void BtnNext_Click(object sender, EventArgs e)
-        {
-            AbilityPage f4 = new AbilityPage();
-            this.Hide();
-            f4.Show();
-        }
         private void BtnExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
         private void BtnExit2_Click(object sender, EventArgs e)
         {
-            CharacterDTO.SetCRace(null);
+            CharacterDTO.SetCRace("");
             listBoxRace.Visible = true;
             ChoosedPRace.Visible = false;
             btnExit2.Visible = false;
@@ -102,20 +61,18 @@ namespace DnD_CharacterBuilder_GUI.Forms
         private void ListBoxRace_DoubleClick(object sender, EventArgs e)
         {
             CharacterDTO.SetCRace(listBoxRace.SelectedItem.ToString());
-            if (CharacterDTO.GetCRace() != null)
+            if (CharacterDTO.GetCRace() != "")
             {
                 listBoxRace.Visible = false;
                 ChoosedPRace.Visible = true;
                 btnExit2.Visible = true;
                 ChoosedPRace.Text = CharacterDTO.GetCRace();
             }
-            
         }
-        public static void RaceSwitch(string db)
+
+        private void BtnSaveRace_Click(object sender, EventArgs e)
         {
-            RacePage page4 = new RacePage();
-            page4.richTextBoxRace.Text = db;
-            CharacterDTO.SetCRace(CharacterDTO.Race[page4.listBoxRace.SelectedIndex]);
+            SqLiteDataAccess.Update();
         }
     }
 }

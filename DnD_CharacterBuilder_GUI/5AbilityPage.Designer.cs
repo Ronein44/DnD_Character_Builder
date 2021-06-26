@@ -29,8 +29,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.NextButton1 = new System.Windows.Forms.Button();
-            this.Back = new System.Windows.Forms.Button();
+            this.btnSaveAbility = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -113,29 +112,17 @@ namespace DnD_CharacterBuilder_GUI.Forms
             this.tableLayoutPanel10.SuspendLayout();
             this.SuspendLayout();
             // 
-            // NextButton1
+            // btnSaveAbility
             // 
-            this.NextButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.NextButton1.Location = new System.Drawing.Point(97, 3);
-            this.NextButton1.Margin = new System.Windows.Forms.Padding(2);
-            this.NextButton1.Name = "NextButton1";
-            this.NextButton1.Size = new System.Drawing.Size(88, 23);
-            this.NextButton1.TabIndex = 27;
-            this.NextButton1.Text = "Next";
-            this.NextButton1.UseVisualStyleBackColor = true;
-            this.NextButton1.Click += new System.EventHandler(this.BtnNext_Click);
-            // 
-            // Back
-            // 
-            this.Back.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.Back.Location = new System.Drawing.Point(3, 3);
-            this.Back.Margin = new System.Windows.Forms.Padding(2);
-            this.Back.Name = "Back";
-            this.Back.Size = new System.Drawing.Size(88, 23);
-            this.Back.TabIndex = 34;
-            this.Back.Text = "Back";
-            this.Back.UseVisualStyleBackColor = true;
-            this.Back.Click += new System.EventHandler(this.BtnBack_Click);
+            this.btnSaveAbility.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSaveAbility.Location = new System.Drawing.Point(97, 3);
+            this.btnSaveAbility.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSaveAbility.Name = "btnSaveAbility";
+            this.btnSaveAbility.Size = new System.Drawing.Size(88, 23);
+            this.btnSaveAbility.TabIndex = 27;
+            this.btnSaveAbility.Text = "Save";
+            this.btnSaveAbility.UseVisualStyleBackColor = true;
+            this.btnSaveAbility.Click += new System.EventHandler(this.BtnSaveAbility_Click);
             // 
             // label1
             // 
@@ -975,8 +962,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             this.tableLayoutPanel10.ColumnCount = 2;
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel10.Controls.Add(this.Back, 0, 0);
-            this.tableLayoutPanel10.Controls.Add(this.NextButton1, 1, 0);
+            this.tableLayoutPanel10.Controls.Add(this.btnSaveAbility, 1, 0);
             this.tableLayoutPanel10.Location = new System.Drawing.Point(1230, 799);
             this.tableLayoutPanel10.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.tableLayoutPanel10.Name = "tableLayoutPanel10";
@@ -985,7 +971,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             this.tableLayoutPanel10.Size = new System.Drawing.Size(187, 28);
             this.tableLayoutPanel10.TabIndex = 59;
             // 
-            // Ability
+            // AbilityPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -994,7 +980,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.Name = "Ability";
+            this.Name = "AbilityPage";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DnD_Character";
@@ -1045,8 +1031,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
         }
 
         #endregion
-        private System.Windows.Forms.Button NextButton1;
-        private System.Windows.Forms.Button Back;
+        private System.Windows.Forms.Button btnSaveAbility;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

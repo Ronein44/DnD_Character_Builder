@@ -19,7 +19,6 @@ namespace DnD_CharacterBuilder_GUI.Forms
         public ProficienciesPage()
         {
             InitializeComponent();
-            ClassDTO.GetClassSkillnum();
                        
             if (load == true)
             {
@@ -43,8 +42,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
         private void Skills_SelectedIndexChanged(object sender, EventArgs e)
         {            
             richTextBox1.ResetText();
-            richTextBox1.Text = Skills.SelectedItem.ToString();
-            
+            richTextBox1.Text = Skills.SelectedItem.ToString();           
         }
 
         private void Skills_ItemCheck(object sender, ItemCheckEventArgs e)
@@ -63,8 +61,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
                 {
                     ChosedSkillProf.Add(Skills.SelectedItem.ToString());
                 }
-            }
-            
+            }            
         }
         public void AddSkill(List<string> Base)
         {
@@ -72,6 +69,11 @@ namespace DnD_CharacterBuilder_GUI.Forms
             {
                 Skills.Items.Add(item);
             }
+        }
+
+        private void BtnSaveProf_Click(object sender, EventArgs e)
+        {
+            SqLiteDataAccess.Update();
         }
     }
 }

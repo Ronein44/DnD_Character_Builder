@@ -11,14 +11,14 @@ namespace DnD_CharacterBuilder_Library
 {
     public class SqLiteDataAccess
     {
-        static SQLiteConnection con = new SQLiteConnection("Data Source=DnD_Character_Builder_db.db;Version=3;");
+        private static readonly SQLiteConnection con = new SQLiteConnection("Data Source=DnD_Character_Builder_db.db;Version=3;");
         static SQLiteCommand cmd;
         static SQLiteDataAdapter adapt;
-        public static DataTable Select()
+        public static DataTable Select(string sqlcommand)
         {
             con.Open();
             DataTable dt = new DataTable();
-            adapt = new SQLiteDataAdapter("SELECT * FROM Character", con);
+            adapt = new SQLiteDataAdapter(sqlcommand, con);
             adapt.Fill(dt);
             con.Close();
             return dt;
@@ -27,12 +27,10 @@ namespace DnD_CharacterBuilder_Library
         {
             bool Succes = false;
             try
-            { 
-                string sql = "INSERT INTO CHARACTER (CharacterName, PlayerName, CharacterLvl, CharacterGender, CharacterAge, CharacterWeight, CharacterHeight, CharacterAlignment) " +
-                "VALUES (@CharacterName, @PlayerName, @CharacterLvl, @CharacterGender, @CharacterAge, @CharacterWeight, @CharacterHeight, @CharacterAlignment)";
-                cmd = new SQLiteCommand(sql, con);
-                con.Open();
-                ParametersBase();
+            {
+                SqlConOpen("INSERT INTO CHARACTER (CharacterName, PlayerName, CharacterLvl, CharacterGender, CharacterAge, CharacterWeight, CharacterHeight, CharacterAlignment) " +
+                "VALUES (@CharacterName, @PlayerName, @CharacterLvl, @CharacterGender, @CharacterAge, @CharacterWeight, @CharacterHeight, @CharacterAlignment)");
+                Parameters();
                 int rows = cmd.ExecuteNonQuery();
                 CharacterDTO.SetCharacterID(Lastid());
                 if (rows > 0)
@@ -50,18 +48,16 @@ namespace DnD_CharacterBuilder_Library
         public static bool Update()
         {
             bool Succes = false;
-            try { 
-            string sql = "UPDATE CHARACTER SET CharacterName=@CharacterName, PlayerName=@PlayerName, CharacterLvl=@CharacterLvl, CharacterGender=@CharacterGender, " +
-                "CharacterAge=@CharacterAge, CharacterWeight=@CharacterWeight, CharacterHeight=@CharacterHeight, CharacterAlignment=@CharacterAlignment WHERE CharacterID=@CharacterID";
-            cmd = new SQLiteCommand(sql, con);
-            con.Open();
-            ParametersBase();
-            cmd.Parameters.AddWithValue("@CharacterID", CharacterDTO.GetCharacterID());
-            int rows = cmd.ExecuteNonQuery();
-            if (rows > 0)
+            try 
             {
+                SqlConOpen("UPDATE CHARACTER SET CharacterName=@CharacterName, PlayerName=@PlayerName, CharacterLvl=@CharacterLvl, CharacterGender=@CharacterGender, " +
+                    "CharacterAge=@CharacterAge, CharacterWeight=@CharacterWeight, CharacterHeight=@CharacterHeight, CharacterAlignment=@CharacterAlignment, CharacterRace=@CharacterRace, CharacterClass=@CharacterClass WHERE CharacterID=@CharacterID");
+                Parameters(CharacterDTO.GetCharacterID(), true);
+                int rows = cmd.ExecuteNonQuery();
+                if (rows > 0)
+                {
                  Succes = true;
-            }
+                }
             }
             catch (Exception) { ; }
             finally
@@ -75,10 +71,8 @@ namespace DnD_CharacterBuilder_Library
             bool isSucces = false;
             try
             {
-                string sql = "DELETE FROM Character WHERE CharacterID=@CharacterID";
-                SQLiteCommand cmd = new SQLiteCommand(sql, con);
-                cmd.Parameters.AddWithValue("CharacterID", CharacterDTO.GetCharacterID());
-                con.Open();
+                SqlConOpen("DELETE FROM Character WHERE CharacterID=@CharacterID");
+                Parameters(CharacterDTO.GetCharacterID(), false);                
                 int rows = cmd.ExecuteNonQuery();
                 if (rows > 0)
                 {
@@ -92,8 +86,25 @@ namespace DnD_CharacterBuilder_Library
             }
             return isSucces;
         }
-        
-        private static void ParametersBase()
+        public static int ImportSkillNum()
+        {           
+            SqlConOpen("SELECT NumberofSkill FROM Class WHERE ClassName = @ClassName");
+            cmd.Parameters.AddWithValue("ClassName", CharacterDTO.GetCClass());
+            int skillnum = Convert.ToInt32(cmd.ExecuteScalar());
+            con.Close();
+            return skillnum;
+        }
+        public static DataTable CharacterLoad()
+        {
+            DataTable dt = new DataTable();
+            SqlConOpen("SELECT * FROM Character WHERE CharacterID = @CharacterID");
+            cmd.Parameters.AddWithValue("CharacterID", CharacterDTO.GetCharacterID());
+            adapt.Fill(dt);
+            con.Close();
+            return dt;
+        }
+
+        private static void Parameters()
         {
             cmd.Parameters.AddWithValue("@CharacterName", CharacterDTO.GetCName());
             cmd.Parameters.AddWithValue("@PlayerName", CharacterDTO.GetPName());
@@ -103,7 +114,18 @@ namespace DnD_CharacterBuilder_Library
             cmd.Parameters.AddWithValue("@CharacterWeight", CharacterDTO.GetCWeight());
             cmd.Parameters.AddWithValue("@CharacterHeight", CharacterDTO.GetCHeight());
             cmd.Parameters.AddWithValue("@CharacterAlignment", CharacterDTO.GetCAlignment());
+            cmd.Parameters.AddWithValue("@CharacterClass", CharacterDTO.GetCClass());
+            cmd.Parameters.AddWithValue("@CharacterRace", CharacterDTO.GetCRace());
         }
+        private static void Parameters(int characterid, bool needparameters)
+        {
+            if (needparameters == true)
+            {
+                Parameters();
+            }
+            cmd.Parameters.AddWithValue("CharacterID", characterid);
+        }
+        
         public static int Lastid()
         {
              string sql = "SELECT last_insert_rowid()";
@@ -111,6 +133,12 @@ namespace DnD_CharacterBuilder_Library
              Int64 id64 = Convert.ToInt64(cmd.ExecuteScalar());        
              int id = (int)id64; 
              return id;   
+        }
+
+        public static void SqlConOpen(string sqlcommand)
+        {           
+            cmd = new SQLiteCommand(sqlcommand, con);
+            con.Open();
         }
     }
 }

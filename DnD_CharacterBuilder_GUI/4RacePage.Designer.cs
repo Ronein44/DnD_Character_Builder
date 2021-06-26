@@ -29,9 +29,8 @@ namespace DnD_CharacterBuilder_GUI.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.NextButton1 = new System.Windows.Forms.Button();
+            this.btnSaveRace = new System.Windows.Forms.Button();
             this.listBoxRace = new System.Windows.Forms.ListBox();
-            this.Back = new System.Windows.Forms.Button();
             this.richTextBoxRace = new System.Windows.Forms.RichTextBox();
             this.btnExit = new System.Windows.Forms.Button();
             this.ChoosedPRace = new System.Windows.Forms.TextBox();
@@ -44,17 +43,17 @@ namespace DnD_CharacterBuilder_GUI.Forms
             this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
-            // NextButton1
+            // btnSaveRace
             // 
-            this.NextButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.NextButton1.Location = new System.Drawing.Point(97, 3);
-            this.NextButton1.Margin = new System.Windows.Forms.Padding(2);
-            this.NextButton1.Name = "NextButton1";
-            this.NextButton1.Size = new System.Drawing.Size(88, 23);
-            this.NextButton1.TabIndex = 27;
-            this.NextButton1.Text = "Next";
-            this.NextButton1.UseVisualStyleBackColor = true;
-            this.NextButton1.Click += new System.EventHandler(this.BtnNext_Click);
+            this.btnSaveRace.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSaveRace.Location = new System.Drawing.Point(97, 3);
+            this.btnSaveRace.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSaveRace.Name = "btnSaveRace";
+            this.btnSaveRace.Size = new System.Drawing.Size(88, 23);
+            this.btnSaveRace.TabIndex = 27;
+            this.btnSaveRace.Text = "Save";
+            this.btnSaveRace.UseVisualStyleBackColor = true;
+            this.btnSaveRace.Click += new System.EventHandler(this.BtnSaveRace_Click);
             // 
             // listBoxRace
             // 
@@ -70,18 +69,6 @@ namespace DnD_CharacterBuilder_GUI.Forms
             this.listBoxRace.TabIndex = 32;
             this.listBoxRace.SelectedIndexChanged += new System.EventHandler(this.ListBox1_SelectedIndexChanged);
             this.listBoxRace.DoubleClick += new System.EventHandler(this.ListBoxRace_DoubleClick);
-            // 
-            // Back
-            // 
-            this.Back.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.Back.Location = new System.Drawing.Point(3, 3);
-            this.Back.Margin = new System.Windows.Forms.Padding(2);
-            this.Back.Name = "Back";
-            this.Back.Size = new System.Drawing.Size(88, 23);
-            this.Back.TabIndex = 34;
-            this.Back.Text = "Back";
-            this.Back.UseVisualStyleBackColor = true;
-            this.Back.Click += new System.EventHandler(this.BtnBack_Click);
             // 
             // richTextBoxRace
             // 
@@ -183,8 +170,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Controls.Add(this.Back, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.NextButton1, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.btnSaveRace, 1, 0);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(1230, 801);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -215,9 +201,8 @@ namespace DnD_CharacterBuilder_GUI.Forms
         }
 
         #endregion
-        private System.Windows.Forms.Button NextButton1;
+        private System.Windows.Forms.Button btnSaveRace;
         private System.Windows.Forms.ListBox listBoxRace;
-        private System.Windows.Forms.Button Back;
         private System.Windows.Forms.RichTextBox richTextBoxRace;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.TextBox ChoosedPRace;

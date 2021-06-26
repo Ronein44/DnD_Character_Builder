@@ -37,8 +37,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.Back = new System.Windows.Forms.Button();
-            this.NextButton1 = new System.Windows.Forms.Button();
+            this.btnSaveClass = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -159,8 +158,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Controls.Add(this.Back, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.NextButton1, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.btnSaveClass, 1, 0);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(1230, 801);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -169,29 +167,19 @@ namespace DnD_CharacterBuilder_GUI.Forms
             this.tableLayoutPanel3.Size = new System.Drawing.Size(187, 28);
             this.tableLayoutPanel3.TabIndex = 47;
             // 
-            // Back
+            // btnSaveClass
             // 
-            this.Back.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.Back.Location = new System.Drawing.Point(3, 3);
-            this.Back.Margin = new System.Windows.Forms.Padding(2);
-            this.Back.Name = "Back";
-            this.Back.Size = new System.Drawing.Size(88, 23);
-            this.Back.TabIndex = 34;
-            this.Back.Text = "Back";
-            this.Back.UseVisualStyleBackColor = true;
+            this.btnSaveClass.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSaveClass.Location = new System.Drawing.Point(97, 3);
+            this.btnSaveClass.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSaveClass.Name = "btnSaveClass";
+            this.btnSaveClass.Size = new System.Drawing.Size(88, 23);
+            this.btnSaveClass.TabIndex = 27;
+            this.btnSaveClass.Text = "Save";
+            this.btnSaveClass.UseVisualStyleBackColor = true;
+            this.btnSaveClass.Click += new System.EventHandler(this.BtnSaveClass_Click);
             // 
-            // NextButton1
-            // 
-            this.NextButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.NextButton1.Location = new System.Drawing.Point(97, 3);
-            this.NextButton1.Margin = new System.Windows.Forms.Padding(2);
-            this.NextButton1.Name = "NextButton1";
-            this.NextButton1.Size = new System.Drawing.Size(88, 23);
-            this.NextButton1.TabIndex = 27;
-            this.NextButton1.Text = "Next";
-            this.NextButton1.UseVisualStyleBackColor = true;
-            // 
-            // Class
+            // ClassPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -200,7 +188,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.Name = "Class";
+            this.Name = "ClassPage";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DnD_Character";
@@ -219,9 +207,8 @@ namespace DnD_CharacterBuilder_GUI.Forms
         private System.Windows.Forms.Button btnExit2;
         private System.Windows.Forms.RichTextBox richTextBoxClass;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Button Back;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.Button NextButton1;
+        private System.Windows.Forms.Button btnSaveClass;
     }
 }

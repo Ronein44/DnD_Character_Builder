@@ -83,7 +83,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             this.btnExit.TabIndex = 8;
             this.btnExit.Text = "X";
             this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            this.btnExit.Click += new System.EventHandler(this.BtnExit_Click);
             // 
             // tableLayoutPanel5
             // 
@@ -110,7 +110,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             this.btnLoad.TabIndex = 29;
             this.btnLoad.Text = "Load";
             this.btnLoad.UseVisualStyleBackColor = true;
-            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
+            this.btnLoad.Click += new System.EventHandler(this.BtnLoad_Click);
             // 
             // btnDelete
             // 
@@ -122,7 +122,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             this.btnDelete.TabIndex = 30;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            this.btnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
             // 
             // LoadCharacter
             // 

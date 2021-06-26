@@ -32,18 +32,25 @@ namespace DnD_CharacterBuilder_GUI.Forms
         {        
             if (NewCharacter == true)
             {
-                DialogResult dialogResult = MessageBox.Show("Do you want to create a new character?", "Are you sure?", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show("Do you want to create a new character?", "New Character", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    Method.NewCha();
-                    InsertEmpty();
+                    DialogResult dialogResult2 = MessageBox.Show("Do you want to save your progress", "New Character", MessageBoxButtons.YesNo);
+                    if (dialogResult2 == DialogResult.Yes)
+                    {
+                        SqLiteDataAccess.Update();
+                        Method.NewCha();
+                    }
+                    else if (dialogResult2 == DialogResult.No)
+                    {
+                        Method.NewCha();
+                    }                    
                 }
                 else if (dialogResult == DialogResult.No){ ; }
             }
             else
-            {
-                Method.NewCha();
-                InsertEmpty();
+            {                
+                Method.NewCha();               
             }                       
             OpenChildForm(new BasePage());
             NewCharacter = true;
@@ -88,7 +95,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             }
             else if (dialogResult == DialogResult.No)
             {
-                //Nothing
+                //Go back
             }
         }
 
@@ -145,11 +152,6 @@ namespace DnD_CharacterBuilder_GUI.Forms
             else
                 subMenu.Visible = false;
         }
-        private void InsertEmpty()
-        {
-            BasePage page2 = new BasePage();
-            page2.SetallText();
-            SqLiteDataAccess.Insert();
-        }
+        
     }
 }

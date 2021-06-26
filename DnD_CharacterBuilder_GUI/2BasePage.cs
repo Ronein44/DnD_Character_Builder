@@ -17,44 +17,65 @@ namespace DnD_CharacterBuilder_GUI.Forms
         public BasePage()
         {
             InitializeComponent();
-            txtAlignment.Items.AddRange(CharacterDTO.Alignment.ToArray());
-            txtAlignment.SelectedIndex = 0;
-            txtGender.Items.AddRange(CharacterDTO.Gender.ToArray());
-            txtGender.SelectedIndex = 0;
-            
+            foreach (DataRow dr in SqLiteDataAccess.Select("SELECT * FROM Gender").Rows)
+            {
+                txtGender.Items.Add(dr["Gender"].ToString());
+            }
+            foreach (DataRow dr in SqLiteDataAccess.Select("SELECT * FROM Alignment").Rows)
+            {
+                txtAlignment.Items.Add(dr["AlignmentName"].ToString());
+            }
+            txtCName.Text = CharacterDTO.GetCName();
+            txtPName.Text = CharacterDTO.GetPName();
+            txtLvl.Value = CharacterDTO.GetCLvl();
+            txtAge.Value = CharacterDTO.GetCAge();
+            txtWeight.Value = CharacterDTO.GetCWeight();
+            txtHeight.Value = CharacterDTO.GetCHeight();
+            txtGender.SelectedItem = CharacterDTO.GetCGender();
+            txtAlignment.SelectedItem = CharacterDTO.GetCAlignment();
         }
 
         private void BtnExit_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Are your sure?", "Exit", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                this.Close();
-            }
-            else if (dialogResult == DialogResult.No)
-            {
-                //Nothing
-            }
+            this.Close();
         }
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            SetallText();
             SqLiteDataAccess.Update();
         }
-        public void SetallText()
-        {
-            BasePage page2 = new BasePage();
-            CharacterDTO.SetCName(page2.txtCName.Text);
-            CharacterDTO.SetPName(page2.txtPName.Text);
-            CharacterDTO.SetCLvl(Convert.ToInt32(page2.txtLvl.Value));
-            CharacterDTO.SetCAge(Convert.ToInt32(page2.txtAge.Value));
-            CharacterDTO.SetCWeight(Convert.ToInt32(page2.txtWeight.Value));
-            CharacterDTO.SetCHeight(Convert.ToInt32(page2.txtHeight.Value));
-            CharacterDTO.SetCGender(page2.txtGender.Text);
-            CharacterDTO.SetCAlignment(page2.txtAlignment.Text);
-        }
 
-        
+        private void TxtCName_TextChanged(object sender, EventArgs e)
+        {
+            CharacterDTO.SetCName(txtCName.Text);           
+        }
+        private void TxtPName_TextChanged(object sender, EventArgs e)
+        {
+            CharacterDTO.SetPName(txtPName.Text);
+        }
+        private void TxtLvl_ValueChanged(object sender, EventArgs e)
+        {
+            CharacterDTO.SetCLvl(Convert.ToInt32(txtLvl.Value));
+        }
+        private void TxtWeight_ValueChanged(object sender, EventArgs e)
+        {
+            CharacterDTO.SetCWeight(Convert.ToInt32(txtWeight.Value));
+        }
+        private void TxtGender_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CharacterDTO.SetCGender(txtGender.Text);
+        }
+        private void TxtHeight_ValueChanged(object sender, EventArgs e)
+        {
+            CharacterDTO.SetCHeight(Convert.ToInt32(txtHeight.Value));
+        }
+        private void TxtAge_ValueChanged(object sender, EventArgs e)
+        {
+            CharacterDTO.SetCAge(Convert.ToInt32(txtAge.Value));
+        }
+        private void TxtAlignment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CharacterDTO.SetCAlignment(txtAlignment.Text);
+        }
     }   
 }

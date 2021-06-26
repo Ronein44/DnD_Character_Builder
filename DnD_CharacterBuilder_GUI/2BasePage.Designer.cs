@@ -108,6 +108,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             this.txtAlignment.Name = "txtAlignment";
             this.txtAlignment.Size = new System.Drawing.Size(250, 23);
             this.txtAlignment.TabIndex = 53;
+            this.txtAlignment.SelectedIndexChanged += new System.EventHandler(this.TxtAlignment_SelectedIndexChanged);
             // 
             // label8
             // 
@@ -160,6 +161,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             0,
             0,
             0});
+            this.txtAge.ValueChanged += new System.EventHandler(this.TxtAge_ValueChanged);
             // 
             // label7
             // 
@@ -238,6 +240,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             0,
             0,
             0});
+            this.txtWeight.ValueChanged += new System.EventHandler(this.TxtWeight_ValueChanged);
             // 
             // label5
             // 
@@ -300,6 +303,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             0,
             0,
             0});
+            this.txtLvl.ValueChanged += new System.EventHandler(this.TxtLvl_ValueChanged);
             // 
             // tableLayoutPanel6
             // 
@@ -327,6 +331,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             this.txtPName.Name = "txtPName";
             this.txtPName.Size = new System.Drawing.Size(252, 23);
             this.txtPName.TabIndex = 12;
+            this.txtPName.TextChanged += new System.EventHandler(this.TxtPName_TextChanged);
             // 
             // label4
             // 
@@ -381,6 +386,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             this.txtGender.Name = "txtGender";
             this.txtGender.Size = new System.Drawing.Size(177, 23);
             this.txtGender.TabIndex = 24;
+            this.txtGender.SelectedIndexChanged += new System.EventHandler(this.TxtGender_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -429,6 +435,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             this.txtCName.Name = "txtCName";
             this.txtCName.Size = new System.Drawing.Size(252, 23);
             this.txtCName.TabIndex = 11;
+            this.txtCName.TextChanged += new System.EventHandler(this.TxtCName_TextChanged);
             // 
             // tableLayoutPanel8
             // 
@@ -469,6 +476,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             0,
             0,
             0});
+            this.txtHeight.ValueChanged += new System.EventHandler(this.TxtHeight_ValueChanged);
             // 
             // label6
             // 
@@ -512,7 +520,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1421, 833);
             this.tableLayoutPanel1.TabIndex = 26;
             // 
-            // Base
+            // BasePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -522,7 +530,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(0);
-            this.Name = "Base";
+            this.Name = "BasePage";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DnD_Character";
