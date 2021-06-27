@@ -127,7 +127,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             btnProficiencies.Enabled = input;
             
         }
-        private void Unablebtn()
+        public void Unablebtn()
         {
             if (NewCharacter == false)
             {

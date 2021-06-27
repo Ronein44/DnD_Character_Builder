@@ -1,4 +1,3 @@
-F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_GUI\obj\Debug\netcoreapp3.1\DnD_CharacterBuilder_GUI.csprojAssemblyReference.cache
 F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_GUI\obj\Debug\netcoreapp3.1\DnD_CharacterBuilder_GUI.csproj.GenerateResource.cache
 F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_GUI\obj\Debug\netcoreapp3.1\DnD_CharacterBuilder_GUI.AssemblyInfoInputs.cache
 F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_GUI\obj\Debug\netcoreapp3.1\DnD_CharacterBuilder_GUI.AssemblyInfo.cs
@@ -30,3 +29,4 @@ F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_GUI\obj\Debug\netcor
 F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_GUI\obj\Debug\netcoreapp3.1\DnD_CharacterBuilder_GUI.Forms.RacePage.resources
 F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_GUI\obj\Debug\netcoreapp3.1\DnD_CharacterBuilder_GUI.Forms.AbilityPage.resources
 F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_GUI\obj\Debug\netcoreapp3.1\DnD_CharacterBuilder_GUI.Forms.ProficienciesPage.resources
+F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_GUI\obj\Debug\netcoreapp3.1\DnD_CharacterBuilder_GUI.csproj.AssemblyReference.cache

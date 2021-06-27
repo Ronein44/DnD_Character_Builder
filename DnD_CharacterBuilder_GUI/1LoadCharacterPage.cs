@@ -57,11 +57,13 @@ namespace DnD_CharacterBuilder_GUI.Forms
 
         private void BtnLoad_Click(object sender, EventArgs e)
         {
-            foreach (DataRow dr in SqLiteDataAccess.Select("SELECT * FROM Character").Rows)
-            {
-                CharacterDTO.SetCName(dr["CharacterName"].ToString());
-                //listBoxClass.Items.Add(dr["ClassName"].ToString());
+            CharacterDTO.SetCharacterID(Convert.ToInt32(CharacterLoad.CurrentRow.Cells[0].Value));
+            foreach (DataRow dr in SqLiteDataAccess.CharacterLoad().Rows)
+            {                
+                CharacterDTO.SetCName(dr["CharacterName"].ToString());                
             }
+            MainPage mainpage = new MainPage();
+            
         }
     }
 }

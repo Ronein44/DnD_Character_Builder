@@ -97,7 +97,7 @@ namespace DnD_CharacterBuilder_Library
         public static DataTable CharacterLoad()
         {
             DataTable dt = new DataTable();
-            SqlConOpen("SELECT * FROM Character WHERE CharacterID = @CharacterID");
+            SqlConOpen("SELECT * FROM Character WHERE CharacterID = @CharacterID LIMIT 1");
             cmd.Parameters.AddWithValue("CharacterID", CharacterDTO.GetCharacterID());
             adapt.Fill(dt);
             con.Close();
