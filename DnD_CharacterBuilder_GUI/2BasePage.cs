@@ -17,6 +17,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
         public BasePage()
         {
             InitializeComponent();
+
             foreach (DataRow dr in SqLiteDataAccess.Select("SELECT * FROM Gender").Rows)
             {
                 txtGender.Items.Add(dr["Gender"].ToString());
@@ -24,7 +25,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             foreach (DataRow dr in SqLiteDataAccess.Select("SELECT * FROM Alignment").Rows)
             {
                 txtAlignment.Items.Add(dr["AlignmentName"].ToString());
-            }
+            }            
             txtCName.Text = CharacterDTO.GetCName();
             txtPName.Text = CharacterDTO.GetPName();
             txtLvl.Value = CharacterDTO.GetCLvl();

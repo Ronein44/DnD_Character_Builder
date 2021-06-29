@@ -19,7 +19,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
         {
             InitializeComponent();
             HideSubMenu();
-            Unablebtn();
+            BtnEnable(false);
         }
         
         private void BtnCharacter_Click(object sender, EventArgs e)
@@ -53,8 +53,8 @@ namespace DnD_CharacterBuilder_GUI.Forms
                 Method.NewCha();               
             }                       
             OpenChildForm(new BasePage());
-            NewCharacter = true;
-            Unablebtn();
+            NewCharacter = true;            
+            BtnEnable(true);
         }
         private void BtnLoadCharacter_Click(object sender, EventArgs e)
         {
@@ -118,26 +118,15 @@ namespace DnD_CharacterBuilder_GUI.Forms
             Application.Exit();
         }
 
-        private void BtnEnable(bool input)
+        public void BtnEnable(bool input)
         {            
             btnBase.Enabled = input;
             btnClass.Enabled = input;
             btnRace.Enabled = input;
             btnAbility.Enabled = input;
-            btnProficiencies.Enabled = input;
-            
+            btnProficiencies.Enabled = input;          
         }
-        public void Unablebtn()
-        {
-            if (NewCharacter == false)
-            {
-                this.BtnEnable(false);
-            }
-            else
-            {
-                this.BtnEnable(true);
-            }
-        }
+        
         private void HideSubMenu()
         {
             panelCharacterSubMenu.Visible = false;
@@ -152,6 +141,6 @@ namespace DnD_CharacterBuilder_GUI.Forms
             else
                 subMenu.Visible = false;
         }
-        
+
     }
 }

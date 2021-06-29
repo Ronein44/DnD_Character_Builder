@@ -13,10 +13,13 @@ namespace DnD_CharacterBuilder_GUI.Forms
 {
     public partial class LoadCharacterPage : Form
     {
+        
         public LoadCharacterPage()
         {
-            InitializeComponent();
-            CharacterLoad.DataSource = SqLiteDataAccess.Select("SELECT * FROM Character");
+            InitializeComponent();            
+            CharacterLoad.DataSource = SqLiteDataAccess.Select("SELECT CharacterID as 'ID', CharacterName, PlayerName, CharacterLvl  as 'Lvl'," +
+                " CharacterAge as 'Age', CharacterGender as 'Gender', CharacterWeight as 'Weight', CharacterHeight as 'Height', CharacterAlignment as 'Alignment', CharacterClass as 'Class', CharacterRace as 'Race' FROM Character");
+            
         }
 
         private void BtnExit_Click(object sender, EventArgs e)
@@ -58,12 +61,10 @@ namespace DnD_CharacterBuilder_GUI.Forms
         private void BtnLoad_Click(object sender, EventArgs e)
         {
             CharacterDTO.SetCharacterID(Convert.ToInt32(CharacterLoad.CurrentRow.Cells[0].Value));
-            foreach (DataRow dr in SqLiteDataAccess.CharacterLoad().Rows)
-            {                
-                CharacterDTO.SetCName(dr["CharacterName"].ToString());                
-            }
-            MainPage mainpage = new MainPage();
-            
+            foreach (DataRow dr in SqLiteDataAccess.CharacterLoad("SELECT * FROM Character Where CharacterID = @CharacterID").Rows)
+            {
+                CharacterDTO.SetCName(dr["CharacterName"].ToString());
+            }            
         }
     }
 }

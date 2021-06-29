@@ -102,6 +102,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             // txtAlignment
             // 
             this.txtAlignment.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.txtAlignment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.txtAlignment.FormattingEnabled = true;
             this.txtAlignment.Location = new System.Drawing.Point(4, 22);
             this.txtAlignment.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -380,6 +381,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             // txtGender
             // 
             this.txtGender.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.txtGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.txtGender.FormattingEnabled = true;
             this.txtGender.Location = new System.Drawing.Point(4, 23);
             this.txtGender.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);

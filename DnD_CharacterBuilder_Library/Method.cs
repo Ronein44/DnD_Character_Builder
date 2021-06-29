@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 
@@ -78,7 +79,7 @@ namespace DnD_CharacterBuilder_Library
             return mod;
         }
         public static void NewCha()
-        {
+        {           
             AbilityDTO.SetStrength(1);
             AbilityDTO.SetDexterity(1);
             AbilityDTO.SetConstitution(1);
@@ -102,8 +103,9 @@ namespace DnD_CharacterBuilder_Library
             CharacterDTO.SetCClass("");
             CharacterDTO.SetCRace("");
             SqLiteDataAccess.Insert();
+   
         }
-       
+        
 
     }
 }

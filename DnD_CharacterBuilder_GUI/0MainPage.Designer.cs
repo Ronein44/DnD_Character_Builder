@@ -297,7 +297,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             this.panelChildForm.Size = new System.Drawing.Size(1234, 761);
             this.panelChildForm.TabIndex = 2;
             // 
-            // Main
+            // MainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -308,7 +308,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1024, 768);
-            this.Name = "Main";
+            this.Name = "MainPage";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);

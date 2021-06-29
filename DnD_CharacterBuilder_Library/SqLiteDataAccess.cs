@@ -94,14 +94,15 @@ namespace DnD_CharacterBuilder_Library
             con.Close();
             return skillnum;
         }
-        public static DataTable CharacterLoad()
+        public static DataTable CharacterLoad(string sqlcommand)
         {
             DataTable dt = new DataTable();
-            SqlConOpen("SELECT * FROM Character WHERE CharacterID = @CharacterID LIMIT 1");
+            SqlConOpen(sqlcommand);
             cmd.Parameters.AddWithValue("CharacterID", CharacterDTO.GetCharacterID());
             adapt.Fill(dt);
             con.Close();
             return dt;
+            
         }
 
         private static void Parameters()
