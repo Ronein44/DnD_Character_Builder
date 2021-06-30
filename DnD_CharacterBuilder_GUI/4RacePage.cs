@@ -72,7 +72,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
 
         private void BtnSaveRace_Click(object sender, EventArgs e)
         {
-            SqLiteDataAccess.Update();
+            Method.Save();
         }
     }
 }

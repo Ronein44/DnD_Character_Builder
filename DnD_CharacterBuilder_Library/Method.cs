@@ -78,6 +78,17 @@ namespace DnD_CharacterBuilder_Library
             }
             return mod;
         }
+        public static void Save()
+        {
+            if (CharacterDTO.GetCharacterID() != 0)
+            {
+                SqLiteDataAccess.Update();
+            }
+            else
+            {
+                SqLiteDataAccess.Insert();
+            }
+        }
         public static void NewCha()
         {           
             AbilityDTO.SetStrength(1);
@@ -92,6 +103,7 @@ namespace DnD_CharacterBuilder_Library
             AbilityDTO.SetIntMod(-5);
             AbilityDTO.SetWisMod(-5);
             AbilityDTO.SetChaMod(-5);
+            CharacterDTO.SetCharacterID(0);
             CharacterDTO.SetCName("");
             CharacterDTO.SetPName("");
             CharacterDTO.SetCLvl(1);
@@ -102,8 +114,6 @@ namespace DnD_CharacterBuilder_Library
             CharacterDTO.SetCAlignment("");
             CharacterDTO.SetCClass("");
             CharacterDTO.SetCRace("");
-            SqLiteDataAccess.Insert();
-   
         }
         
 

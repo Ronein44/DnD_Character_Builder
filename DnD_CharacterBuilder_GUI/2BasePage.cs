@@ -43,7 +43,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            SqLiteDataAccess.Update();
+            Method.Save();
         }
 
         private void TxtCName_TextChanged(object sender, EventArgs e)
@@ -78,5 +78,6 @@ namespace DnD_CharacterBuilder_GUI.Forms
         {
             CharacterDTO.SetCAlignment(txtAlignment.Text);
         }
+        
     }   
 }

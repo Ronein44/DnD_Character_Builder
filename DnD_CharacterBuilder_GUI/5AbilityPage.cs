@@ -155,10 +155,6 @@ namespace DnD_CharacterBuilder_GUI.Forms
         {
             label.Text = ability.ToString();
             settermod(Method.PcModif(ability));
-            /*
-            LStr.Text = AbilityDTO.GetStrength().ToString();
-            AbilityDTO.SetStrMod(Method.PcModif(AbilityDTO.GetStrength()));
-            */
         }
         private void UpandDown(int getability, Action<int> setability, Action<int> setabilitymod, Label abilitylabel, Label abilitymodlabel, string upordown)
         {
@@ -194,7 +190,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
 
         private void BtnSaveAbility_Click(object sender, EventArgs e)
         {
-            SqLiteDataAccess.Update();
+            Method.Save();
         }
     }
 }

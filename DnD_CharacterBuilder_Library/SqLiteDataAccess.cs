@@ -101,8 +101,7 @@ namespace DnD_CharacterBuilder_Library
             cmd.Parameters.AddWithValue("CharacterID", CharacterDTO.GetCharacterID());
             adapt.Fill(dt);
             con.Close();
-            return dt;
-            
+            return dt;          
         }
 
         private static void Parameters()

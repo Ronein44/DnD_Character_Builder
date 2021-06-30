@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kDENydBVpSDEWl16EDyyPZYdwis5YZVBXM3v6yamytEszJu8ZGBzmHMBkIRVx8qtt/oHg1wo7jfEul3zFolkLQ==",
+  "dgSpecHash": "z1cZaCuX/+5bL2ivTyPqAJwgEaWSrGfLhVoa6Il9mG3lUdV36TW2nf3Y8tprLH799OlcEFvkhjdGh6YG9EnLDg==",
   "success": true,
-  "projectFilePath": "F:\\VS\\Rónai_Péter_SZF57_Szakdolgozat\\DnD_CharacterBuilder_GUI\\DnD_CharacterBuilder_GUI.csproj",
+  "projectFilePath": "D:\\prog\\VS\\DnD_Character_Builder\\DnD_CharacterBuilder_GUI\\DnD_CharacterBuilder_GUI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ronai\\.nuget\\packages\\dapper\\2.0.90\\dapper.2.0.90.nupkg.sha512",
     "C:\\Users\\ronai\\.nuget\\packages\\stub.system.data.sqlite.core.netstandard\\1.0.114.3\\stub.system.data.sqlite.core.netstandard.1.0.114.3.nupkg.sha512",

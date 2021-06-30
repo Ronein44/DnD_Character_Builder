@@ -136,13 +136,6 @@ namespace DnD_CharacterBuilder_Library
         public static void SetCProficiencies(List<string> value)
         {
             cProficiencies = value;
-        }
-
-
-        public static List<string> Stat = new List<string> { "Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma" };
-        public static List<string> Skills = new List<string> { "Athletics", "Acrobatics", "Sleight of Hand", "Stealth", "Arcana", "History", "Investigation", "Nature", "Religion", "Animal Handling", "Insight", "Medicine", "Perception", "Survival", "Deception", "Intimidation", "Performance", "Persuasion" };
-        public static List<string> Armor = new List<string> { "Light Armor", "Medium Armor", "Heavy Armor", "Shield" };
-        public static List<string> Weapontype = new List<string> { "Simple weapon", "Simple Melee Weapon", "Simple Ranged Weapon", "Martial weapon", "Martial Melee weapon", "Martial Ranged weapon" };        
-
+        }        
     }
 }
