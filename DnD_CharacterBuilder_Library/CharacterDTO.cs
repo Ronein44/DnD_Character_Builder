@@ -17,7 +17,7 @@ namespace DnD_CharacterBuilder_Library
         private static int cHeight;
         private static int cAge;
         private static string cAlignment;
-        private static List<string> cAbility;
+        private static int cAbilityID;
         private static List<string> cProficiencies;
 
         //Getter Setter
@@ -120,13 +120,13 @@ namespace DnD_CharacterBuilder_Library
             cAlignment = value;
         }
 
-        public static List<string> GetCAbility()
+        public static int GetCAbilityID()
         {
-            return cAbility;
+            return cAbilityID;
         }
-        public static void SetCAbility(List<string> value)
+        public static void SetCAbilityID(int value)
         {
-            cAbility = value;
+            cAbilityID = value;
         }
 
         public static List<string> GetCProficiencies()

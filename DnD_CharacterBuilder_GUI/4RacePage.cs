@@ -43,6 +43,8 @@ namespace DnD_CharacterBuilder_GUI.Forms
         {            
             richTextBoxRace.ResetText();
             CharacterDTO.SetCRace(listBoxRace.SelectedItem.ToString());
+            RaceDTO.SetRaceDetail(SqLiteDataAccess.ImportString("SELECT RaceDetail FROM Race WHERE RaceName = @RaceName", "RaceName", CharacterDTO.GetCRace()));
+            richTextBoxRace.Text = RaceDTO.GetRaceDetail();
             selected = listBoxRace.SelectedIndex;
         }
 

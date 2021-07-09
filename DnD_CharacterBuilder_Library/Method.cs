@@ -80,14 +80,15 @@ namespace DnD_CharacterBuilder_Library
         }
         public static void Save()
         {
-            if (CharacterDTO.GetCharacterID() != 0)
+            if (CharacterDTO.GetCharacterID() == 0)
             {
-                SqLiteDataAccess.Update();
+                SqLiteDataAccess.Insert("INSERT INTO Character (CharacterName, PlayerName, CharacterLvl, CharacterGender, CharacterAge, CharacterWeight, CharacterHeight, CharacterAlignment) " +
+                "VALUES (@CharacterName, @PlayerName, @CharacterLvl, @CharacterGender, @CharacterAge, @CharacterWeight, @CharacterHeight, @CharacterAlignment)", CharacterDTO.SetCharacterID, SqLiteDataAccess.Parameters);
+                SqLiteDataAccess.Insert("INSERT INTO Ability (Strength, StrengthMod, Dexterity, DexterityMod, Constitution, ConstitutionMod, Intelligence, IntelligenceMod, Wisdom, WisdomMod, Charisma, CharismaMod) " +
+                "VALUES (@Strength, @StrengthMod, @Dexterity, @DexterityMod, @Constitution, @ConstitutionMod, @Intelligence, @IntelligenceMod, @Wisdom, @WisdomMod, @Charisma, @CharismaMod)", CharacterDTO.SetCAbilityID, SqLiteDataAccess.ParametersAbility);            
             }
-            else
-            {
-                SqLiteDataAccess.Insert();
-            }
+            SqLiteDataAccess.Update();
+            SqLiteDataAccess.UpdateAbility();
         }
         public static void NewCha()
         {           

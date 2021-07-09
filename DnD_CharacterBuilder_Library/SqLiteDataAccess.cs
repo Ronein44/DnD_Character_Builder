@@ -23,16 +23,15 @@ namespace DnD_CharacterBuilder_Library
             con.Close();
             return dt;
         }
-        public static bool Insert()
+        public static bool Insert(string sqlcomm, Action<int> setter, Action parameters)
         {
             bool Succes = false;
             try
             {
-                SqlConOpen("INSERT INTO CHARACTER (CharacterName, PlayerName, CharacterLvl, CharacterGender, CharacterAge, CharacterWeight, CharacterHeight, CharacterAlignment) " +
-                "VALUES (@CharacterName, @PlayerName, @CharacterLvl, @CharacterGender, @CharacterAge, @CharacterWeight, @CharacterHeight, @CharacterAlignment)");
-                Parameters();
+                SqlConOpen(sqlcomm);
+                parameters();
                 int rows = cmd.ExecuteNonQuery();
-                CharacterDTO.SetCharacterID(Lastid());
+                setter(Lastid());
                 if (rows > 0)
                 {
                     Succes = true;
@@ -51,7 +50,7 @@ namespace DnD_CharacterBuilder_Library
             try 
             {
                 SqlConOpen("UPDATE CHARACTER SET CharacterName=@CharacterName, PlayerName=@PlayerName, CharacterLvl=@CharacterLvl, CharacterGender=@CharacterGender, " +
-                    "CharacterAge=@CharacterAge, CharacterWeight=@CharacterWeight, CharacterHeight=@CharacterHeight, CharacterAlignment=@CharacterAlignment, CharacterRace=@CharacterRace, CharacterClass=@CharacterClass WHERE CharacterID=@CharacterID");
+                    "CharacterAge=@CharacterAge, CharacterWeight=@CharacterWeight, CharacterHeight=@CharacterHeight, CharacterAlignment=@CharacterAlignment, CharacterRace=@CharacterRace, CharacterClass=@CharacterClass, CharacterAbilityID=@CharacterAbilityID WHERE CharacterID=@CharacterID");
                 Parameters(CharacterDTO.GetCharacterID(), true);
                 int rows = cmd.ExecuteNonQuery();
                 if (rows > 0)
@@ -60,6 +59,28 @@ namespace DnD_CharacterBuilder_Library
                 }
             }
             catch (Exception) { ; }
+            finally
+            {
+                con.Close();
+            }
+            return Succes;
+        }
+        public static bool UpdateAbility()
+        {
+            bool Succes = false;
+            try
+            {
+                SqlConOpen("UPDATE Ability SET Strength=@Strength, StrengthMod=@StrengthMod, Dexterity=@Dexterity, DexterityMod=@DexterityMod, Constitution=@Constitution," +
+                "ConstitutionMod=@ConstitutionMod, Intelligence=@Intelligence, IntelligenceMod=@IntelligenceMod, Wisdom=@Wisdom, WisdomMod=@WisdomMod, Charisma=@Charisma, CharismaMod=@CharismaMod " +
+                "WHERE AbilityID=@AbilityID");
+                ParametersAbility();
+                int rows = cmd.ExecuteNonQuery();
+                if (rows > 0)
+                {
+                    Succes = true;
+                }
+            }
+            catch (Exception) {; }
             finally
             {
                 con.Close();
@@ -86,13 +107,21 @@ namespace DnD_CharacterBuilder_Library
             }
             return isSucces;
         }
-        public static int ImportSkillNum()
+        public static int ImportInt(string sqlcomm, string parameter, string getter)
         {           
-            SqlConOpen("SELECT NumberofSkill FROM Class WHERE ClassName = @ClassName");
-            cmd.Parameters.AddWithValue("ClassName", CharacterDTO.GetCClass());
-            int skillnum = Convert.ToInt32(cmd.ExecuteScalar());
+            SqlConOpen(sqlcomm);
+            cmd.Parameters.AddWithValue(parameter, getter);
+            int output = Convert.ToInt32(cmd.ExecuteScalar());
             con.Close();
-            return skillnum;
+            return output;
+        }
+        public static string ImportString(string sqlcomm, string parameter, string getter)
+        {
+            SqlConOpen(sqlcomm);
+            cmd.Parameters.AddWithValue(parameter, getter);
+            string output = cmd.ExecuteScalar().ToString();
+            con.Close();
+            return output;
         }
         public static DataTable CharacterLoad(string sqlcommand)
         {
@@ -104,7 +133,7 @@ namespace DnD_CharacterBuilder_Library
             return dt;          
         }
 
-        private static void Parameters()
+        public static void Parameters()
         {
             cmd.Parameters.AddWithValue("@CharacterName", CharacterDTO.GetCName());
             cmd.Parameters.AddWithValue("@PlayerName", CharacterDTO.GetPName());
@@ -116,8 +145,9 @@ namespace DnD_CharacterBuilder_Library
             cmd.Parameters.AddWithValue("@CharacterAlignment", CharacterDTO.GetCAlignment());
             cmd.Parameters.AddWithValue("@CharacterClass", CharacterDTO.GetCClass());
             cmd.Parameters.AddWithValue("@CharacterRace", CharacterDTO.GetCRace());
+            cmd.Parameters.AddWithValue("@CharacterAbilityID", CharacterDTO.GetCAbilityID());
         }
-        private static void Parameters(int characterid, bool needparameters)
+        public static void Parameters(int characterid, bool needparameters)
         {
             if (needparameters == true)
             {
@@ -125,7 +155,24 @@ namespace DnD_CharacterBuilder_Library
             }
             cmd.Parameters.AddWithValue("CharacterID", characterid);
         }
-        
+        public static void ParametersAbility()
+        {
+            cmd.Parameters.AddWithValue("AbilityID", CharacterDTO.GetCAbilityID());
+            cmd.Parameters.AddWithValue("@Strength", AbilityDTO.GetStrength());
+            cmd.Parameters.AddWithValue("@StrengthMod", AbilityDTO.GetStrMod());
+            cmd.Parameters.AddWithValue("@Dexterity", AbilityDTO.GetDexterity());
+            cmd.Parameters.AddWithValue("@DexterityMod", AbilityDTO.GetDexMod());
+            cmd.Parameters.AddWithValue("@Constitution", AbilityDTO.GetConstitution());
+            cmd.Parameters.AddWithValue("@ConstitutionMod", AbilityDTO.GetConMod());
+            cmd.Parameters.AddWithValue("@Intelligence", AbilityDTO.GetIntelligence());
+            cmd.Parameters.AddWithValue("@IntelligenceMod", AbilityDTO.GetIntMod());
+            cmd.Parameters.AddWithValue("@Wisdom", AbilityDTO.GetWisdom());
+            cmd.Parameters.AddWithValue("@WisdomMod", AbilityDTO.GetWisMod());
+            cmd.Parameters.AddWithValue("@Charisma", AbilityDTO.GetCharisma());
+            cmd.Parameters.AddWithValue("@CharismaMod", AbilityDTO.GetChaMod());
+            
+
+        }
         public static int Lastid()
         {
              string sql = "SELECT last_insert_rowid()";
