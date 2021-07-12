@@ -61,7 +61,7 @@
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
           "Dapper": "2.0.90",
-          "System.Data.SQLite.Core": "1.0.114.2"
+          "System.Data.SQLite.Core": "1.0.114.3"
         },
         "compile": {
           "bin/placeholder/DnD_CharacterBuilder_Library.dll": {}
@@ -198,20 +198,20 @@
   },
   "packageFolders": {
     "C:\\Users\\ronai\\.nuget\\packages\\": {},
-    "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\prog\\VS\\DnD_Character_Builder\\DnD_CharacterBuilder_GUI\\DnD_CharacterBuilder_GUI.csproj",
+      "projectUniqueName": "F:\\VS\\Rónai_Péter_SZF57_Szakdolgozat\\DnD_CharacterBuilder_GUI\\DnD_CharacterBuilder_GUI.csproj",
       "projectName": "DnD_CharacterBuilder_GUI",
-      "projectPath": "D:\\prog\\VS\\DnD_Character_Builder\\DnD_CharacterBuilder_GUI\\DnD_CharacterBuilder_GUI.csproj",
+      "projectPath": "F:\\VS\\Rónai_Péter_SZF57_Szakdolgozat\\DnD_CharacterBuilder_GUI\\DnD_CharacterBuilder_GUI.csproj",
       "packagesPath": "C:\\Users\\ronai\\.nuget\\packages\\",
-      "outputPath": "D:\\prog\\VS\\DnD_Character_Builder\\DnD_CharacterBuilder_GUI\\obj\\",
+      "outputPath": "F:\\VS\\Rónai_Péter_SZF57_Szakdolgozat\\DnD_CharacterBuilder_GUI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
@@ -230,8 +230,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "D:\\prog\\VS\\DnD_Character_Builder\\DnD_CharacterBuilder_Library\\DnD_CharacterBuilder_Library.csproj": {
-              "projectPath": "D:\\prog\\VS\\DnD_Character_Builder\\DnD_CharacterBuilder_Library\\DnD_CharacterBuilder_Library.csproj"
+            "F:\\VS\\Rónai_Péter_SZF57_Szakdolgozat\\DnD_CharacterBuilder_Library\\DnD_CharacterBuilder_Library.csproj": {
+              "projectPath": "F:\\VS\\Rónai_Péter_SZF57_Szakdolgozat\\DnD_CharacterBuilder_Library\\DnD_CharacterBuilder_Library.csproj"
             }
           }
         }

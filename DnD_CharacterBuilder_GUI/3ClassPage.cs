@@ -14,7 +14,6 @@ namespace DnD_CharacterBuilder_GUI.Forms
 {
     public partial class ClassPage : Form
     {
-        public static int selected = 0;
         public ClassPage()
         {           
             InitializeComponent();
@@ -31,7 +30,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             }
             else
             {
-                listBoxClass.SetSelected(selected, true);
+                listBoxClass.SelectedItem = CharacterDTO.GetCClass();
                 ChoosedPClass.Text = CharacterDTO.GetCClass();
                 listBoxClass.Visible = false;
                 ChoosedPClass.Visible = true;
@@ -43,10 +42,8 @@ namespace DnD_CharacterBuilder_GUI.Forms
         {
             richTextBoxClass.ResetText();
             CharacterDTO.SetCClass(listBoxClass.SelectedItem.ToString());
-            ClassDTO.SetClassDetail(SqLiteDataAccess.ImportString("SELECT ClassDetail FROM Class WHERE ClassName = @ClassName","ClassName", CharacterDTO.GetCClass()));
-            richTextBoxClass.Text = ClassDTO.GetClassDetail();
-
-            selected = listBoxClass.SelectedIndex;             
+            ClassDTO.SetClassDetail(SqLiteDataAccess.ImportOneThing("SELECT ClassDetail FROM Class WHERE ClassName = @ClassName","ClassName", CharacterDTO.GetCClass()).ToString());
+            richTextBoxClass.Text = ClassDTO.GetClassDetail();             
         }
         private void ListBoxClass_DoubleClick(object sender, EventArgs e)
         {
@@ -57,7 +54,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
                 ChoosedPClass.Visible = true;
                 btnExit2.Visible = true;
                 ChoosedPClass.Text = CharacterDTO.GetCClass();
-                ClassDTO.SetClassSkillnum(SqLiteDataAccess.ImportInt("SELECT NumberofSkill FROM Class WHERE ClassName = @ClassName", "ClassName",CharacterDTO.GetCClass()));
+                ClassDTO.SetClassSkillnum(Convert.ToInt32(SqLiteDataAccess.ImportOneThing("SELECT NumberofSkill FROM Class WHERE ClassName = @ClassName", "ClassName",CharacterDTO.GetCClass())));
             }
         }
         private void BtnExit_Click(object sender, EventArgs e)

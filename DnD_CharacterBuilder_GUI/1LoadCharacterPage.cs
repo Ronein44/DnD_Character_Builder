@@ -60,11 +60,40 @@ namespace DnD_CharacterBuilder_GUI.Forms
 
         private void BtnLoad_Click(object sender, EventArgs e)
         {
+
             CharacterDTO.SetCharacterID(Convert.ToInt32(CharacterLoad.CurrentRow.Cells[0].Value));
-            foreach (DataRow dr in SqLiteDataAccess.CharacterLoad("SELECT * FROM Character Where CharacterID = @CharacterID").Rows)
+            try
             {
-                CharacterDTO.SetCName(dr["CharacterName"].ToString());
+                CharacterDTO.SetCAbilityID(Convert.ToInt32(SqLiteDataAccess.ImportOneThing("SELECT CharacterAbilityID FROM Character WHERE CharacterID = @CharacterID", "CharacterID", CharacterDTO.GetCharacterID())));
+            }
+            catch (Exception)
+            {
+                //Nothing
             }            
+            CharacterDTO.SetCName(CharacterLoad.CurrentRow.Cells[1].Value.ToString());
+            CharacterDTO.SetPName(CharacterLoad.CurrentRow.Cells[2].Value.ToString());
+            CharacterDTO.SetCLvl(Convert.ToInt32(CharacterLoad.CurrentRow.Cells[3].Value));
+            CharacterDTO.SetCAge(Convert.ToInt32(CharacterLoad.CurrentRow.Cells[4].Value));
+            CharacterDTO.SetCGender(CharacterLoad.CurrentRow.Cells[5].Value.ToString());
+            CharacterDTO.SetCWeight(Convert.ToInt32(CharacterLoad.CurrentRow.Cells[6].Value));
+            CharacterDTO.SetCHeight(Convert.ToInt32((CharacterLoad.CurrentRow.Cells[7].Value)));
+            CharacterDTO.SetCAlignment(CharacterLoad.CurrentRow.Cells[8].Value.ToString());
+            CharacterDTO.SetCClass(CharacterLoad.CurrentRow.Cells[9].Value.ToString());
+            CharacterDTO.SetCRace(CharacterLoad.CurrentRow.Cells[10].Value.ToString());
+            AbilityDTO.SetStrength(Convert.ToInt32(SqLiteDataAccess.ImportOneThing("SELECT Strength FROM Ability WHERE AbilityID = @AbilityID", "AbilityID", CharacterDTO.GetCAbilityID())));
+            AbilityDTO.SetStrMod(Convert.ToInt32(SqLiteDataAccess.ImportOneThing("SELECT StrengthMod FROM Ability WHERE AbilityID = @AbilityID", "AbilityID", CharacterDTO.GetCAbilityID())));
+            AbilityDTO.SetDexterity(Convert.ToInt32(SqLiteDataAccess.ImportOneThing("SELECT Dexterity FROM Ability WHERE AbilityID = @AbilityID", "AbilityID", CharacterDTO.GetCAbilityID())));
+            AbilityDTO.SetDexMod(Convert.ToInt32(SqLiteDataAccess.ImportOneThing("SELECT DexterityMod FROM Ability WHERE AbilityID = @AbilityID", "AbilityID", CharacterDTO.GetCAbilityID())));
+            AbilityDTO.SetConstitution(Convert.ToInt32(SqLiteDataAccess.ImportOneThing("SELECT Constitution FROM Ability WHERE AbilityID = @AbilityID", "AbilityID", CharacterDTO.GetCAbilityID())));
+            AbilityDTO.SetConMod(Convert.ToInt32(SqLiteDataAccess.ImportOneThing("SELECT ConstitutionMod FROM Ability WHERE AbilityID = @AbilityID", "AbilityID", CharacterDTO.GetCAbilityID())));
+            AbilityDTO.SetIntelligence(Convert.ToInt32(SqLiteDataAccess.ImportOneThing("SELECT Intelligence FROM Ability WHERE AbilityID = @AbilityID", "AbilityID", CharacterDTO.GetCAbilityID())));
+            AbilityDTO.SetIntMod(Convert.ToInt32(SqLiteDataAccess.ImportOneThing("SELECT IntelligenceMod FROM Ability WHERE AbilityID = @AbilityID", "AbilityID", CharacterDTO.GetCAbilityID())));
+            AbilityDTO.SetWisdom(Convert.ToInt32(SqLiteDataAccess.ImportOneThing("SELECT Wisdom FROM Ability WHERE AbilityID = @AbilityID", "AbilityID", CharacterDTO.GetCAbilityID())));
+            AbilityDTO.SetWisMod(Convert.ToInt32(SqLiteDataAccess.ImportOneThing("SELECT WisdomMod FROM Ability WHERE AbilityID = @AbilityID", "AbilityID", CharacterDTO.GetCAbilityID())));
+            AbilityDTO.SetCharisma(Convert.ToInt32(SqLiteDataAccess.ImportOneThing("SELECT Charisma FROM Ability WHERE AbilityID = @AbilityID", "AbilityID", CharacterDTO.GetCAbilityID())));
+            AbilityDTO.SetChaMod(Convert.ToInt32(SqLiteDataAccess.ImportOneThing("SELECT CharismaMod FROM Ability WHERE AbilityID = @AbilityID", "AbilityID", CharacterDTO.GetCAbilityID())));
+
+
         }
     }
 }

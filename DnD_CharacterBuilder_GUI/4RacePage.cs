@@ -14,7 +14,6 @@ namespace DnD_CharacterBuilder_GUI.Forms
 {
     public partial class RacePage : Form
     {
-        public static int selected = 0;
         public RacePage()
         {
             InitializeComponent();
@@ -31,7 +30,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             }
             else
             {
-                listBoxRace.SetSelected(selected, true);
+                listBoxRace.SelectedItem = CharacterDTO.GetCRace();
                 ChoosedPRace.Text = CharacterDTO.GetCRace();
                 listBoxRace.Visible = false;
                 ChoosedPRace.Visible = true;
@@ -43,9 +42,8 @@ namespace DnD_CharacterBuilder_GUI.Forms
         {            
             richTextBoxRace.ResetText();
             CharacterDTO.SetCRace(listBoxRace.SelectedItem.ToString());
-            RaceDTO.SetRaceDetail(SqLiteDataAccess.ImportString("SELECT RaceDetail FROM Race WHERE RaceName = @RaceName", "RaceName", CharacterDTO.GetCRace()));
+            RaceDTO.SetRaceDetail(SqLiteDataAccess.ImportOneThing("SELECT RaceDetail FROM Race WHERE RaceName = @RaceName", "RaceName", CharacterDTO.GetCRace()).ToString());
             richTextBoxRace.Text = RaceDTO.GetRaceDetail();
-            selected = listBoxRace.SelectedIndex;
         }
 
         private void BtnExit_Click(object sender, EventArgs e)

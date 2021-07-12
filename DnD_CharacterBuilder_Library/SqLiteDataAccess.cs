@@ -107,30 +107,13 @@ namespace DnD_CharacterBuilder_Library
             }
             return isSucces;
         }
-        public static int ImportInt(string sqlcomm, string parameter, string getter)
-        {           
-            SqlConOpen(sqlcomm);
-            cmd.Parameters.AddWithValue(parameter, getter);
-            int output = Convert.ToInt32(cmd.ExecuteScalar());
-            con.Close();
-            return output;
-        }
-        public static string ImportString(string sqlcomm, string parameter, string getter)
+        public static object ImportOneThing(string sqlcomm, string parameter, object getter)
         {
             SqlConOpen(sqlcomm);
             cmd.Parameters.AddWithValue(parameter, getter);
-            string output = cmd.ExecuteScalar().ToString();
+            object output = cmd.ExecuteScalar();
             con.Close();
             return output;
-        }
-        public static DataTable CharacterLoad(string sqlcommand)
-        {
-            DataTable dt = new DataTable();
-            SqlConOpen(sqlcommand);
-            cmd.Parameters.AddWithValue("CharacterID", CharacterDTO.GetCharacterID());
-            adapt.Fill(dt);
-            con.Close();
-            return dt;          
         }
 
         public static void Parameters()
@@ -170,8 +153,6 @@ namespace DnD_CharacterBuilder_Library
             cmd.Parameters.AddWithValue("@WisdomMod", AbilityDTO.GetWisMod());
             cmd.Parameters.AddWithValue("@Charisma", AbilityDTO.GetCharisma());
             cmd.Parameters.AddWithValue("@CharismaMod", AbilityDTO.GetChaMod());
-            
-
         }
         public static int Lastid()
         {
