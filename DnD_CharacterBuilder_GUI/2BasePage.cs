@@ -26,14 +26,14 @@ namespace DnD_CharacterBuilder_GUI.Forms
             {
                 txtAlignment.Items.Add(dr["AlignmentName"].ToString());
             }            
-            txtCName.Text = CharacterDTO.GetCName();
-            txtPName.Text = CharacterDTO.GetPName();
-            txtLvl.Value = CharacterDTO.GetCLvl();
-            txtAge.Value = CharacterDTO.GetCAge();
-            txtWeight.Value = CharacterDTO.GetCWeight();
-            txtHeight.Value = CharacterDTO.GetCHeight();
-            txtGender.SelectedItem = CharacterDTO.GetCGender();
-            txtAlignment.SelectedItem = CharacterDTO.GetCAlignment();
+            txtCName.Text = CharacterDTO.CName;
+            txtPName.Text = CharacterDTO.PName;
+            txtLvl.Value = CharacterDTO.CLvl;
+            txtAge.Value = CharacterDTO.CAge;
+            txtWeight.Value = CharacterDTO.CWeight;
+            txtHeight.Value = CharacterDTO.CHeight;
+            txtGender.SelectedItem = CharacterDTO.CGender;
+            txtAlignment.SelectedItem = CharacterDTO.CAlignment;
         }
 
         private void BtnExit_Click(object sender, EventArgs e)
@@ -48,35 +48,35 @@ namespace DnD_CharacterBuilder_GUI.Forms
 
         private void TxtCName_TextChanged(object sender, EventArgs e)
         {
-            CharacterDTO.SetCName(txtCName.Text);           
+            CharacterDTO.CName = txtCName.Text;           
         }
         private void TxtPName_TextChanged(object sender, EventArgs e)
         {
-            CharacterDTO.SetPName(txtPName.Text);
+            CharacterDTO.PName = txtPName.Text;
         }
         private void TxtLvl_ValueChanged(object sender, EventArgs e)
         {
-            CharacterDTO.SetCLvl(Convert.ToInt32(txtLvl.Value));
+            CharacterDTO.CLvl = Convert.ToInt32(txtLvl.Value);
         }
         private void TxtWeight_ValueChanged(object sender, EventArgs e)
         {
-            CharacterDTO.SetCWeight(Convert.ToInt32(txtWeight.Value));
+            CharacterDTO.CWeight = Convert.ToInt32(txtWeight.Value);
         }
         private void TxtGender_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CharacterDTO.SetCGender(txtGender.Text);
+            CharacterDTO.CGender = txtGender.Text;
         }
         private void TxtHeight_ValueChanged(object sender, EventArgs e)
         {
-            CharacterDTO.SetCHeight(Convert.ToInt32(txtHeight.Value));
+            CharacterDTO.CHeight = Convert.ToInt32(txtHeight.Value);
         }
         private void TxtAge_ValueChanged(object sender, EventArgs e)
         {
-            CharacterDTO.SetCAge(Convert.ToInt32(txtAge.Value));
+            CharacterDTO.CAge = Convert.ToInt32(txtAge.Value);
         }
         private void TxtAlignment_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CharacterDTO.SetCAlignment(txtAlignment.Text);
+            CharacterDTO.CAlignment = txtAlignment.Text;
         }
         
     }   

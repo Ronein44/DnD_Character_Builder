@@ -12,8 +12,8 @@ namespace DnD_CharacterBuilder_Library
     public class SqLiteDataAccess
     {
         private static readonly SQLiteConnection con = new SQLiteConnection("Data Source=DnD_Character_Builder_db.db;Version=3;");
-        static SQLiteCommand cmd;
-        static SQLiteDataAdapter adapt;
+        public static SQLiteCommand cmd;
+        public static SQLiteDataAdapter adapt;
         public static DataTable Select(string sqlcommand)
         {
             con.Open();
@@ -23,26 +23,17 @@ namespace DnD_CharacterBuilder_Library
             con.Close();
             return dt;
         }
-        public static bool Insert(string sqlcomm, Action<int> setter, Action parameters)
-        {
-            bool Succes = false;
-            try
-            {
-                SqlConOpen(sqlcomm);
-                parameters();
-                int rows = cmd.ExecuteNonQuery();
-                setter(Lastid());
-                if (rows > 0)
-                {
-                    Succes = true;
-                }
-            }
-            catch (Exception) { ; }
-            finally
-            {
-                con.Close();
-            }
-            return Succes;
+        public static int Insert(string sqlcomm, Action parameters)
+        {           
+            SqlConOpen(sqlcomm);
+            parameters();
+            cmd.ExecuteNonQuery();
+            string sql = "SELECT last_insert_rowid()";
+            cmd = new SQLiteCommand(sql, con);
+            Int64 id64 = Convert.ToInt64(cmd.ExecuteScalar());
+            int id = (int)id64;
+            con.Close();
+            return id;
         }
         public static bool Update()
         {
@@ -51,7 +42,7 @@ namespace DnD_CharacterBuilder_Library
             {
                 SqlConOpen("UPDATE CHARACTER SET CharacterName=@CharacterName, PlayerName=@PlayerName, CharacterLvl=@CharacterLvl, CharacterGender=@CharacterGender, " +
                     "CharacterAge=@CharacterAge, CharacterWeight=@CharacterWeight, CharacterHeight=@CharacterHeight, CharacterAlignment=@CharacterAlignment, CharacterRace=@CharacterRace, CharacterClass=@CharacterClass, CharacterAbilityID=@CharacterAbilityID WHERE CharacterID=@CharacterID");
-                Parameters(CharacterDTO.GetCharacterID(), true);
+                Parameters(CharacterDTO.CharacterID, true);
                 int rows = cmd.ExecuteNonQuery();
                 if (rows > 0)
                 {
@@ -93,7 +84,7 @@ namespace DnD_CharacterBuilder_Library
             try
             {
                 SqlConOpen("DELETE FROM Character WHERE CharacterID=@CharacterID");
-                Parameters(CharacterDTO.GetCharacterID(), false);                
+                Parameters(CharacterDTO.CharacterID, false);                
                 int rows = cmd.ExecuteNonQuery();
                 if (rows > 0)
                 {
@@ -115,20 +106,43 @@ namespace DnD_CharacterBuilder_Library
             con.Close();
             return output;
         }
+        public static DataTable Search(string label)
+        {
+            con.Open();
+            DataTable dt = new DataTable();
+            cmd = new SQLiteCommand("SELECT CharacterID as 'ID', CharacterName, PlayerName, CharacterLvl  as 'Lvl'," +
+                " CharacterAge as 'Age', CharacterGender as 'Gender', CharacterWeight as 'Weight', CharacterHeight as 'Height', CharacterAlignment as 'Alignment', CharacterClass as 'Class', CharacterRace as 'Race'" +
+                " FROM Character WHERE CharacterName LIKE @CharacterName OR PlayerName LIKE @PlayerName OR CharacterLvl LIKE @CharacterLvl OR CharacterAge LIKE @CharacterAge OR CharacterGender LIKE @CharacterGender" +
+                " OR CharacterWeight LIKE @CharacterWeight OR CharacterHeight LIKE @CharacterHeight OR CharacterAlignment LIKE @CharacterAlignment OR CharacterClass LIKE @CharacterClass OR CharacterRace LIKE @CharacterRace", con);           
+            cmd.Parameters.AddWithValue("CharacterName", string.Format("%{0}%", label));
+            cmd.Parameters.AddWithValue("PlayerName", string.Format("%{0}%", label));
+            cmd.Parameters.AddWithValue("CharacterLvl", string.Format("%{0}%", label));
+            cmd.Parameters.AddWithValue("CharacterAge", string.Format("%{0}%", label));
+            cmd.Parameters.AddWithValue("CharacterGender", string.Format("%{0}%", label));
+            cmd.Parameters.AddWithValue("CharacterWeight", string.Format("%{0}%", label));
+            cmd.Parameters.AddWithValue("CharacterHeight", string.Format("%{0}%", label));
+            cmd.Parameters.AddWithValue("CharacterAlignment", string.Format("%{0}%", label));
+            cmd.Parameters.AddWithValue("CharacterClass", string.Format("%{0}%", label));
+            cmd.Parameters.AddWithValue("CharacterRace", string.Format("%{0}%", label));
+            adapt = new SQLiteDataAdapter(cmd);
+            adapt.Fill(dt);
+            con.Close();
+            return dt;
+        }
 
         public static void Parameters()
         {
-            cmd.Parameters.AddWithValue("@CharacterName", CharacterDTO.GetCName());
-            cmd.Parameters.AddWithValue("@PlayerName", CharacterDTO.GetPName());
-            cmd.Parameters.AddWithValue("@CharacterLvl", CharacterDTO.GetCLvl());
-            cmd.Parameters.AddWithValue("@CharacterAge", CharacterDTO.GetCAge());
-            cmd.Parameters.AddWithValue("@CharacterGender", CharacterDTO.GetCGender());
-            cmd.Parameters.AddWithValue("@CharacterWeight", CharacterDTO.GetCWeight());
-            cmd.Parameters.AddWithValue("@CharacterHeight", CharacterDTO.GetCHeight());
-            cmd.Parameters.AddWithValue("@CharacterAlignment", CharacterDTO.GetCAlignment());
-            cmd.Parameters.AddWithValue("@CharacterClass", CharacterDTO.GetCClass());
-            cmd.Parameters.AddWithValue("@CharacterRace", CharacterDTO.GetCRace());
-            cmd.Parameters.AddWithValue("@CharacterAbilityID", CharacterDTO.GetCAbilityID());
+            cmd.Parameters.AddWithValue("@CharacterName", CharacterDTO.CName);
+            cmd.Parameters.AddWithValue("@PlayerName", CharacterDTO.PName);
+            cmd.Parameters.AddWithValue("@CharacterLvl", CharacterDTO.CLvl);
+            cmd.Parameters.AddWithValue("@CharacterAge", CharacterDTO.CAge);
+            cmd.Parameters.AddWithValue("@CharacterGender", CharacterDTO.CGender);
+            cmd.Parameters.AddWithValue("@CharacterWeight", CharacterDTO.CWeight);
+            cmd.Parameters.AddWithValue("@CharacterHeight", CharacterDTO.CHeight);
+            cmd.Parameters.AddWithValue("@CharacterAlignment", CharacterDTO.CAlignment);
+            cmd.Parameters.AddWithValue("@CharacterClass", CharacterDTO.CClass);
+            cmd.Parameters.AddWithValue("@CharacterRace", CharacterDTO.CRace);
+            cmd.Parameters.AddWithValue("@CharacterAbilityID", CharacterDTO.CAbilityID);
         }
         public static void Parameters(int characterid, bool needparameters)
         {
@@ -140,7 +154,7 @@ namespace DnD_CharacterBuilder_Library
         }
         public static void ParametersAbility()
         {
-            cmd.Parameters.AddWithValue("AbilityID", CharacterDTO.GetCAbilityID());
+            cmd.Parameters.AddWithValue("AbilityID", CharacterDTO.CAbilityID);
             cmd.Parameters.AddWithValue("@Strength", AbilityDTO.Strength);
             cmd.Parameters.AddWithValue("@StrengthMod", AbilityDTO.StrMod);
             cmd.Parameters.AddWithValue("@Dexterity", AbilityDTO.Dexterity);
@@ -154,19 +168,11 @@ namespace DnD_CharacterBuilder_Library
             cmd.Parameters.AddWithValue("@Charisma", AbilityDTO.Charisma);
             cmd.Parameters.AddWithValue("@CharismaMod", AbilityDTO.ChaMod);
         }
-        public static int Lastid()
-        {
-             string sql = "SELECT last_insert_rowid()";
-             cmd = new SQLiteCommand(sql, con);
-             Int64 id64 = Convert.ToInt64(cmd.ExecuteScalar());        
-             int id = (int)id64; 
-             return id;   
-        }
 
         public static void SqlConOpen(string sqlcommand)
-        {           
-            cmd = new SQLiteCommand(sqlcommand, con);
+        {                       
             con.Open();
+            cmd = new SQLiteCommand(sqlcommand, con);
         }
     }
 }

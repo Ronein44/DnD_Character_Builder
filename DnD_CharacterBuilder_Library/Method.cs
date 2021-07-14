@@ -80,12 +80,12 @@ namespace DnD_CharacterBuilder_Library
         }
         public static void Save()
         {
-            if (CharacterDTO.GetCharacterID() == 0)
+            if (CharacterDTO.CharacterID == 0)
             {
-                SqLiteDataAccess.Insert("INSERT INTO Character (CharacterName, PlayerName, CharacterLvl, CharacterGender, CharacterAge, CharacterWeight, CharacterHeight, CharacterAlignment) " +
-                "VALUES (@CharacterName, @PlayerName, @CharacterLvl, @CharacterGender, @CharacterAge, @CharacterWeight, @CharacterHeight, @CharacterAlignment)", CharacterDTO.SetCharacterID, SqLiteDataAccess.Parameters);
-                SqLiteDataAccess.Insert("INSERT INTO Ability (Strength, StrengthMod, Dexterity, DexterityMod, Constitution, ConstitutionMod, Intelligence, IntelligenceMod, Wisdom, WisdomMod, Charisma, CharismaMod) " +
-                "VALUES (@Strength, @StrengthMod, @Dexterity, @DexterityMod, @Constitution, @ConstitutionMod, @Intelligence, @IntelligenceMod, @Wisdom, @WisdomMod, @Charisma, @CharismaMod)", CharacterDTO.SetCAbilityID, SqLiteDataAccess.ParametersAbility);            
+                CharacterDTO.CharacterID = SqLiteDataAccess.Insert("INSERT INTO Character (CharacterName, PlayerName, CharacterLvl, CharacterGender, CharacterAge, CharacterWeight, CharacterHeight, CharacterAlignment) " +
+                "VALUES (@CharacterName, @PlayerName, @CharacterLvl, @CharacterGender, @CharacterAge, @CharacterWeight, @CharacterHeight, @CharacterAlignment)", SqLiteDataAccess.Parameters);                
+                CharacterDTO.CAbilityID = SqLiteDataAccess.Insert("INSERT INTO Ability (Strength, StrengthMod, Dexterity, DexterityMod, Constitution, ConstitutionMod, Intelligence, IntelligenceMod, Wisdom, WisdomMod, Charisma, CharismaMod) " +
+                "VALUES (@Strength, @StrengthMod, @Dexterity, @DexterityMod, @Constitution, @ConstitutionMod, @Intelligence, @IntelligenceMod, @Wisdom, @WisdomMod, @Charisma, @CharismaMod)", SqLiteDataAccess.ParametersAbility);
             }
             SqLiteDataAccess.Update();
             SqLiteDataAccess.UpdateAbility();
@@ -104,17 +104,17 @@ namespace DnD_CharacterBuilder_Library
             AbilityDTO.IntMod = -5;
             AbilityDTO.WisMod = -5;
             AbilityDTO.ChaMod= -5;
-            CharacterDTO.SetCharacterID(0);
-            CharacterDTO.SetCName("");
-            CharacterDTO.SetPName("");
-            CharacterDTO.SetCLvl(1);
-            CharacterDTO.SetCAge(1);
-            CharacterDTO.SetCWeight(1);
-            CharacterDTO.SetCHeight(1);
-            CharacterDTO.SetCGender("");
-            CharacterDTO.SetCAlignment("");
-            CharacterDTO.SetCClass("");
-            CharacterDTO.SetCRace("");
+            CharacterDTO.CharacterID = 0;
+            CharacterDTO.CName = "";
+            CharacterDTO.PName = "";
+            CharacterDTO.CLvl = 1;
+            CharacterDTO.CAge = 1;
+            CharacterDTO.CWeight = 1;
+            CharacterDTO.CHeight = 1;
+            CharacterDTO.CGender = "";
+            CharacterDTO.CAlignment = "";
+            CharacterDTO.CClass = "";
+            CharacterDTO.CRace = "";
         }
         
 

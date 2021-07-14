@@ -6,9 +6,7 @@ namespace DnD_CharacterBuilder_Library
 {
     public class AbilityDTO
     {
-        private static int strength;
-
-        public static int Strength { get => strength; set => strength = value; }
+        public static int Strength { get; set; }
         public static int Dexterity { get; set; }
         public static int Constitution { get; set; }
         public static int Intelligence { get; set; }

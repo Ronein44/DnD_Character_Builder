@@ -21,7 +21,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             {
                 listBoxRace.Items.Add(dr["RaceName"].ToString());
             }
-            if (CharacterDTO.GetCRace() == "")
+            if (CharacterDTO.CRace == "")
             {
                 listBoxRace.SelectedIndex = -1;
                 listBoxRace.Visible = true;
@@ -30,8 +30,8 @@ namespace DnD_CharacterBuilder_GUI.Forms
             }
             else
             {
-                listBoxRace.SelectedItem = CharacterDTO.GetCRace();
-                ChoosedPRace.Text = CharacterDTO.GetCRace();
+                listBoxRace.SelectedItem = CharacterDTO.CRace;
+                ChoosedPRace.Text = CharacterDTO.CRace;
                 listBoxRace.Visible = false;
                 ChoosedPRace.Visible = true;
                 btnExit2.Visible = true;
@@ -41,9 +41,9 @@ namespace DnD_CharacterBuilder_GUI.Forms
         private void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {            
             richTextBoxRace.ResetText();
-            CharacterDTO.SetCRace(listBoxRace.SelectedItem.ToString());
-            RaceDTO.SetRaceDetail(SqLiteDataAccess.ImportOneThing("SELECT RaceDetail FROM Race WHERE RaceName = @RaceName", "RaceName", CharacterDTO.GetCRace()).ToString());
-            richTextBoxRace.Text = RaceDTO.GetRaceDetail();
+            CharacterDTO.CRace = listBoxRace.SelectedItem.ToString();
+            RaceDTO.RaceDetail = SqLiteDataAccess.ImportOneThing("SELECT RaceDetail FROM Race WHERE RaceName = @RaceName", "RaceName", CharacterDTO.CRace).ToString();
+            richTextBoxRace.Text = RaceDTO.RaceDetail;
         }
 
         private void BtnExit_Click(object sender, EventArgs e)
@@ -52,7 +52,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
         }
         private void BtnExit2_Click(object sender, EventArgs e)
         {
-            CharacterDTO.SetCRace("");
+            CharacterDTO.CRace = "";
             listBoxRace.Visible = true;
             ChoosedPRace.Visible = false;
             btnExit2.Visible = false;
@@ -60,13 +60,13 @@ namespace DnD_CharacterBuilder_GUI.Forms
 
         private void ListBoxRace_DoubleClick(object sender, EventArgs e)
         {
-            CharacterDTO.SetCRace(listBoxRace.SelectedItem.ToString());
-            if (CharacterDTO.GetCRace() != "")
+            CharacterDTO.CRace = listBoxRace.SelectedItem.ToString();
+            if (CharacterDTO.CRace != "")
             {
                 listBoxRace.Visible = false;
                 ChoosedPRace.Visible = true;
                 btnExit2.Visible = true;
-                ChoosedPRace.Text = CharacterDTO.GetCRace();
+                ChoosedPRace.Text = CharacterDTO.CRace;
             }
         }
 

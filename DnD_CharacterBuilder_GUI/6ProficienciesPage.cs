@@ -49,7 +49,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
         {
             if (load ==true)
             {
-                if (e.NewValue == CheckState.Checked && Skills.CheckedItems.Count >= ClassDTO.GetClassSkillnum())
+                if (e.NewValue == CheckState.Checked && Skills.CheckedItems.Count >= ClassDTO.ClassSkillnum)
                 {
                     e.NewValue = CheckState.Unchecked;
                 }

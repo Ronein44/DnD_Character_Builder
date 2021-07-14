@@ -21,7 +21,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             {
                 listBoxClass.Items.Add(dr["ClassName"].ToString());
             }
-            if (CharacterDTO.GetCClass() == "" )
+            if (CharacterDTO.CClass == "" )
             {
                 listBoxClass.SelectedIndex = -1;
                 listBoxClass.Visible = true;
@@ -30,8 +30,8 @@ namespace DnD_CharacterBuilder_GUI.Forms
             }
             else
             {
-                listBoxClass.SelectedItem = CharacterDTO.GetCClass();
-                ChoosedPClass.Text = CharacterDTO.GetCClass();
+                listBoxClass.SelectedItem = CharacterDTO.CClass;
+                ChoosedPClass.Text = CharacterDTO.CClass;
                 listBoxClass.Visible = false;
                 ChoosedPClass.Visible = true;
                 btnExit2.Visible = true;                
@@ -41,20 +41,20 @@ namespace DnD_CharacterBuilder_GUI.Forms
         private void ListBoxClass_SelectedValueChanged(object sender, EventArgs e)
         {
             richTextBoxClass.ResetText();
-            CharacterDTO.SetCClass(listBoxClass.SelectedItem.ToString());
-            ClassDTO.SetClassDetail(SqLiteDataAccess.ImportOneThing("SELECT ClassDetail FROM Class WHERE ClassName = @ClassName","ClassName", CharacterDTO.GetCClass()).ToString());
-            richTextBoxClass.Text = ClassDTO.GetClassDetail();             
+            CharacterDTO.CClass = listBoxClass.SelectedItem.ToString();
+            ClassDTO.ClassDetail = SqLiteDataAccess.ImportOneThing("SELECT ClassDetail FROM Class WHERE ClassName = @ClassName","ClassName", CharacterDTO.CClass).ToString();
+            richTextBoxClass.Text = ClassDTO.ClassDetail;             
         }
         private void ListBoxClass_DoubleClick(object sender, EventArgs e)
         {
-            CharacterDTO.SetCClass(listBoxClass.SelectedItem.ToString());
-            if (CharacterDTO.GetCClass() != "")
+            CharacterDTO.CClass = listBoxClass.SelectedItem.ToString();
+            if (CharacterDTO.CClass != "")
             {
                 listBoxClass.Visible = false;
                 ChoosedPClass.Visible = true;
                 btnExit2.Visible = true;
-                ChoosedPClass.Text = CharacterDTO.GetCClass();
-                ClassDTO.SetClassSkillnum(Convert.ToInt32(SqLiteDataAccess.ImportOneThing("SELECT NumberofSkill FROM Class WHERE ClassName = @ClassName", "ClassName",CharacterDTO.GetCClass())));
+                ChoosedPClass.Text = CharacterDTO.CClass;
+                ClassDTO.ClassSkillnum = Convert.ToInt32(SqLiteDataAccess.ImportOneThing("SELECT NumberofSkill FROM Class WHERE ClassName = @ClassName", "ClassName",CharacterDTO.CClass));
             }
         }
         private void BtnExit_Click(object sender, EventArgs e)
@@ -63,11 +63,11 @@ namespace DnD_CharacterBuilder_GUI.Forms
         }
         private void BtnExit2_Click(object sender, EventArgs e)
         {
-            CharacterDTO.SetCClass("");
+            CharacterDTO.CClass = "";
             listBoxClass.Visible = true;
             ChoosedPClass.Visible = false;
             btnExit2.Visible = false;
-            ClassDTO.SetClassSkillnum(0);
+            ClassDTO.ClassSkillnum = 0;
         }
 
         private void BtnSaveClass_Click(object sender, EventArgs e)
