@@ -141,18 +141,18 @@ namespace DnD_CharacterBuilder_Library
         public static void ParametersAbility()
         {
             cmd.Parameters.AddWithValue("AbilityID", CharacterDTO.GetCAbilityID());
-            cmd.Parameters.AddWithValue("@Strength", AbilityDTO.GetStrength());
-            cmd.Parameters.AddWithValue("@StrengthMod", AbilityDTO.GetStrMod());
-            cmd.Parameters.AddWithValue("@Dexterity", AbilityDTO.GetDexterity());
-            cmd.Parameters.AddWithValue("@DexterityMod", AbilityDTO.GetDexMod());
-            cmd.Parameters.AddWithValue("@Constitution", AbilityDTO.GetConstitution());
-            cmd.Parameters.AddWithValue("@ConstitutionMod", AbilityDTO.GetConMod());
-            cmd.Parameters.AddWithValue("@Intelligence", AbilityDTO.GetIntelligence());
-            cmd.Parameters.AddWithValue("@IntelligenceMod", AbilityDTO.GetIntMod());
-            cmd.Parameters.AddWithValue("@Wisdom", AbilityDTO.GetWisdom());
-            cmd.Parameters.AddWithValue("@WisdomMod", AbilityDTO.GetWisMod());
-            cmd.Parameters.AddWithValue("@Charisma", AbilityDTO.GetCharisma());
-            cmd.Parameters.AddWithValue("@CharismaMod", AbilityDTO.GetChaMod());
+            cmd.Parameters.AddWithValue("@Strength", AbilityDTO.Strength);
+            cmd.Parameters.AddWithValue("@StrengthMod", AbilityDTO.StrMod);
+            cmd.Parameters.AddWithValue("@Dexterity", AbilityDTO.Dexterity);
+            cmd.Parameters.AddWithValue("@DexterityMod", AbilityDTO.DexMod);
+            cmd.Parameters.AddWithValue("@Constitution", AbilityDTO.Constitution);
+            cmd.Parameters.AddWithValue("@ConstitutionMod", AbilityDTO.ConMod);
+            cmd.Parameters.AddWithValue("@Intelligence", AbilityDTO.Intelligence);
+            cmd.Parameters.AddWithValue("@IntelligenceMod", AbilityDTO.IntMod);
+            cmd.Parameters.AddWithValue("@Wisdom", AbilityDTO.Wisdom);
+            cmd.Parameters.AddWithValue("@WisdomMod", AbilityDTO.WisMod);
+            cmd.Parameters.AddWithValue("@Charisma", AbilityDTO.Charisma);
+            cmd.Parameters.AddWithValue("@CharismaMod", AbilityDTO.ChaMod);
         }
         public static int Lastid()
         {

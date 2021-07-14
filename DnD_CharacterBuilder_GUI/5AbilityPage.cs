@@ -19,17 +19,17 @@ namespace DnD_CharacterBuilder_GUI.Forms
             InitializeComponent();
             More20(false);
 
-            ChangeLabel(LStrMod, AbilityDTO.GetStrMod(), LStr, AbilityDTO.GetStrength());
+            ChangeLabel(LStrMod, AbilityDTO.StrMod, LStr, AbilityDTO.Strength);
 
-            ChangeLabel(LDexMod, AbilityDTO.GetDexMod(), LDex, AbilityDTO.GetDexterity());
+            ChangeLabel(LDexMod, AbilityDTO.DexMod, LDex, AbilityDTO.Dexterity);
 
-            ChangeLabel(LConMod, AbilityDTO.GetConMod(), LCon, AbilityDTO.GetConstitution());
+            ChangeLabel(LConMod, AbilityDTO.ConMod, LCon, AbilityDTO.Constitution);
 
-            ChangeLabel(LIntMod, AbilityDTO.GetIntMod(), LInt, AbilityDTO.GetIntelligence());
+            ChangeLabel(LIntMod, AbilityDTO.IntMod, LInt, AbilityDTO.Intelligence);
 
-            ChangeLabel(LWisMod, AbilityDTO.GetWisMod(), LWis, AbilityDTO.GetWisdom());
+            ChangeLabel(LWisMod, AbilityDTO.WisMod, LWis, AbilityDTO.Wisdom);
 
-            ChangeLabel(LChaMod, AbilityDTO.GetChaMod(), LCha, AbilityDTO.GetCharisma());
+            ChangeLabel(LChaMod, AbilityDTO.ChaMod, LCha, AbilityDTO.Charisma);
         }
 
         private void BtnExit_Click(object sender, EventArgs e)
@@ -43,79 +43,103 @@ namespace DnD_CharacterBuilder_GUI.Forms
             more20.Visible = false;
             btnMore20.Visible = false;
 
-            Texts(LStr, AbilityDTO.GetStrength(), AbilityDTO.SetStrMod);
-            ChangeLabel(LStrMod, AbilityDTO.GetStrMod());
+            AbilityDTO.StrMod = Texts(LStr, AbilityDTO.Strength);
+            ChangeLabel(LStrMod, AbilityDTO.StrMod);
 
-            Texts(LDex, AbilityDTO.GetDexterity(), AbilityDTO.SetDexMod);
-            ChangeLabel(LDexMod, AbilityDTO.GetDexMod());
+            AbilityDTO.DexMod = Texts(LDex, AbilityDTO.Dexterity);
+            ChangeLabel(LDexMod, AbilityDTO.DexMod);
 
-            Texts(LCon, AbilityDTO.GetConstitution(), AbilityDTO.SetConMod);
-            ChangeLabel(LConMod, AbilityDTO.GetConMod());
+            AbilityDTO.ConMod = Texts(LCon, AbilityDTO.Constitution);
+            ChangeLabel(LConMod, AbilityDTO.ConMod);
 
-            Texts(LInt, AbilityDTO.GetIntelligence(), AbilityDTO.SetIntMod);
-            ChangeLabel(LIntMod, AbilityDTO.GetIntMod());
+            AbilityDTO.IntMod = Texts(LInt, AbilityDTO.Intelligence);
+            ChangeLabel(LIntMod, AbilityDTO.IntMod);
 
-            Texts(LWis, AbilityDTO.GetWisdom(), AbilityDTO.SetWisMod);
-            ChangeLabel(LWisMod, AbilityDTO.GetWisMod());
+            AbilityDTO.WisMod = Texts(LWis, AbilityDTO.Wisdom);
+            ChangeLabel(LWisMod, AbilityDTO.WisMod);
 
-            Texts(LCha, AbilityDTO.GetCharisma(), AbilityDTO.SetChaMod);
-            ChangeLabel(LChaMod, AbilityDTO.GetChaMod());
+            AbilityDTO.ChaMod = Texts(LCha, AbilityDTO.Charisma);
+            ChangeLabel(LChaMod, AbilityDTO.ChaMod);
 
         }
 
         // Up Down Buttons
         private void StrUp_Click(object sender, EventArgs e)
         {
-            UpandDown(AbilityDTO.GetStrength(), AbilityDTO.SetStrength, AbilityDTO.SetStrMod, LStr, LStrMod, "Up");
+            AbilityDTO.Strength = UpAbility(AbilityDTO.Strength);
+            AbilityDTO.StrMod = AbilityMod(AbilityDTO.Strength);
+            ChangeLabel(LStrMod, AbilityDTO.StrMod, LStr, AbilityDTO.Strength);
         }
         private void StrDown_Click(object sender, EventArgs e)
         {
-            UpandDown(AbilityDTO.GetStrength(), AbilityDTO.SetStrength, AbilityDTO.SetStrMod, LStr, LStrMod, "Down");
+            AbilityDTO.Strength = DownAbility(AbilityDTO.Strength);
+            AbilityDTO.StrMod = AbilityMod(AbilityDTO.Strength);
+            ChangeLabel(LStrMod, AbilityDTO.StrMod, LStr, AbilityDTO.Strength);
         }
 
         private void DexUp_Click(object sender, EventArgs e)
         {
-            UpandDown(AbilityDTO.GetDexterity(), AbilityDTO.SetDexterity, AbilityDTO.SetDexMod, LDex, LDexMod, "Up");
+            AbilityDTO.Dexterity = UpAbility(AbilityDTO.Dexterity);
+            AbilityDTO.DexMod = AbilityMod(AbilityDTO.Dexterity);
+            ChangeLabel(LDexMod, AbilityDTO.DexMod, LDex, AbilityDTO.Dexterity);
         }
         private void DexDown_Click(object sender, EventArgs e)
         {
-            UpandDown(AbilityDTO.GetDexterity(), AbilityDTO.SetDexterity, AbilityDTO.SetDexMod, LDex, LDexMod, "Down");
+            AbilityDTO.Dexterity = DownAbility(AbilityDTO.Dexterity);
+            AbilityDTO.DexMod = AbilityMod(AbilityDTO.Dexterity);
+            ChangeLabel(LDexMod, AbilityDTO.DexMod, LDex, AbilityDTO.Dexterity);
         }
 
         private void ConUp_Click(object sender, EventArgs e)
         {
-            UpandDown(AbilityDTO.GetConstitution(), AbilityDTO.SetConstitution, AbilityDTO.SetConMod, LCon, LConMod, "Up");
+            AbilityDTO.Constitution = UpAbility(AbilityDTO.Constitution);
+            AbilityDTO.ConMod = AbilityMod(AbilityDTO.Constitution);
+            ChangeLabel(LConMod, AbilityDTO.ConMod, LCon, AbilityDTO.Constitution);
         }
         private void ConDown_Click(object sender, EventArgs e)
         {
-            UpandDown(AbilityDTO.GetConstitution(), AbilityDTO.SetConstitution, AbilityDTO.SetConMod, LCon, LConMod, "Down");
+            AbilityDTO.Constitution = DownAbility(AbilityDTO.Constitution);
+            AbilityDTO.ConMod = AbilityMod(AbilityDTO.Constitution);
+            ChangeLabel(LConMod, AbilityDTO.ConMod, LCon, AbilityDTO.Constitution);
         }
 
         private void IntUp_Click(object sender, EventArgs e)
         {
-            UpandDown(AbilityDTO.GetIntelligence(), AbilityDTO.SetIntelligence, AbilityDTO.SetIntMod, LInt, LIntMod, "Up");
+            AbilityDTO.Intelligence = UpAbility(AbilityDTO.Intelligence);
+            AbilityDTO.IntMod = AbilityMod(AbilityDTO.Intelligence);
+            ChangeLabel(LIntMod, AbilityDTO.IntMod, LInt, AbilityDTO.Intelligence);
         }
         private void IntDown_Click(object sender, EventArgs e)
         {
-            UpandDown(AbilityDTO.GetIntelligence(), AbilityDTO.SetIntelligence, AbilityDTO.SetIntMod, LInt, LIntMod, "Down");
+            AbilityDTO.Intelligence = DownAbility(AbilityDTO.Intelligence);
+            AbilityDTO.IntMod = AbilityMod(AbilityDTO.Intelligence);
+            ChangeLabel(LIntMod, AbilityDTO.IntMod, LInt, AbilityDTO.Intelligence);
         }
 
         private void WisUp_Click(object sender, EventArgs e)
         {
-            UpandDown(AbilityDTO.GetWisdom(), AbilityDTO.SetWisdom, AbilityDTO.SetWisMod, LWis, LWisMod, "Up");
+            AbilityDTO.Wisdom = UpAbility(AbilityDTO.Wisdom);
+            AbilityDTO.WisMod = AbilityMod(AbilityDTO.Wisdom);
+            ChangeLabel(LWisMod, AbilityDTO.WisMod, LWis, AbilityDTO.Wisdom);
         }
         private void WisDown_Click(object sender, EventArgs e)
         {
-            UpandDown(AbilityDTO.GetWisdom(), AbilityDTO.SetWisdom, AbilityDTO.SetWisMod, LWis, LWisMod, "Down");
+            AbilityDTO.Wisdom = DownAbility(AbilityDTO.Wisdom);
+            AbilityDTO.WisMod = AbilityMod(AbilityDTO.Wisdom);
+            ChangeLabel(LWisMod, AbilityDTO.WisMod, LWis, AbilityDTO.Wisdom);
         }
 
         private void ChaUp_Click(object sender, EventArgs e)
         {
-            UpandDown(AbilityDTO.GetCharisma(), AbilityDTO.SetCharisma, AbilityDTO.SetChaMod, LCha, LChaMod, "Up");
+            AbilityDTO.Charisma = UpAbility(AbilityDTO.Charisma);
+            AbilityDTO.ChaMod = AbilityMod(AbilityDTO.Charisma);
+            ChangeLabel(LChaMod, AbilityDTO.ChaMod, LCha, AbilityDTO.Charisma);
         }
         private void ChaDown_Click(object sender, EventArgs e)
         {
-            UpandDown(AbilityDTO.GetCharisma(), AbilityDTO.SetCharisma, AbilityDTO.SetChaMod, LCha, LChaMod, "Down");
+            AbilityDTO.Charisma = DownAbility(AbilityDTO.Charisma);
+            AbilityDTO.ChaMod = AbilityMod(AbilityDTO.Charisma);
+            ChangeLabel(LChaMod, AbilityDTO.ChaMod, LCha, AbilityDTO.Charisma);
         }
         // End Up Down
 
@@ -134,9 +158,9 @@ namespace DnD_CharacterBuilder_GUI.Forms
                 abilitymodlabel.Text = abilitymod.ToString();
             }
         }
-        private void ChangeLabel(Label abilitymodlabel, int abilitymod, Label abilitylabel, int getability)
+        private void ChangeLabel(Label abilitymodlabel, int abilitymod, Label abilitylabel, int ability)
         {
-            abilitylabel.Text = getability.ToString();
+            abilitylabel.Text = ability.ToString();
             if (abilitymod > 0)
             {
                 abilitymodlabel.Text = $"+{abilitymod}";
@@ -151,41 +175,42 @@ namespace DnD_CharacterBuilder_GUI.Forms
             more20.Visible = input;
             btnMore20.Visible = input;
         }        
-        private void Texts(Label label, int ability,Action<int> settermod)
+        private int Texts(Label label, int ability)
         {
             label.Text = ability.ToString();
-            settermod(Method.PcModif(ability));
+            return Method.PcModif(ability);
         }
-        private void UpandDown(int getability, Action<int> setability, Action<int> setabilitymod, Label abilitylabel, Label abilitymodlabel, string upordown)
+
+        private int UpAbility(int ability)
         {
-            int temporaryability = getability;
-            int temporaryabilitymod;
-            if (upordown =="Up")
+            int temporaryability = ability;
+
+            if (ability == 20)
             {
-                if (getability == 20)
-                {
-                    More20(true);
-                }
-                else
-                {                    
-                    temporaryability = getability + 1;
-                }
+                More20(true);
             }
             else
             {
-                if (getability > 1)
+                temporaryability = ability + 1;
+            }           
+            return temporaryability;
+        }
+        private int DownAbility(int ability)
+        {
+            int temporaryability = ability;
+            if (ability > 1)
+            {
+                if (ability == 20)
                 {
-                    if (getability == 20)
-                    {
-                        More20(false);
-                    }
-                    temporaryability = getability - 1;                   
+                    More20(false);
                 }
+                temporaryability = ability - 1;
             }
-            temporaryabilitymod = Method.PcModif(temporaryability);
-            setability(temporaryability);
-            setabilitymod(temporaryabilitymod);
-            ChangeLabel(abilitymodlabel, temporaryabilitymod,abilitylabel, temporaryability);
+            return temporaryability;
+        }
+        private int AbilityMod(int ability)
+        {
+            return Method.PcModif(ability); 
         }
 
         private void BtnSaveAbility_Click(object sender, EventArgs e)
