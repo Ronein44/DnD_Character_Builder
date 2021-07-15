@@ -75,5 +75,6 @@ namespace DnD_CharacterBuilder_GUI.Forms
         {
             Method.Save();
         }
+
     }
 }

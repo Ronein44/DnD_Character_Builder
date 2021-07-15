@@ -106,6 +106,7 @@ namespace DnD_CharacterBuilder_Library
             con.Close();
             return output;
         }
+
         public static DataTable Search(string label)
         {
             con.Open();
