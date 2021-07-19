@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SQLite;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -106,18 +107,31 @@ namespace DnD_CharacterBuilder_Library
             con.Close();
             return output;
         }
-        public static List<string> ImportProf()
+        public static List<int> SkillProf()
         {
-            List<string> prof = new List<string>();
+            List<int> prof = new List<int>();
+            DataTable dt = new DataTable();           
+            cmd = new SQLiteCommand("SELECT * FROM ClassSkillProf WHERE  ID = (SELECT SkillProf FROM Class WHERE ClassName = @ClassName)", con);
             con.Open();
-            DataTable dt = new DataTable();
-            adapt = new SQLiteDataAdapter("SELECT * FROM ClassSkillProf WHERE ID = (SELECT SkillProf FROM Class WHERE ClassName = @ClassName) ", con);
-            cmd.Parameters.AddWithValue("@ClassName", CharacterDTO.CClass);
+            cmd.Parameters.AddWithValue("ClassName", CharacterDTO.CClass);
+            adapt = new SQLiteDataAdapter(cmd);
             adapt.Fill(dt);
-
+            con.Close();
+            for (int i = 1; i < dt.Columns.Count; i++)
+            {
+                foreach (DataRow item in dt.Rows)
+                {
+                    if (Convert.ToInt32(item[i]) != 0)
+                    {
+                        prof.Add(Convert.ToInt32(item[i]));
+                    }
+                    else
+                    {
+                    }
+                }
+            }
             return prof;
         }
-
 
         public static DataTable Search(string label)
         {

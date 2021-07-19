@@ -19,7 +19,12 @@ namespace DnD_CharacterBuilder_GUI.Forms
         public ProficienciesPage()
         {
             InitializeComponent();
-                       
+
+            foreach (int item in SqLiteDataAccess.SkillProf())
+            {
+                Skills.Items.Add(item);
+            }
+            
             if (load == true)
             {
                 load = false;
@@ -76,5 +81,8 @@ namespace DnD_CharacterBuilder_GUI.Forms
             Method.Save();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+        }
     }
 }
