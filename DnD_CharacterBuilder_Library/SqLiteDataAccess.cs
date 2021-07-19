@@ -106,6 +106,18 @@ namespace DnD_CharacterBuilder_Library
             con.Close();
             return output;
         }
+        public static List<string> ImportProf()
+        {
+            List<string> prof = new List<string>();
+            con.Open();
+            DataTable dt = new DataTable();
+            adapt = new SQLiteDataAdapter("SELECT * FROM ClassSkillProf WHERE ID = (SELECT SkillProf FROM Class WHERE ClassName = @ClassName) ", con);
+            cmd.Parameters.AddWithValue("@ClassName", CharacterDTO.CClass);
+            adapt.Fill(dt);
+
+            return prof;
+        }
+
 
         public static DataTable Search(string label)
         {
