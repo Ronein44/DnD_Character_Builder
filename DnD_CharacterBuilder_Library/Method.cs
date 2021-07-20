@@ -86,9 +86,13 @@ namespace DnD_CharacterBuilder_Library
                 "VALUES (@CharacterName, @PlayerName, @CharacterLvl, @CharacterGender, @CharacterAge, @CharacterWeight, @CharacterHeight, @CharacterAlignment)", SqLiteDataAccess.Parameters);                
                 CharacterDTO.CAbilityID = SqLiteDataAccess.Insert("INSERT INTO Ability (Strength, StrengthMod, Dexterity, DexterityMod, Constitution, ConstitutionMod, Intelligence, IntelligenceMod, Wisdom, WisdomMod, Charisma, CharismaMod) " +
                 "VALUES (@Strength, @StrengthMod, @Dexterity, @DexterityMod, @Constitution, @ConstitutionMod, @Intelligence, @IntelligenceMod, @Wisdom, @WisdomMod, @Charisma, @CharismaMod)", SqLiteDataAccess.ParametersAbility);
+                CharacterDTO.CProficienciesID = SqLiteDataAccess.Insert("INSERT INTO ClassSkillProf (Acrobatics, AnimalHandling, Arcana, Athletics, Deception, History, Insight, Intimidation, Investigation, Medicine, " +
+                    "Nature, Perception, Performance, Persuasion, Religion, SleightofHand, Stealth, Survival) VALUES (@Acrobatics, @AnimalHandling, @Arcana, @Athletics, @Deception, @History, @Insight, @Intimidation, @Investigation, @Medicine, " +
+                    "@Nature, @Perception, @Performance, @Persuasion, @Religion, @SleightofHand, @Stealth, @Survival)", SqLiteDataAccess.ParametersSkills) ;
             }
             SqLiteDataAccess.Update();
             SqLiteDataAccess.UpdateAbility();
+            SqLiteDataAccess.UpdateSkills();
         }
         public static void NewCha()
         {           

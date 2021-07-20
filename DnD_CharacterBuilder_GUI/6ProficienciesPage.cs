@@ -20,7 +20,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
         {
             InitializeComponent();
 
-            foreach (int item in SqLiteDataAccess.SkillProf())
+            foreach (string item in SqLiteDataAccess.SkillProf())
             {
                 Skills.Items.Add(item);
             }
@@ -46,8 +46,8 @@ namespace DnD_CharacterBuilder_GUI.Forms
 
         private void Skills_SelectedIndexChanged(object sender, EventArgs e)
         {            
-            richTextBox1.ResetText();
-            richTextBox1.Text = Skills.SelectedItem.ToString();           
+            richTextBoxProfDetail.ResetText();
+            richTextBoxProfDetail.Text = SqLiteDataAccess.ImportOneThing("SELECT SkillDetail FROM Skills WHERE SkillName = @SkillName", "SkillName", Skills.SelectedItem).ToString();           
         }
 
         private void Skills_ItemCheck(object sender, ItemCheckEventArgs e)
@@ -68,21 +68,10 @@ namespace DnD_CharacterBuilder_GUI.Forms
                 }
             }            
         }
-        public void AddSkill(List<string> Base)
-        {
-            foreach (string item in Base)
-            {
-                Skills.Items.Add(item);
-            }
-        }
 
         private void BtnSaveProf_Click(object sender, EventArgs e)
         {
             Method.Save();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
         }
     }
 }

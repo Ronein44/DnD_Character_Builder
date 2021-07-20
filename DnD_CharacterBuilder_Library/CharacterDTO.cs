@@ -18,7 +18,7 @@ namespace DnD_CharacterBuilder_Library
         public static int CAge { get; set; }
         public static string CAlignment { get; set; }
         public static int CAbilityID { get; set; }
-        public static List<string> CProficiencies { get; set; }
+        public static int CProficienciesID { get; set; }
 
     }
 }

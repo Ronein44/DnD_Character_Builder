@@ -32,10 +32,9 @@ namespace DnD_CharacterBuilder_GUI.Forms
             this.btnExit = new System.Windows.Forms.Button();
             this.btnSaveProf = new System.Windows.Forms.Button();
             this.Skills = new System.Windows.Forms.CheckedListBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.richTextBoxProfDetail = new System.Windows.Forms.RichTextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -85,23 +84,23 @@ namespace DnD_CharacterBuilder_GUI.Forms
             // 
             // richTextBox1
             // 
-            this.richTextBox1.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox1.Location = new System.Drawing.Point(714, 73);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(703, 722);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
+            this.richTextBoxProfDetail.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.richTextBoxProfDetail.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxProfDetail.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBoxProfDetail.Location = new System.Drawing.Point(714, 73);
+            this.richTextBoxProfDetail.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.richTextBoxProfDetail.Name = "richTextBox1";
+            this.richTextBoxProfDetail.ReadOnly = true;
+            this.richTextBoxProfDetail.Size = new System.Drawing.Size(703, 722);
+            this.richTextBoxProfDetail.TabIndex = 0;
+            this.richTextBoxProfDetail.Text = "";
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.richTextBox1, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.richTextBoxProfDetail, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.Skills, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.btnExit, 1, 0);
@@ -124,7 +123,6 @@ namespace DnD_CharacterBuilder_GUI.Forms
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Controls.Add(this.btnSaveProf, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.button1, 0, 0);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(1230, 801);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -132,16 +130,6 @@ namespace DnD_CharacterBuilder_GUI.Forms
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(187, 28);
             this.tableLayoutPanel2.TabIndex = 46;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(3, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 22);
-            this.button1.TabIndex = 44;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // ProficienciesPage
             // 
@@ -165,10 +153,9 @@ namespace DnD_CharacterBuilder_GUI.Forms
 
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnSaveProf;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox richTextBoxProfDetail;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Button button1;
         public System.Windows.Forms.CheckedListBox Skills;
     }
 }

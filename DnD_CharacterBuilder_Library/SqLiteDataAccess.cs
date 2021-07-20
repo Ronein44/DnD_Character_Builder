@@ -42,7 +42,7 @@ namespace DnD_CharacterBuilder_Library
             try 
             {
                 SqlConOpen("UPDATE CHARACTER SET CharacterName=@CharacterName, PlayerName=@PlayerName, CharacterLvl=@CharacterLvl, CharacterGender=@CharacterGender, " +
-                    "CharacterAge=@CharacterAge, CharacterWeight=@CharacterWeight, CharacterHeight=@CharacterHeight, CharacterAlignment=@CharacterAlignment, CharacterRace=@CharacterRace, CharacterClass=@CharacterClass, CharacterAbilityID=@CharacterAbilityID WHERE CharacterID=@CharacterID");
+                    "CharacterAge=@CharacterAge, CharacterWeight=@CharacterWeight, CharacterHeight=@CharacterHeight, CharacterAlignment=@CharacterAlignment, CharacterRace=@CharacterRace, CharacterClass=@CharacterClass, CharacterAbilityID=@CharacterAbilityID, CharacterProficiencies=@CharacterProficiencies WHERE CharacterID=@CharacterID");
                 Parameters(CharacterDTO.CharacterID, true);
                 int rows = cmd.ExecuteNonQuery();
                 if (rows > 0)
@@ -66,6 +66,29 @@ namespace DnD_CharacterBuilder_Library
                 "ConstitutionMod=@ConstitutionMod, Intelligence=@Intelligence, IntelligenceMod=@IntelligenceMod, Wisdom=@Wisdom, WisdomMod=@WisdomMod, Charisma=@Charisma, CharismaMod=@CharismaMod " +
                 "WHERE AbilityID=@AbilityID");
                 ParametersAbility();
+                int rows = cmd.ExecuteNonQuery();
+                if (rows > 0)
+                {
+                    Succes = true;
+                }
+            }
+            catch (Exception) {; }
+            finally
+            {
+                con.Close();
+            }
+            return Succes;
+        }
+        public static bool UpdateSkills()
+        {
+            bool Succes = false;
+            try
+            {
+                SqlConOpen("UPDATE ClassSkillProf SET Acrobatics=@Acrobatics, AnimalHandling=@AnimalHandling, Arcana=@Arcana, Athletics=@Athletics, Deception=@Deception," +
+                "History=@History, Insight=@Insight, Intimidation=@Intimidation, Investigation=@Investigation, Medicine=@Medicine, Nature=@Nature, Perception=@Perception," +
+                "Performance=@Performance, Persuasion=@Persuasion, Religion=@Religion, SleightofHand=@SleightofHand, Stealth=@Stealth, Survival=@Survival " +
+                "WHERE CProficienciesID=@CProficienciesID");
+                ParametersSkills();
                 int rows = cmd.ExecuteNonQuery();
                 if (rows > 0)
                 {
@@ -107,32 +130,21 @@ namespace DnD_CharacterBuilder_Library
             con.Close();
             return output;
         }
-        public static List<int> SkillProf()
+        public static List<string> SkillProf()
         {
-            List<int> prof = new List<int>();
+            List<string> prof = new List<string>();
             DataTable dt = new DataTable();           
-            cmd = new SQLiteCommand("SELECT * FROM ClassSkillProf WHERE  ID = (SELECT SkillProf FROM Class WHERE ClassName = @ClassName)", con);
+            cmd = new SQLiteCommand($"SELECT SkillName FROM Skills WHERE {CharacterDTO.CClass} NOT NULL", con);
             con.Open();
-            cmd.Parameters.AddWithValue("ClassName", CharacterDTO.CClass);
             adapt = new SQLiteDataAdapter(cmd);
             adapt.Fill(dt);
             con.Close();
-            for (int i = 1; i < dt.Columns.Count; i++)
+            for (int i = 0; i < dt.Rows.Count; i++)
             {
-                foreach (DataRow item in dt.Rows)
-                {
-                    if (Convert.ToInt32(item[i]) != 0)
-                    {
-                        prof.Add(Convert.ToInt32(item[i]));
-                    }
-                    else
-                    {
-                    }
-                }
+                prof.Add(dt.Rows[i]["SkillName"].ToString());
             }
             return prof;
         }
-
         public static DataTable Search(string label)
         {
             con.Open();
@@ -170,6 +182,9 @@ namespace DnD_CharacterBuilder_Library
             cmd.Parameters.AddWithValue("@CharacterClass", CharacterDTO.CClass);
             cmd.Parameters.AddWithValue("@CharacterRace", CharacterDTO.CRace);
             cmd.Parameters.AddWithValue("@CharacterAbilityID", CharacterDTO.CAbilityID);
+            cmd.Parameters.AddWithValue("@CharacterProficiencies", CharacterDTO.CProficienciesID);
+
+
         }
         public static void Parameters(int characterid, bool needparameters)
         {
@@ -195,7 +210,29 @@ namespace DnD_CharacterBuilder_Library
             cmd.Parameters.AddWithValue("@Charisma", AbilityDTO.Charisma);
             cmd.Parameters.AddWithValue("@CharismaMod", AbilityDTO.ChaMod);
         }
+        public static void ParametersSkills()
+        {
+            cmd.Parameters.AddWithValue("CProficienciesID", CharacterDTO.CProficienciesID);
+            cmd.Parameters.AddWithValue("@Acrobatics", SkillsDTO.Acrobatics);
+            cmd.Parameters.AddWithValue("@AnimalHandling", SkillsDTO.AnimalHandling);
+            cmd.Parameters.AddWithValue("@Arcana", SkillsDTO.Arcana);
+            cmd.Parameters.AddWithValue("@Athletics", SkillsDTO.Athletics);
+            cmd.Parameters.AddWithValue("@Deception", SkillsDTO.Deception);
+            cmd.Parameters.AddWithValue("@History", SkillsDTO.History);
+            cmd.Parameters.AddWithValue("@Insight", SkillsDTO.Insight);
+            cmd.Parameters.AddWithValue("@Intimidation", SkillsDTO.Intimidation);
+            cmd.Parameters.AddWithValue("@Investigation", SkillsDTO.Investigation);
+            cmd.Parameters.AddWithValue("@Medicine", SkillsDTO.Medicine);
+            cmd.Parameters.AddWithValue("@Nature", SkillsDTO.Nature);
+            cmd.Parameters.AddWithValue("@Perception", SkillsDTO.Perception);
+            cmd.Parameters.AddWithValue("@Performance", SkillsDTO.Performance);
+            cmd.Parameters.AddWithValue("@Persuasion", SkillsDTO.Persuasion);
+            cmd.Parameters.AddWithValue("@Religion", SkillsDTO.Religion);
+            cmd.Parameters.AddWithValue("@SleightofHand", SkillsDTO.SleightofHand);
+            cmd.Parameters.AddWithValue("@Stealth", SkillsDTO.Stealth);
+            cmd.Parameters.AddWithValue("@Survival", SkillsDTO.Survival);
 
+    }
         public static void SqlConOpen(string sqlcommand)
         {                       
             con.Open();
