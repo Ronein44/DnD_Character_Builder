@@ -13,8 +13,8 @@ namespace DnD_CharacterBuilder_Library
     public class SqLiteDataAccess
     {
         private static readonly SQLiteConnection con = new SQLiteConnection("Data Source=DnD_Character_Builder_db.db;Version=3;");
-        public static SQLiteCommand cmd;
-        public static SQLiteDataAdapter adapt;
+        private static SQLiteCommand cmd;
+        private static SQLiteDataAdapter adapt;
         public static DataTable Select(string sqlcommand)
         {
             con.Open();
@@ -34,15 +34,16 @@ namespace DnD_CharacterBuilder_Library
             Int64 id64 = Convert.ToInt64(cmd.ExecuteScalar());
             int id = (int)id64;
             con.Close();
-            return id;
+            return id;            
         }
-        public static bool Update()
+        public static bool UpdateBase()
         {
             bool Succes = false;
             try 
             {
                 SqlConOpen("UPDATE CHARACTER SET CharacterName=@CharacterName, PlayerName=@PlayerName, CharacterLvl=@CharacterLvl, CharacterGender=@CharacterGender, " +
-                    "CharacterAge=@CharacterAge, CharacterWeight=@CharacterWeight, CharacterHeight=@CharacterHeight, CharacterAlignment=@CharacterAlignment, CharacterRace=@CharacterRace, CharacterClass=@CharacterClass, CharacterAbilityID=@CharacterAbilityID, CharacterProficiencies=@CharacterProficiencies WHERE CharacterID=@CharacterID");
+                    "CharacterAge=@CharacterAge, CharacterWeight=@CharacterWeight, CharacterHeight=@CharacterHeight, CharacterAlignment=@CharacterAlignment, CharacterRace=@CharacterRace, " +
+                    "CharacterClass=@CharacterClass, CharacterAbilityID=@CharacterAbilityID, CharacterProficiencies=@CharacterProficiencies WHERE CharacterID=@CharacterID");
                 Parameters(CharacterDTO.CharacterID, true);
                 int rows = cmd.ExecuteNonQuery();
                 if (rows > 0)
@@ -231,7 +232,6 @@ namespace DnD_CharacterBuilder_Library
             cmd.Parameters.AddWithValue("@SleightofHand", SkillsDTO.SleightofHand);
             cmd.Parameters.AddWithValue("@Stealth", SkillsDTO.Stealth);
             cmd.Parameters.AddWithValue("@Survival", SkillsDTO.Survival);
-
     }
         public static void SqlConOpen(string sqlcommand)
         {                       

@@ -90,7 +90,7 @@ namespace DnD_CharacterBuilder_Library
                     "Nature, Perception, Performance, Persuasion, Religion, SleightofHand, Stealth, Survival) VALUES (@Acrobatics, @AnimalHandling, @Arcana, @Athletics, @Deception, @History, @Insight, @Intimidation, @Investigation, @Medicine, " +
                     "@Nature, @Perception, @Performance, @Persuasion, @Religion, @SleightofHand, @Stealth, @Survival)", SqLiteDataAccess.ParametersSkills) ;
             }
-            SqLiteDataAccess.Update();
+            SqLiteDataAccess.UpdateBase();
             SqLiteDataAccess.UpdateAbility();
             SqLiteDataAccess.UpdateSkills();
         }

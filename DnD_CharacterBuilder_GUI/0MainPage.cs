@@ -38,7 +38,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
                     DialogResult dialogResult2 = MessageBox.Show("Do you want to save your progress", "New Character", MessageBoxButtons.YesNo);
                     if (dialogResult2 == DialogResult.Yes)
                     {
-                        SqLiteDataAccess.Update();
+                        SqLiteDataAccess.UpdateBase();
                         Method.NewCha();
                     }
                     else if (dialogResult2 == DialogResult.No)

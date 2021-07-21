@@ -68,6 +68,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             ChoosedPClass.Visible = false;
             btnExit2.Visible = false;
             ClassDTO.ClassSkillnum = 0;
+            ProficienciesPage.ChosedSkillProf.Clear();
         }
 
         private void BtnSaveClass_Click(object sender, EventArgs e)
