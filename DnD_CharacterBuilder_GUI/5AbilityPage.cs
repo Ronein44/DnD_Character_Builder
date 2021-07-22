@@ -215,7 +215,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
 
         private void BtnSaveAbility_Click(object sender, EventArgs e)
         {
-            Method.Save();
+            BasePage.Save();
         }
     }
 }

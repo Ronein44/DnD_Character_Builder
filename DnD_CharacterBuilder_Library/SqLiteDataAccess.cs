@@ -25,7 +25,7 @@ namespace DnD_CharacterBuilder_Library
             return dt;
         }
         public static int Insert(string sqlcomm, Action parameters)
-        {           
+        {
             SqlConOpen(sqlcomm);
             parameters();
             cmd.ExecuteNonQuery();
@@ -34,24 +34,24 @@ namespace DnD_CharacterBuilder_Library
             Int64 id64 = Convert.ToInt64(cmd.ExecuteScalar());
             int id = (int)id64;
             con.Close();
-            return id;            
+            return id;
         }
         public static bool UpdateBase()
         {
             bool Succes = false;
-            try 
+            try
             {
                 SqlConOpen("UPDATE CHARACTER SET CharacterName=@CharacterName, PlayerName=@PlayerName, CharacterLvl=@CharacterLvl, CharacterGender=@CharacterGender, " +
                     "CharacterAge=@CharacterAge, CharacterWeight=@CharacterWeight, CharacterHeight=@CharacterHeight, CharacterAlignment=@CharacterAlignment, CharacterRace=@CharacterRace, " +
-                    "CharacterClass=@CharacterClass, CharacterAbilityID=@CharacterAbilityID, CharacterProficiencies=@CharacterProficiencies WHERE CharacterID=@CharacterID");
+                    "CharacterClass=@CharacterClass, CharacterAbilityID=@CharacterAbilityID, CharacterProficienciesID=@CharacterProficienciesID WHERE CharacterID=@CharacterID");
                 Parameters(CharacterDTO.CharacterID, true);
                 int rows = cmd.ExecuteNonQuery();
                 if (rows > 0)
                 {
-                 Succes = true;
+                    Succes = true;
                 }
             }
-            catch (Exception) { ; }
+            catch (Exception) {; }
             finally
             {
                 con.Close();
@@ -80,27 +80,31 @@ namespace DnD_CharacterBuilder_Library
             }
             return Succes;
         }
-        public static bool UpdateSkills()
+        public static bool UpdateSkills(List<string> collection)
         {
             bool Succes = false;
-            try
+            SqlConOpen("UPDATE ClassSkillProf SET Acrobatics=@Acrobatics, AnimalHandling=@AnimalHandling, Arcana=@Arcana, Athletics=@Athletics, Deception=@Deception," +
+                    "History=@History, Insight=@Insight, Intimidation=@Intimidation, Investigation=@Investigation, Medicine=@Medicine, Nature=@Nature, Perception=@Perception," +
+                    "Performance=@Performance, Persuasion=@Persuasion, Religion=@Religion, SleightofHand=@SleightofHand, Stealth=@Stealth, Survival=@Survival " +
+                    "WHERE ProficienciesID=@ProficienciesID");
+            ParametersSkills();
+            int rows = cmd.ExecuteNonQuery();
+            con.Close();
+            foreach (string item in collection)
             {
-                SqlConOpen("UPDATE ClassSkillProf SET Acrobatics=@Acrobatics, AnimalHandling=@AnimalHandling, Arcana=@Arcana, Athletics=@Athletics, Deception=@Deception," +
-                "History=@History, Insight=@Insight, Intimidation=@Intimidation, Investigation=@Investigation, Medicine=@Medicine, Nature=@Nature, Perception=@Perception," +
-                "Performance=@Performance, Persuasion=@Persuasion, Religion=@Religion, SleightofHand=@SleightofHand, Stealth=@Stealth, Survival=@Survival " +
-                "WHERE CProficienciesID=@CProficienciesID");
-                ParametersSkills();
-                int rows = cmd.ExecuteNonQuery();
-                if (rows > 0)
-                {
-                    Succes = true;
-                }
-            }
-            catch (Exception) {; }
-            finally
-            {
+                con.Open();
+                string skill = String.Concat(item.Where(c => !Char.IsWhiteSpace(c)));
+                cmd = new SQLiteCommand($"UPDATE ClassSkillProf SET {skill} = @{skill} WHERE ProficienciesID=@ProficienciesID", con);
+                cmd.Parameters.AddWithValue(skill, true);
+                cmd.Parameters.AddWithValue("ProficienciesID", CharacterDTO.CProficienciesID);
+                cmd.ExecuteNonQuery();
                 con.Close();
             }
+            if (rows > 0)
+            {
+                Succes = true;
+            }
+            con.Close();
             return Succes;
         }
         public static bool Delete()
@@ -135,7 +139,7 @@ namespace DnD_CharacterBuilder_Library
         {
             List<string> prof = new List<string>();
             DataTable dt = new DataTable();           
-            cmd = new SQLiteCommand($"SELECT SkillName FROM Skills WHERE {CharacterDTO.CClass} NOT NULL", con);
+            cmd = new SQLiteCommand($"SELECT SkillName FROM Skills WHERE {CharacterDTO.CClass} = 1 ", con);
             con.Open();
             adapt = new SQLiteDataAdapter(cmd);
             adapt.Fill(dt);
@@ -183,7 +187,7 @@ namespace DnD_CharacterBuilder_Library
             cmd.Parameters.AddWithValue("@CharacterClass", CharacterDTO.CClass);
             cmd.Parameters.AddWithValue("@CharacterRace", CharacterDTO.CRace);
             cmd.Parameters.AddWithValue("@CharacterAbilityID", CharacterDTO.CAbilityID);
-            cmd.Parameters.AddWithValue("@CharacterProficiencies", CharacterDTO.CProficienciesID);
+            cmd.Parameters.AddWithValue("@CharacterProficienciesID", CharacterDTO.CProficienciesID);
 
 
         }
@@ -213,7 +217,7 @@ namespace DnD_CharacterBuilder_Library
         }
         public static void ParametersSkills()
         {
-            cmd.Parameters.AddWithValue("CProficienciesID", CharacterDTO.CProficienciesID);
+            cmd.Parameters.AddWithValue("ProficienciesID", CharacterDTO.CProficienciesID);
             cmd.Parameters.AddWithValue("@Acrobatics", SkillsDTO.Acrobatics);
             cmd.Parameters.AddWithValue("@AnimalHandling", SkillsDTO.AnimalHandling);
             cmd.Parameters.AddWithValue("@Arcana", SkillsDTO.Arcana);

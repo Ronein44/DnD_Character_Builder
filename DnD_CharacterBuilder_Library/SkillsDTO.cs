@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DnD_CharacterBuilder_Library
 {
-    class SkillsDTO
+    public class SkillsDTO
     {
         public static bool Acrobatics { get; set; } = false;
         public static bool AnimalHandling { get; set; } = false;

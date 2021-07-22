@@ -73,7 +73,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
 
         private void BtnSaveClass_Click(object sender, EventArgs e)
         {
-            Method.Save();
+            BasePage.Save();
         }
     }
 }

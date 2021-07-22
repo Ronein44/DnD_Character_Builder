@@ -43,7 +43,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            Method.Save();
+            BasePage.Save();
         }
 
         private void TxtCName_TextChanged(object sender, EventArgs e)
@@ -78,6 +78,22 @@ namespace DnD_CharacterBuilder_GUI.Forms
         {
             CharacterDTO.CAlignment = txtAlignment.Text;
         }
-        
+        public static void Save()
+        {
+            if (CharacterDTO.CharacterID == 0)
+            {
+                CharacterDTO.CharacterID = SqLiteDataAccess.Insert("INSERT INTO Character (CharacterName, PlayerName, CharacterLvl, CharacterGender, CharacterAge, CharacterWeight, CharacterHeight, CharacterAlignment) " +
+                "VALUES (@CharacterName, @PlayerName, @CharacterLvl, @CharacterGender, @CharacterAge, @CharacterWeight, @CharacterHeight, @CharacterAlignment)", SqLiteDataAccess.Parameters);
+                CharacterDTO.CAbilityID = SqLiteDataAccess.Insert("INSERT INTO Ability (Strength, StrengthMod, Dexterity, DexterityMod, Constitution, ConstitutionMod, Intelligence, IntelligenceMod, Wisdom, WisdomMod, Charisma, CharismaMod) " +
+                "VALUES (@Strength, @StrengthMod, @Dexterity, @DexterityMod, @Constitution, @ConstitutionMod, @Intelligence, @IntelligenceMod, @Wisdom, @WisdomMod, @Charisma, @CharismaMod)", SqLiteDataAccess.ParametersAbility);
+                CharacterDTO.CProficienciesID = SqLiteDataAccess.Insert("INSERT INTO ClassSkillProf (Acrobatics, AnimalHandling, Arcana, Athletics, Deception, History, Insight, Intimidation, Investigation, Medicine, " +
+                    "Nature, Perception, Performance, Persuasion, Religion, SleightofHand, Stealth, Survival) VALUES (@Acrobatics, @AnimalHandling, @Arcana, @Athletics, @Deception, @History, @Insight, @Intimidation, @Investigation, @Medicine, " +
+                    "@Nature, @Perception, @Performance, @Persuasion, @Religion, @SleightofHand, @Stealth, @Survival)", SqLiteDataAccess.ParametersSkills);
+            }
+            SqLiteDataAccess.UpdateBase();
+            SqLiteDataAccess.UpdateAbility();
+            SqLiteDataAccess.UpdateSkills(ProficienciesPage.ChosedSkillProf);
+        }
+
     }   
 }
