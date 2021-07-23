@@ -33,6 +33,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             this.btnExit = new System.Windows.Forms.Button();
             this.btnHelp = new System.Windows.Forms.Button();
             this.panelCharacterSubMenu = new System.Windows.Forms.Panel();
+            this.btnReview = new System.Windows.Forms.Button();
             this.btnProficiencies = new System.Windows.Forms.Button();
             this.btnAbility = new System.Windows.Forms.Button();
             this.btnRace = new System.Windows.Forms.Button();
@@ -94,7 +95,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             this.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHelp.ForeColor = System.Drawing.Color.Silver;
             this.btnHelp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHelp.Location = new System.Drawing.Point(0, 428);
+            this.btnHelp.Location = new System.Drawing.Point(0, 464);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.btnHelp.Size = new System.Drawing.Size(250, 45);
@@ -108,6 +109,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             // panelCharacterSubMenu
             // 
             this.panelCharacterSubMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.panelCharacterSubMenu.Controls.Add(this.btnReview);
             this.panelCharacterSubMenu.Controls.Add(this.btnProficiencies);
             this.panelCharacterSubMenu.Controls.Add(this.btnAbility);
             this.panelCharacterSubMenu.Controls.Add(this.btnRace);
@@ -118,8 +120,26 @@ namespace DnD_CharacterBuilder_GUI.Forms
             this.panelCharacterSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelCharacterSubMenu.Location = new System.Drawing.Point(0, 137);
             this.panelCharacterSubMenu.Name = "panelCharacterSubMenu";
-            this.panelCharacterSubMenu.Size = new System.Drawing.Size(250, 291);
+            this.panelCharacterSubMenu.Size = new System.Drawing.Size(250, 327);
             this.panelCharacterSubMenu.TabIndex = 2;
+            // 
+            // btnReview
+            // 
+            this.btnReview.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnReview.FlatAppearance.BorderSize = 0;
+            this.btnReview.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(38)))), ((int)(((byte)(46)))));
+            this.btnReview.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(38)))), ((int)(((byte)(46)))));
+            this.btnReview.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReview.ForeColor = System.Drawing.Color.Silver;
+            this.btnReview.Location = new System.Drawing.Point(0, 284);
+            this.btnReview.Name = "btnReview";
+            this.btnReview.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnReview.Size = new System.Drawing.Size(250, 40);
+            this.btnReview.TabIndex = 7;
+            this.btnReview.Text = "Character Review";
+            this.btnReview.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReview.UseVisualStyleBackColor = true;
+            this.btnReview.Click += new System.EventHandler(this.btnReview_Click);
             // 
             // btnProficiencies
             // 
@@ -337,5 +357,6 @@ namespace DnD_CharacterBuilder_GUI.Forms
         private System.Windows.Forms.Button btnProficiencies;
         public System.Windows.Forms.Button btnBase;
         public System.Windows.Forms.Panel panelChildForm;
+        private System.Windows.Forms.Button btnReview;
     }
 }

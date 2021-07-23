@@ -90,9 +90,10 @@ namespace DnD_CharacterBuilder_GUI.Forms
                     "Nature, Perception, Performance, Persuasion, Religion, SleightofHand, Stealth, Survival) VALUES (@Acrobatics, @AnimalHandling, @Arcana, @Athletics, @Deception, @History, @Insight, @Intimidation, @Investigation, @Medicine, " +
                     "@Nature, @Perception, @Performance, @Persuasion, @Religion, @SleightofHand, @Stealth, @Survival)", SqLiteDataAccess.ParametersSkills);
             }
-            SqLiteDataAccess.UpdateBase();
-            SqLiteDataAccess.UpdateAbility();
-            SqLiteDataAccess.UpdateSkills(ProficienciesPage.ChosedSkillProf);
+            if (SqLiteDataAccess.UpdateBase() == true && SqLiteDataAccess.UpdateAbility() == true && SqLiteDataAccess.UpdateSkills(ProficienciesPage.ChosedSkillProf) == true)
+            {
+                DialogResult SaveResult = MessageBox.Show($"{CharacterDTO.CName} \nCharacter Saved Success!");
+            }
         }
 
     }   

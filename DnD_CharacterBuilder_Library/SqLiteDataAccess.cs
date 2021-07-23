@@ -138,16 +138,56 @@ namespace DnD_CharacterBuilder_Library
         public static List<string> SkillProf()
         {
             List<string> prof = new List<string>();
-            DataTable dt = new DataTable();           
-            cmd = new SQLiteCommand($"SELECT SkillName FROM Skills WHERE {CharacterDTO.CClass} = 1 ", con);
+            try
+            {
+                DataTable dt = new DataTable();
+                cmd = new SQLiteCommand($"SELECT SkillName FROM Skills WHERE {CharacterDTO.CClass} = 1 ", con);
+                con.Open();
+                adapt = new SQLiteDataAdapter(cmd);
+                adapt.Fill(dt);
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    prof.Add(dt.Rows[i]["SkillName"].ToString());
+                }
+            }
+            catch (Exception)
+            {; }
+            finally
+            {
+                con.Close();
+            }
+            return prof;
+        }
+        public static List<string> LoadSkillProf()
+        {
+            List<string> prof = new List<string>();
+            DataTable dt = new DataTable();
             con.Open();
+            cmd = new SQLiteCommand("SELECT * FROM ClassSkillProf WHERE ProficienciesID = @ProficienciesID", con);
+            cmd.Parameters.AddWithValue("ProficienciesID", CharacterDTO.CProficienciesID);
             adapt = new SQLiteDataAdapter(cmd);
             adapt.Fill(dt);
-            con.Close();
-            for (int i = 0; i < dt.Rows.Count; i++)
+            
+            foreach (DataRow row in dt.Rows)
             {
-                prof.Add(dt.Rows[i]["SkillName"].ToString());
+                foreach (DataColumn column in dt.Columns)
+                {
+                    string columnName = column.ColumnName;
+                    if (Convert.ToInt32(row[column]) == 1)
+                    {
+                        if (columnName == "AnimalHandling")
+                        {
+                            columnName = "Animal Handling";
+                        }
+                        else if (columnName == "SleightofHand")
+                        {
+                            columnName = "Sleight of Hand";
+                        }
+                        prof.Add(columnName);
+                    }
+                }
             }
+            con.Close();
             return prof;
         }
         public static DataTable Search(string label)

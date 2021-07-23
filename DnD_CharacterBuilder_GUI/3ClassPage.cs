@@ -41,20 +41,26 @@ namespace DnD_CharacterBuilder_GUI.Forms
         private void ListBoxClass_SelectedValueChanged(object sender, EventArgs e)
         {
             richTextBoxClass.ResetText();
-            CharacterDTO.CClass = listBoxClass.SelectedItem.ToString();
-            ClassDTO.ClassDetail = SqLiteDataAccess.ImportOneThing("SELECT ClassDetail FROM Class WHERE ClassName = @ClassName","ClassName", CharacterDTO.CClass).ToString();
-            richTextBoxClass.Text = ClassDTO.ClassDetail;             
+            if (listBoxClass.SelectedItem !=null)
+            {
+                CharacterDTO.CClass = listBoxClass.SelectedItem.ToString();
+                ClassDTO.ClassDetail = SqLiteDataAccess.ImportOneThing("SELECT ClassDetail FROM Class WHERE ClassName = @ClassName", "ClassName", CharacterDTO.CClass).ToString();
+                richTextBoxClass.Text = ClassDTO.ClassDetail;
+            }
+                        
         }
         private void ListBoxClass_DoubleClick(object sender, EventArgs e)
         {
-            CharacterDTO.CClass = listBoxClass.SelectedItem.ToString();
+            if (listBoxClass.SelectedItem != null)
+            {
+                CharacterDTO.CClass = listBoxClass.SelectedItem.ToString();
+            }
             if (CharacterDTO.CClass != "")
             {
                 listBoxClass.Visible = false;
                 ChoosedPClass.Visible = true;
                 btnExit2.Visible = true;
                 ChoosedPClass.Text = CharacterDTO.CClass;
-                ClassDTO.ClassSkillnum = Convert.ToInt32(SqLiteDataAccess.ImportOneThing("SELECT NumberofSkill FROM Class WHERE ClassName = @ClassName", "ClassName",CharacterDTO.CClass));
             }
         }
         private void BtnExit_Click(object sender, EventArgs e)

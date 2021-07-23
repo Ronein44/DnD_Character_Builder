@@ -19,7 +19,16 @@ namespace DnD_CharacterBuilder_GUI.Forms
         public ProficienciesPage()
         {
             InitializeComponent();
-
+            ClassDTO.ClassSkillnum = Convert.ToInt32(SqLiteDataAccess.ImportOneThing("SELECT NumberofSkill FROM Class WHERE ClassName = @ClassName", "ClassName", CharacterDTO.CClass));
+            if (ClassDTO.ClassSkillnum !=0)
+            {
+                labelSkillnum.Text = $"Please choose: {ClassDTO.ClassSkillnum} skills!";
+            }
+            else
+            {
+                labelSkillnum.Text = "Please select Class first!";
+            }
+            
             foreach (string item in SqLiteDataAccess.SkillProf())
             {
                 Skills.Items.Add(item);
@@ -45,9 +54,13 @@ namespace DnD_CharacterBuilder_GUI.Forms
         }
 
         private void Skills_SelectedIndexChanged(object sender, EventArgs e)
-        {            
+        {
             richTextBoxProfDetail.ResetText();
-            richTextBoxProfDetail.Text = SqLiteDataAccess.ImportOneThing("SELECT SkillDetail FROM Skills WHERE SkillName = @SkillName", "SkillName", Skills.SelectedItem).ToString();           
+
+            if (Skills.SelectedItem != null)
+            {
+                richTextBoxProfDetail.Text = SqLiteDataAccess.ImportOneThing("SELECT SkillDetail FROM Skills WHERE SkillName = @SkillName", "SkillName", Skills.SelectedItem).ToString();
+            }
         }
 
         private void Skills_ItemCheck(object sender, ItemCheckEventArgs e)

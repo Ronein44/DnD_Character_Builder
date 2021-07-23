@@ -35,6 +35,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             this.richTextBoxProfDetail = new System.Windows.Forms.RichTextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.labelSkillnum = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -82,14 +83,14 @@ namespace DnD_CharacterBuilder_GUI.Forms
             this.Skills.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.Skills_ItemCheck);
             this.Skills.SelectedIndexChanged += new System.EventHandler(this.Skills_SelectedIndexChanged);
             // 
-            // richTextBox1
+            // richTextBoxProfDetail
             // 
             this.richTextBoxProfDetail.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.richTextBoxProfDetail.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBoxProfDetail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBoxProfDetail.Location = new System.Drawing.Point(714, 73);
             this.richTextBoxProfDetail.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.richTextBoxProfDetail.Name = "richTextBox1";
+            this.richTextBoxProfDetail.Name = "richTextBoxProfDetail";
             this.richTextBoxProfDetail.ReadOnly = true;
             this.richTextBoxProfDetail.Size = new System.Drawing.Size(703, 722);
             this.richTextBoxProfDetail.TabIndex = 0;
@@ -104,6 +105,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             this.tableLayoutPanel1.Controls.Add(this.Skills, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.btnExit, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.labelSkillnum, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -131,6 +133,18 @@ namespace DnD_CharacterBuilder_GUI.Forms
             this.tableLayoutPanel2.Size = new System.Drawing.Size(187, 28);
             this.tableLayoutPanel2.TabIndex = 46;
             // 
+            // labelSkillnum
+            // 
+            this.labelSkillnum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelSkillnum.AutoSize = true;
+            this.labelSkillnum.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelSkillnum.ForeColor = System.Drawing.SystemColors.Control;
+            this.labelSkillnum.Location = new System.Drawing.Point(3, 42);
+            this.labelSkillnum.Name = "labelSkillnum";
+            this.labelSkillnum.Size = new System.Drawing.Size(704, 20);
+            this.labelSkillnum.TabIndex = 47;
+            this.labelSkillnum.Text = "label1";
+            // 
             // ProficienciesPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -144,6 +158,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Skills";
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -157,5 +172,6 @@ namespace DnD_CharacterBuilder_GUI.Forms
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         public System.Windows.Forms.CheckedListBox Skills;
+        private System.Windows.Forms.Label labelSkillnum;
     }
 }

@@ -61,14 +61,9 @@ namespace DnD_CharacterBuilder_GUI.Forms
         private void BtnLoad_Click(object sender, EventArgs e)
         {
             CharacterDTO.CharacterID = Convert.ToInt32(CharacterLoad.CurrentRow.Cells[0].Value);
-            try
-            {
-                CharacterDTO.CAbilityID = Convert.ToInt32(SqLiteDataAccess.ImportOneThing("SELECT CharacterAbilityID FROM Character WHERE CharacterID = @CharacterID", "CharacterID", CharacterDTO.CharacterID));
-            }
-            catch (Exception)
-            {
-                //Nothing
-            }            
+            CharacterDTO.CAbilityID = Convert.ToInt32(SqLiteDataAccess.ImportOneThing("SELECT CharacterAbilityID FROM Character WHERE CharacterID = @CharacterID", "CharacterID", CharacterDTO.CharacterID));
+            CharacterDTO.CProficienciesID = Convert.ToInt32(SqLiteDataAccess.ImportOneThing("SELECT CharacterProficienciesID FROM Character WHERE CharacterID = @CharacterID", "CharacterID", CharacterDTO.CharacterID));
+            ProficienciesPage.ChosedSkillProf = SqLiteDataAccess.LoadSkillProf();
             CharacterDTO.CName = CharacterLoad.CurrentRow.Cells[1].Value.ToString();
             CharacterDTO.PName = CharacterLoad.CurrentRow.Cells[2].Value.ToString();
             CharacterDTO.CLvl = Convert.ToInt32(CharacterLoad.CurrentRow.Cells[3].Value);
@@ -91,8 +86,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             AbilityDTO.WisMod = Convert.ToInt32(SqLiteDataAccess.ImportOneThing("SELECT WisdomMod FROM Ability WHERE AbilityID = @AbilityID", "AbilityID", CharacterDTO.CAbilityID));
             AbilityDTO.Charisma = Convert.ToInt32(SqLiteDataAccess.ImportOneThing("SELECT Charisma FROM Ability WHERE AbilityID = @AbilityID", "AbilityID", CharacterDTO.CAbilityID));
             AbilityDTO.ChaMod = Convert.ToInt32(SqLiteDataAccess.ImportOneThing("SELECT CharismaMod FROM Ability WHERE AbilityID = @AbilityID", "AbilityID", CharacterDTO.CAbilityID));
-
-
+            DialogResult LoadResult = MessageBox.Show($"{CharacterDTO.CName} \nCharacter Load Success!");
         }
 
         private void BtnSearch_Click(object sender, EventArgs e)

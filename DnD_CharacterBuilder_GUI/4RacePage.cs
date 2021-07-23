@@ -41,9 +41,13 @@ namespace DnD_CharacterBuilder_GUI.Forms
         private void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {            
             richTextBoxRace.ResetText();
-            CharacterDTO.CRace = listBoxRace.SelectedItem.ToString();
-            RaceDTO.RaceDetail = SqLiteDataAccess.ImportOneThing("SELECT RaceDetail FROM Race WHERE RaceName = @RaceName", "RaceName", CharacterDTO.CRace).ToString();
-            richTextBoxRace.Text = RaceDTO.RaceDetail;
+            if (listBoxRace.SelectedItem != null)
+            {
+                CharacterDTO.CRace = listBoxRace.SelectedItem.ToString();
+                RaceDTO.RaceDetail = SqLiteDataAccess.ImportOneThing("SELECT RaceDetail FROM Race WHERE RaceName = @RaceName", "RaceName", CharacterDTO.CRace).ToString();
+                richTextBoxRace.Text = RaceDTO.RaceDetail;
+            }
+            
         }
 
         private void BtnExit_Click(object sender, EventArgs e)
@@ -60,7 +64,10 @@ namespace DnD_CharacterBuilder_GUI.Forms
 
         private void ListBoxRace_DoubleClick(object sender, EventArgs e)
         {
-            CharacterDTO.CRace = listBoxRace.SelectedItem.ToString();
+            if (listBoxRace.SelectedItem !=null)
+            {
+                CharacterDTO.CRace = listBoxRace.SelectedItem.ToString();
+            }
             if (CharacterDTO.CRace != "")
             {
                 listBoxRace.Visible = false;

@@ -80,8 +80,12 @@ namespace DnD_CharacterBuilder_GUI.Forms
         {
             OpenChildForm(new ProficienciesPage());
         }
+        private void btnReview_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new OverviewPage());
+        }
         //endregion
-        
+
         private void BtnHelp_Click(object sender, EventArgs e)
         {
             HideSubMenu();
@@ -124,7 +128,8 @@ namespace DnD_CharacterBuilder_GUI.Forms
             btnClass.Enabled = input;
             btnRace.Enabled = input;
             btnAbility.Enabled = input;
-            btnProficiencies.Enabled = input;          
+            btnProficiencies.Enabled = input;
+            btnReview.Enabled = input;
         }
         
         private void HideSubMenu()
@@ -141,6 +146,6 @@ namespace DnD_CharacterBuilder_GUI.Forms
             else
                 subMenu.Visible = false;
         }
-
+        
     }
 }
