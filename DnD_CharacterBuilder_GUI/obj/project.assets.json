@@ -4617,20 +4617,20 @@
   },
   "packageFolders": {
     "C:\\Users\\ronai\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\VS\\Rónai_Péter_SZF57_Szakdolgozat\\DnD_CharacterBuilder_GUI\\DnD_CharacterBuilder_GUI.csproj",
+      "projectUniqueName": "D:\\prog\\VS\\DnD_Character_Builder\\DnD_CharacterBuilder_GUI\\DnD_CharacterBuilder_GUI.csproj",
       "projectName": "DnD_CharacterBuilder_GUI",
-      "projectPath": "F:\\VS\\Rónai_Péter_SZF57_Szakdolgozat\\DnD_CharacterBuilder_GUI\\DnD_CharacterBuilder_GUI.csproj",
+      "projectPath": "D:\\prog\\VS\\DnD_Character_Builder\\DnD_CharacterBuilder_GUI\\DnD_CharacterBuilder_GUI.csproj",
       "packagesPath": "C:\\Users\\ronai\\.nuget\\packages\\",
-      "outputPath": "F:\\VS\\Rónai_Péter_SZF57_Szakdolgozat\\DnD_CharacterBuilder_GUI\\obj\\",
+      "outputPath": "D:\\prog\\VS\\DnD_Character_Builder\\DnD_CharacterBuilder_GUI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
@@ -4649,8 +4649,8 @@
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "projectReferences": {
-            "F:\\VS\\Rónai_Péter_SZF57_Szakdolgozat\\DnD_CharacterBuilder_Library\\DnD_CharacterBuilder_Library.csproj": {
-              "projectPath": "F:\\VS\\Rónai_Péter_SZF57_Szakdolgozat\\DnD_CharacterBuilder_Library\\DnD_CharacterBuilder_Library.csproj"
+            "D:\\prog\\VS\\DnD_Character_Builder\\DnD_CharacterBuilder_Library\\DnD_CharacterBuilder_Library.csproj": {
+              "projectPath": "D:\\prog\\VS\\DnD_Character_Builder\\DnD_CharacterBuilder_Library\\DnD_CharacterBuilder_Library.csproj"
             }
           }
         }

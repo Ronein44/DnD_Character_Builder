@@ -68,7 +68,7 @@ namespace DnD_CharacterBuilder_GUI
 
         private void btnDownload_Click(object sender, EventArgs e)
         {
-
+            CreatPDF.PDF();
         }
     }
 }

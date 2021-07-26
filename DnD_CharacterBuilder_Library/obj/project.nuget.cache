@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "XDSH0EikesBNaTpp0HaNFU4qNA7+A5ZtPy7dOQqOeEWK8uA8QtgMVZSMybLq/X4njG9WZQNyot7hsT0UL4eXYA==",
+  "dgSpecHash": "EO6RsAlbFyYlGscKddjcEf8XHU61fUFALrLnsPcTwXN4qxPyvk2h7oyU81Mh0sT7mazLE2R44aAb+O/1x1k0wQ==",
   "success": true,
-  "projectFilePath": "F:\\VS\\Rónai_Péter_SZF57_Szakdolgozat\\DnD_CharacterBuilder_Library\\DnD_CharacterBuilder_Library.csproj",
+  "projectFilePath": "D:\\prog\\VS\\DnD_Character_Builder\\DnD_CharacterBuilder_Library\\DnD_CharacterBuilder_Library.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ronai\\.nuget\\packages\\common.logging\\3.4.1\\common.logging.3.4.1.nupkg.sha512",
     "C:\\Users\\ronai\\.nuget\\packages\\common.logging.core\\3.4.1\\common.logging.core.3.4.1.nupkg.sha512",
