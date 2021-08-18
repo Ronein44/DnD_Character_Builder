@@ -65,10 +65,19 @@ namespace DnD_CharacterBuilder_GUI
                 label.Text = number.ToString();
             }
         }
-
-        private void btnDownload_Click(object sender, EventArgs e)
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            CreatPDF.PDF();
         }
+        private void btnPrint_Click(object sender, EventArgs e)
+        {           
+            PrintDialog print = new PrintDialog();
+            print.Document = printDocument1;
+            DialogResult result = print.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+               
+            }           
+        }       
     }
 }
