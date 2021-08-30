@@ -9,7 +9,11 @@ namespace DnD_CharacterBuilder_Library
 {
     public class PDFLayout
     {
-        string htmlCode = "< html lang=\"en\"><head><meta charset=\"UTF-8\">" +
+        public static string htmlCode = 
+            "<html lang=\"en\">" +
+            "<head>" +
+            "<meta charset=\"UTF-8\">" +
+            //CSS
             "<style>.hide {  display: none !important;}" +
             "textarea {  font-size: 12px;  text-align: left;  width: calc(100% - 20px - 2px);  border-radius: 10px;  padding: 10px;  resize: none;  overflow: hidden;  height: 15em;}" +
             "input[type=checkbox] {  cursor: pointer;}div.box {  margin-top: 10px;}form.charsheet {  width: 800px;  right: 0;  left: 0;  margin-right: auto;  margin-left: auto;  margin-top: 10px;}" +
@@ -119,31 +123,45 @@ namespace DnD_CharacterBuilder_Library
             "form.charsheet main section.features div {  padding: 10px;  border: 1px solid black;  border-radius: 10px;  display: flex;  flex-direction: column-reverse;}" +
             "form.charsheet main section.features div label {  text-align: center;}" +
             "form.charsheet main section.features div textarea {  border: 0;  padding: 5px;  height: 43em;}" +
+            //CSS END
             "</style></head>" +
             "<body translate=\"no\">" +
             "<form class=\"charsheet\">" +
             "<header>" +
-            "<section class=\"charname\"> <label for=\"charname\">Character Name</label><input name=\"charname\" placeholder=\"Thoradin Fireforge\"> </section>" +
+            //Name
+            $"<section class=\"charname\"> <label for=\"charname\">Character Name</label><input name=\"charname\" value={CharacterDTO.CName}> </section>" +
             "<section class=\"misc\">" +
             "<ul>" +
-            "<li><label for=\"classlevel\">Class &amp; Level</label><input name=\"classlevel\" placeholder=\"Paladin 2\"></li>" +
-            "<li><label for=\"background\">Background</label><input name=\"background\" placeholder=\"Acolyte\"></li>" +
-            "<li><label for=\"playername\">Player Name</label><input name=\"playername\" placeholder=\"Player McPlayerface\"></li>" +
-            "<li><label for=\"race\">Race</label><input name=\"race\" placeholder=\"Half-elf\"></li>" +
-            "<li><label for=\"alignment\">Alignment</label><input name=\"alignment\" placeholder=\"Lawful Good\"></li>" +
-            "<li><label for=\"experiencepoints\">Experience Points</label><input name=\"experiencepoints\" placeholder=\"3240\"></li>" +
+            //Class
+            $"<li><label for=\"classlevel\">Class &amp; Level</label><input name=\"classlevel\" value={CharacterDTO.CLvl}></li>" +
+            //Background
+            $"<li><label for=\"background\">Background</label><input name=\"background\" value=\"\"></li>" +
+            //PlayerName
+            $"<li><label for=\"playername\">Player Name</label><input name=\"playername\" value={CharacterDTO.PName}></li>" +
+            //Race
+            $"<li><label for=\"race\">Race</label><input name=\"race\" value={CharacterDTO.CRace}></li>" +
+            //Alignment
+            $"<li><label for=\"alignment\">Alignment</label><input name=\"alignment\" value={CharacterDTO.CAlignment}></li>" +
+            //XP
+            $"<li><label for=\"experiencepoints\">Experience Points</label><input name=\"experiencepoints\" value=\"\"></li>" +
             "</ul></section></header>" +
             "<main>" +
             "<section>" +
             "<section class=\"attributes\">" +
             "<div class=\"scores\">" +
             "<ul>" +
-            "<li><div class=\"score\"><label for=\"Strengthscore\">Strength</label><input name=\"Strengthscore\" placeholder=\"10\"></div><div class=\"modifier\"><input name=\"Strengthmod\" placeholder=\"+0\"></div></li>" +
-            "<li><div class=\"score\"><label for=\"Dexterityscore\">Dexterity</label><input name=\"Dexterityscore\" placeholder=\"10\"></div><div class=\"modifier\"><input name=\"Dexteritymod\" placeholder=\"+0\"></div></li>" +
-            "<li><div class=\"score\"><label for=\"Constitutionscore\">Constitution</label><input name=\"Constitutionscore\" placeholder=\"10\"></div><div class=\"modifier\"><input name=\"Constitutionmod\" placeholder=\"+0\"></div></li>" +
-            "<li><div class=\"score\"><label for=\"Wisdomscore\">Wisdom</label><input name=\"Wisdomscore\" placeholder=\"10\"></div><div class=\"modifier\"><input name=\"Wisdommod\" placeholder=\"+0\"></div></li>" +
-            "<li><div class=\"score\"><label for=\"Intelligencescore\">Intelligence</label><input name=\"Intelligencescore\" placeholder=\"10\"></div><div class=\"modifier\"><input name=\"Intelligencemod\" placeholder=\"+0\"></div></li>" +
-            "<li><div class=\"score\"><label for=\"Charismascore\">Charisma</label><input name=\"Charismascore\" placeholder=\"10\"></div><div class=\"modifier\"><input name=\"Charismamod\" placeholder=\"+0\"></div></li>" +
+            //Str
+            $"<li><div class=\"score\"><label for=\"Strengthscore\">Strength</label><input name=\"Strengthscore\" value={AbilityDTO.Strength}></div><div class=\"modifier\"><input name=\"Strengthmod\" value={AbilityDTO.StrMod}></div></li>" +
+            //Dex
+            $"<li><div class=\"score\"><label for=\"Dexterityscore\">Dexterity</label><input name=\"Dexterityscore\" value={AbilityDTO.Dexterity}></div><div class=\"modifier\"><input name=\"Dexteritymod\" value={AbilityDTO.DexMod}></div></li>" +
+            //Con
+            $"<li><div class=\"score\"><label for=\"Constitutionscore\">Constitution</label><input name=\"Constitutionscore\" value={AbilityDTO.Constitution}></div><div class=\"modifier\"><input name=\"Constitutionmod\" value={AbilityDTO.ConMod}></div></li>" +
+            //Wis
+            $"<li><div class=\"score\"><label for=\"Wisdomscore\">Wisdom</label><input name=\"Wisdomscore\" value={AbilityDTO.Wisdom}></div><div class=\"modifier\"><input name=\"Wisdommod\" value={AbilityDTO.WisMod}></div></li>" +
+            //Int
+            $"<li><div class=\"score\"><label for=\"Intelligencescore\">Intelligence</label><input name=\"Intelligencescore\" value={AbilityDTO.Intelligence}></div><div class=\"modifier\"><input name=\"Intelligencemod\" value={AbilityDTO.IntMod}></div></li>" +
+            //Cha
+            $"<li><div class=\"score\"><label for=\"Charismascore\">Charisma</label><input name=\"Charismascore\" value={AbilityDTO.Charisma}></div><div class=\"modifier\"><input name=\"Charismamod\" value={AbilityDTO.ChaMod}></div></li>" +
             "</ul></div>" +
             "<div class=\"attr-applications\"><div class=\"inspiration box\"><div class=\"label-container\">" +
             "<label for=\"inspiration\">Inspiration</label></div><input name=\"inspiration\" type=\"checkbox\"></div>" +
@@ -189,10 +207,49 @@ namespace DnD_CharacterBuilder_Library
             "<div class=\"armorclass\"><div><label for=\"ac\">Armor Class</label><input name=\"ac\" placeholder=\"10\" type=\"text\"></div></div>" +
             "<div class=\"initiative\"><div><label for=\"initiative\">Initiative</label><input name=\"initiative\" placeholder=\"+0\" type=\"text\"></div></div>" +
             "<div class=\"speed\"><div><label for=\"speed\">Speed</label><input name=\"speed\" placeholder=\"30\" type=\"text\"></div></div>" +
-            "<div class=\"hp\"><div class=\"regular\"><div class=\"max\"><label for=\"maxhp\">Hit Point Maximum</label><input name=\"maxhp\" placeholder=\"10\" type=\"text\">            </div>            <div class=\"current\">              <label for=\"currenthp\">Current Hit Points</label><input name=\"currenthp\" type=\"text\">            </div>          </div>          <div class=\"temporary\">            <label for=\"temphp\">Temporary Hit Points</label><input name=\"temphp\" type=\"text\">          </div>        </div>        <div class=\"hitdice\">          <div>            <div class=\"total\">              <label for=\"totalhd\">Total</label><input name=\"totalhd\" placeholder=\"2d10\" type=\"text\">            </div>            <div class=\"remaining\">              <label for=\"remaininghd\">Hit Dice</label><input name=\"remaininghd\" type=\"text\">            </div>          </div>        </div>        <div class=\"deathsaves\">          <div>            <div class=\"label\">              <label>Death Saves</label>            </div>            <div class=\"marks\">              <div class=\"deathsuccesses\">                <label>Successes</label>                <div class=\"bubbles\">                  <input name=\"deathsuccess1\" type=\"checkbox\">                  <input name=\"deathsuccess2\" type=\"checkbox\">                  <input name=\"deathsuccess3\" type=\"checkbox\">                </div>              </div>              <div class=\"deathfails\">                <label>Failures</label>                <div class=\"bubbles\">                  <input name=\"deathfail1\" type=\"checkbox\">                  <input name=\"deathfail2\" type=\"checkbox\">                  <input name=\"deathfail3\" type=\"checkbox\">                </div>              </div>            </div>          </div>        </div>      </section>      <section class=\"attacksandspellcasting\">        <div>          <label>Attacks &amp; Spellcasting</label>          <table>            <thead>              <tr>                <th>                  Name                </th>                <th>                  Atk Bonus                </th>                <th>                  Damage/Type                </th>              </tr>            </thead>            <tbody>              <tr>                <td>                  <input name=\"atkname1\" type=\"text\">                </td>                <td>                  <input name=\"atkbonus1\" type=\"text\">                </td>                <td>                  <input name=\"atkdamage1\" type=\"text\">                </td>              </tr>              <tr>                <td>                  <input name=\"atkname2\" type=\"text\">                </td>                <td>                  <input name=\"atkbonus2\" type=\"text\">                </td>                <td>                  <input name=\"atkdamage2\" type=\"text\">                </td>              </tr>              <tr>                <td>                  <input name=\"atkname3\" type=\"text\">                </td>                <td>                  <input name=\"atkbonus3\" type=\"text\">                </td>                <td>                  <input name=\"atkdamage3\" type=\"text\">                </td>              </tr>            </tbody>          </table>          <textarea></textarea>        </div>      </section>      <section class=\"equipment\">        <div>          <label>Equipment</label>          <div class=\"money\">            <ul>              <li>                <label for=\"cp\">cp</label><input name=\"cp\">              </li>              <li>                <label for=\"sp\">sp</label><input name=\"sp\">              </li>              <li>                <label for=\"ep\">ep</label><input name=\"ep\">              </li>              <li>                <label for=\"gp\">gp</label><input name=\"gp\">              </li>              <li>                <label for=\"pp\">pp</label><input name=\"pp\">              </li>            </ul>          </div>          <textarea placeholder=\"Equipment list here\"></textarea>        </div>      </section>    </section>    <section>      <section class=\"flavor\">        <div class=\"personality\">          <label for=\"personality\">Personality</label><textarea name=\"personality\"></textarea>        </div>        <div class=\"ideals\">          <label for=\"ideals\">Ideals</label><textarea name=\"ideals\"></textarea>        </div>        <div class=\"bonds\">          <label for=\"bonds\">Bonds</label><textarea name=\"bonds\"></textarea>        </div>        <div class=\"flaws\">          <label for=\"flaws\">Flaws</label><textarea name=\"flaws\"></textarea>        </div>      </section>      <section class=\"features\">        <div>          <label for=\"features\">Features &amp; Traits</label><textarea name=\"features\"></textarea>        </div>      </section>    </section>  </main></form></body></html>";
-
-
-
-
+            "<div class=\"hp\"><div class=\"regular\"><div class=\"max\"><label for=\"maxhp\">Hit Point Maximum</label><input name=\"maxhp\" placeholder=\"10\" type=\"text\"></div> " +
+            "<div class=\"current\"><label for=\"currenthp\">Current Hit Points</label><input name=\"currenthp\" type=\"text\"></div></div>" +
+            "<div class=\"temporary\"><label for=\"temphp\">Temporary Hit Points</label><input name=\"temphp\" type=\"text\"></div></div>" +
+            "<div class=\"hitdice\"><div><div class=\"total\"><label for=\"totalhd\">Total</label><input name=\"totalhd\" placeholder=\"2d10\" type=\"text\"></div>" +
+            "<div class=\"remaining\"><label for=\"remaininghd\">Hit Dice</label><input name=\"remaininghd\" type=\"text\"></div></div></div>" +
+            "<div class=\"deathsaves\"><div><div class=\"label\"><label>Death Saves</label></div>" +
+            "<div class=\"marks\"><div class=\"deathsuccesses\"><label>Successes</label><div class=\"bubbles\"><input name=\"deathsuccess1\" type=\"checkbox\"><input name=\"deathsuccess2\" type=\"checkbox\"><input name=\"deathsuccess3\" type=\"checkbox\"></div></div>" +
+            "<div class=\"deathfails\"><label>Failures</label><div class=\"bubbles\"><input name=\"deathfail1\" type=\"checkbox\"><input name=\"deathfail2\" type=\"checkbox\"><input name=\"deathfail3\" type=\"checkbox\"></div></div></div></div></div>" +
+            "</section>" +
+            "<section class=\"attacksandspellcasting\">" +
+            "<div><label>Attacks &amp; Spellcasting</label>" +
+            "<table><thead><tr><th>Name</th><th>Atk Bonus</th><th>Damage/Type</th></tr></thead>" +
+            "<tbody><tr><td><input name=\"atkname1\" type=\"text\"></td>" +
+            "<td><input name=\"atkbonus1\" type=\"text\"></td>" +
+            "<td><input name=\"atkdamage1\" type=\"text\"></td></tr>" +
+            "<tr><td><input name=\"atkname2\" type=\"text\"></td>" +
+            "<td><input name=\"atkbonus2\" type=\"text\"></td>" +
+            "<td><input name=\"atkdamage2\" type=\"text\"></td></tr>" +
+            "<tr><td><input name=\"atkname3\" type=\"text\"></td>" +
+            "<td><input name=\"atkbonus3\" type=\"text\"></td>" +
+            "<td><input name=\"atkdamage3\" type=\"text\"></td></tr></tbody></table>" +
+            "<textarea></textarea></div>" +
+            "</section>" +
+            "<section class=\"equipment\">" +
+            "<div><label>Equipment</label><div class=\"money\"><ul>" +
+            "<li><label for=\"cp\">cp</label><input name=\"cp\"></li>" +
+            "<li><label for=\"sp\">sp</label><input name=\"sp\"></li>" +
+            "<li><label for=\"ep\">ep</label><input name=\"ep\"></li>" +
+            "<li><label for=\"gp\">gp</label><input name=\"gp\"></li>" +
+            "<li><label for=\"pp\">pp</label><input name=\"pp\"></li></ul></div>" +
+            "<textarea placeholder=\"Equipment list here\"></textarea></div>" +
+            "</section></section>" +
+            "<section>" +
+            "<section class=\"flavor\">" +
+            "<div class=\"personality\"><label for=\"personality\">Personality</label><textarea name=\"personality\"></textarea></div>" +
+            "<div class=\"ideals\"><label for=\"ideals\">Ideals</label><textarea name=\"ideals\"></textarea></div>" +
+            "<div class=\"bonds\"><label for=\"bonds\">Bonds</label><textarea name=\"bonds\"></textarea></div>" +
+            "<div class=\"flaws\"><label for=\"flaws\">Flaws</label><textarea name=\"flaws\"></textarea></div>" +
+            "</section>" +
+            "<section class=\"features\">" +
+            "<div><label for=\"features\">Features &amp; Traits</label><textarea name=\"features\"></textarea></div>" +
+            "</section></section>" +
+            "</main></form></body></html>";
     }
+    
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using DnD_CharacterBuilder_Library;
@@ -64,20 +65,11 @@ namespace DnD_CharacterBuilder_GUI
             {
                 label.Text = number.ToString();
             }
-        }
-        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
-        {
-        }
+        }     
         private void btnPrint_Click(object sender, EventArgs e)
-        {           
-            PrintDialog print = new PrintDialog();
-            print.Document = printDocument1;
-            DialogResult result = print.ShowDialog();
-
-            if (result == DialogResult.OK)
-            {
-               
-            }           
-        }       
+        {
+            File.WriteAllText($"{CharacterDTO.CName}_the_{CharacterDTO.CRace}.html", PDFLayout.htmlCode);           
+        }
+        
     }
 }

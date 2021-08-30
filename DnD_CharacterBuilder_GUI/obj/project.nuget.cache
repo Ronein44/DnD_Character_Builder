@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "OmsX8SgOjVagji9M8ue68wgSZpKC3v9v07TFmhcfDpDdL8SlFYol/YAPaqJZg0PQi5OMvenigWC1y2L0ruiH5g==",
+  "dgSpecHash": "MzyzN0/P+elooLee0FbHfCa4qNWuZbcyoiZ3MkVh+sgtoppRfb3kkjnY63aHdrvF8UOH6KkZriEiTUBmDVXZLA==",
   "success": true,
   "projectFilePath": "F:\\VS\\Rónai_Péter_SZF57_Szakdolgozat\\DnD_CharacterBuilder_GUI\\DnD_CharacterBuilder_GUI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ronai\\.nuget\\packages\\dapper\\2.0.90\\dapper.2.0.90.nupkg.sha512",
-    "C:\\Users\\ronai\\.nuget\\packages\\stub.system.data.sqlite.core.netstandard\\1.0.114.3\\stub.system.data.sqlite.core.netstandard.1.0.114.3.nupkg.sha512",
-    "C:\\Users\\ronai\\.nuget\\packages\\system.data.sqlite.core\\1.0.114.3\\system.data.sqlite.core.1.0.114.3.nupkg.sha512"
+    "C:\\Users\\ronai\\.nuget\\packages\\stub.system.data.sqlite.core.netstandard\\1.0.115\\stub.system.data.sqlite.core.netstandard.1.0.115.nupkg.sha512",
+    "C:\\Users\\ronai\\.nuget\\packages\\system.data.sqlite.core\\1.0.115\\system.data.sqlite.core.1.0.115.nupkg.sha512"
   ],
   "logs": []
 }

@@ -11,7 +11,7 @@
           "lib/net5.0/Dapper.dll": {}
         }
       },
-      "Stub.System.Data.SQLite.Core.NetStandard/1.0.114.3": {
+      "Stub.System.Data.SQLite.Core.NetStandard/1.0.115": {
         "type": "package",
         "compile": {
           "lib/netstandard2.1/System.Data.SQLite.dll": {}
@@ -38,10 +38,10 @@
           }
         }
       },
-      "System.Data.SQLite.Core/1.0.114.3": {
+      "System.Data.SQLite.Core/1.0.115": {
         "type": "package",
         "dependencies": {
-          "Stub.System.Data.SQLite.Core.NetStandard": "1.0.114.3"
+          "Stub.System.Data.SQLite.Core.NetStandard": "[1.0.115]"
         }
       }
     }
@@ -65,10 +65,10 @@
         "lib/netstandard2.0/Dapper.xml"
       ]
     },
-    "Stub.System.Data.SQLite.Core.NetStandard/1.0.114.3": {
-      "sha512": "qXqeVhPtbl/i3t+YUPwbaAGCU+ci8TODUc5zQt6YCjlu5TVnCFiZAmLut3G0/YjO0+FEm9y0l90X+8cem7h84g==",
+    "Stub.System.Data.SQLite.Core.NetStandard/1.0.115": {
+      "sha512": "afpVRUKjuLZ17W2iv779YORpWQN40rJ82g/ASC6Yq1J4emO+8hL316AISf5nJWfXecygLdqevzXxQZR7z2yRww==",
       "type": "package",
-      "path": "stub.system.data.sqlite.core.netstandard/1.0.114.3",
+      "path": "stub.system.data.sqlite.core.netstandard/1.0.115",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -82,18 +82,18 @@
         "runtimes/osx-x64/native/SQLite.Interop.dll",
         "runtimes/win-x64/native/SQLite.Interop.dll",
         "runtimes/win-x86/native/SQLite.Interop.dll",
-        "stub.system.data.sqlite.core.netstandard.1.0.114.3.nupkg.sha512",
+        "stub.system.data.sqlite.core.netstandard.1.0.115.nupkg.sha512",
         "stub.system.data.sqlite.core.netstandard.nuspec"
       ]
     },
-    "System.Data.SQLite.Core/1.0.114.3": {
-      "sha512": "60qfErVKfVoqM1kWUX98QUBUBnivvtCezWB4Yk66AhdXCbPFxnRCq0eLc4LMrOPWOYl69X1xlmnEQ+FowqmDvg==",
+    "System.Data.SQLite.Core/1.0.115": {
+      "sha512": "OuzSKnAnXtbsB7MUddjLiLAUEuEu8kJco3jWllZs+zgYmuiK5VHUHafD74C65HwnnmWVHUvFBrJ0NDAKINuGNQ==",
       "type": "package",
-      "path": "system.data.sqlite.core/1.0.114.3",
+      "path": "system.data.sqlite.core/1.0.115",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "system.data.sqlite.core.1.0.114.3.nupkg.sha512",
+        "system.data.sqlite.core.1.0.115.nupkg.sha512",
         "system.data.sqlite.core.nuspec"
       ]
     }
@@ -101,7 +101,7 @@
   "projectFileDependencyGroups": {
     "net5.0-windows7.0": [
       "Dapper >= 2.0.90",
-      "System.Data.SQLite.Core >= 1.0.114.3"
+      "System.Data.SQLite.Core >= 1.0.115"
     ]
   },
   "packageFolders": {
@@ -156,7 +156,7 @@
           },
           "System.Data.SQLite.Core": {
             "target": "Package",
-            "version": "[1.0.114.3, )"
+            "version": "[1.0.115, )"
           }
         },
         "imports": [
@@ -177,7 +177,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }
