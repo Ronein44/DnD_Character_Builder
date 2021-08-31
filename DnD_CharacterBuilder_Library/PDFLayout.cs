@@ -9,7 +9,7 @@ namespace DnD_CharacterBuilder_Library
 {
     public class PDFLayout
     {
-        public static string htmlCode = 
+        public string htmlCode = 
             "<html lang=\"en\">" +
             "<head>" +
             "<meta charset=\"UTF-8\">" +
@@ -143,7 +143,7 @@ namespace DnD_CharacterBuilder_Library
             //Alignment
             $"<li><label for=\"alignment\">Alignment</label><input name=\"alignment\" value={CharacterDTO.CAlignment}></li>" +
             //XP
-            $"<li><label for=\"experiencepoints\">Experience Points</label><input name=\"experiencepoints\" value=\"\"></li>" +
+            "<li><label for=\"experiencepoints\">Experience Points</label><input name=\"experiencepoints\" value=\"\"></li>" +
             "</ul></section></header>" +
             "<main>" +
             "<section>" +
