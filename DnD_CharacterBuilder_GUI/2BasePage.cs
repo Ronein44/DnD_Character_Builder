@@ -80,15 +80,16 @@ namespace DnD_CharacterBuilder_GUI.Forms
         }
         public static void Save()
         {
+            CharacterDTO.HP = Method.PHp(CharacterDTO.CLvl, ClassDTO.ClassHitDice);
             if (CharacterDTO.CharacterID == 0)
             {
-                CharacterDTO.CharacterID = SqLiteDataAccess.Insert("INSERT INTO Character (CharacterName, PlayerName, CharacterLvl, CharacterGender, CharacterAge, CharacterWeight, CharacterHeight, CharacterAlignment) " +
-                "VALUES (@CharacterName, @PlayerName, @CharacterLvl, @CharacterGender, @CharacterAge, @CharacterWeight, @CharacterHeight, @CharacterAlignment)", SqLiteDataAccess.Parameters);
+                CharacterDTO.CharacterID = SqLiteDataAccess.Insert("INSERT INTO Character (CharacterName, PlayerName, CharacterLvl, CharacterGender, CharacterAge, CharacterWeight, CharacterHeight, CharacterAlignment, CharacterHP) " +
+                "VALUES (@CharacterName, @PlayerName, @CharacterLvl, @CharacterGender, @CharacterAge, @CharacterWeight, @CharacterHeight, @CharacterAlignment, @CharacterHP)", SqLiteDataAccess.Parameters);
                 CharacterDTO.CAbilityID = SqLiteDataAccess.Insert("INSERT INTO Ability (Strength, StrengthMod, Dexterity, DexterityMod, Constitution, ConstitutionMod, Intelligence, IntelligenceMod, Wisdom, WisdomMod, Charisma, CharismaMod) " +
                 "VALUES (@Strength, @StrengthMod, @Dexterity, @DexterityMod, @Constitution, @ConstitutionMod, @Intelligence, @IntelligenceMod, @Wisdom, @WisdomMod, @Charisma, @CharismaMod)", SqLiteDataAccess.ParametersAbility);
                 CharacterDTO.CProficienciesID = SqLiteDataAccess.Insert("INSERT INTO ClassSkillProf (Acrobatics, AnimalHandling, Arcana, Athletics, Deception, History, Insight, Intimidation, Investigation, Medicine, " +
                     "Nature, Perception, Performance, Persuasion, Religion, SleightofHand, Stealth, Survival) VALUES (@Acrobatics, @AnimalHandling, @Arcana, @Athletics, @Deception, @History, @Insight, @Intimidation, @Investigation, @Medicine, " +
-                    "@Nature, @Perception, @Performance, @Persuasion, @Religion, @SleightofHand, @Stealth, @Survival)", SqLiteDataAccess.ParametersSkills);
+                    "@Nature, @Perception, @Performance, @Persuasion, @Religion, @SleightofHand, @Stealth, @Survival)", SqLiteDataAccess.ParametersSkills);               
             }
             if (SqLiteDataAccess.UpdateBase() == true && SqLiteDataAccess.UpdateAbility() == true && SqLiteDataAccess.UpdateSkills(ProficienciesPage.ChosedSkillProf) == true)
             {

@@ -17,7 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Aspose.PDF" Version="21.8.0" />
     <PackageReference Include="System.Data.SQLite.Core" Version="1.0.115" />
   </ItemGroup>
 

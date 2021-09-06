@@ -27,6 +27,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
                 listBoxRace.Visible = true;
                 ChoosedPRace.Visible = false;
                 btnExit2.Visible = false;
+                RaceDTO.RaceSpeed = 0;
             }
             else
             {
@@ -45,6 +46,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             {
                 CharacterDTO.CRace = listBoxRace.SelectedItem.ToString();
                 RaceDTO.RaceDetail = SqLiteDataAccess.ImportOneThing("SELECT RaceDetail FROM Race WHERE RaceName = @RaceName", "RaceName", CharacterDTO.CRace).ToString();
+                RaceDTO.RaceSpeed = Convert.ToInt32(SqLiteDataAccess.ImportOneThing("SELECT Speed FROM Race WHERE RaceName = @RaceName", "RaceName", CharacterDTO.CRace));
                 richTextBoxRace.Text = RaceDTO.RaceDetail;
             }
             
@@ -57,6 +59,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
         private void BtnExit2_Click(object sender, EventArgs e)
         {
             CharacterDTO.CRace = "";
+            RaceDTO.RaceSpeed = 0;
             listBoxRace.Visible = true;
             ChoosedPRace.Visible = false;
             btnExit2.Visible = false;

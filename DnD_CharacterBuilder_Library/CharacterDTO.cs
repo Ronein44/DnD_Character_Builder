@@ -10,6 +10,7 @@ namespace DnD_CharacterBuilder_Library
         public static string CName { get; set; }
         public static string PName { get; set; }
         public static int CLvl { get; set; }
+        public static int HP { get; set; }
         public static string CGender { get; set; }
         public static string CClass { get; set; }
         public static string CRace { get; set; }

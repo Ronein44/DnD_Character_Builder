@@ -49,10 +49,6 @@
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "dependencies": {
-            "Aspose.PDF": {
-              "target": "Package",
-              "version": "[21.8.0, )"
-            },
             "System.Data.SQLite.Core": {
               "target": "Package",
               "version": "[1.0.115, )"

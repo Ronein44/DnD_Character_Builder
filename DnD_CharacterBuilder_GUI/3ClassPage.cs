@@ -26,7 +26,8 @@ namespace DnD_CharacterBuilder_GUI.Forms
                 listBoxClass.SelectedIndex = -1;
                 listBoxClass.Visible = true;
                 ChoosedPClass.Visible = false;
-                btnExit2.Visible = false;                
+                btnExit2.Visible = false;
+                ClassDTO.ClassHitDice = 0;
             }
             else
             {
@@ -45,6 +46,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             {
                 CharacterDTO.CClass = listBoxClass.SelectedItem.ToString();
                 ClassDTO.ClassDetail = SqLiteDataAccess.ImportOneThing("SELECT ClassDetail FROM Class WHERE ClassName = @ClassName", "ClassName", CharacterDTO.CClass).ToString();
+                ClassDTO.ClassHitDice = Convert.ToInt32(SqLiteDataAccess.ImportOneThing("SELECT HitDice FROM Class WHERE ClassName = @ClassName", "ClassName", CharacterDTO.CClass));                
                 richTextBoxClass.Text = ClassDTO.ClassDetail;
             }
                         

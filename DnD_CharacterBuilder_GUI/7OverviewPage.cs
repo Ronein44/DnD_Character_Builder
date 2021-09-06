@@ -6,7 +6,6 @@ using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
-using Aspose.Pdf;
 using DnD_CharacterBuilder_Library;
 
 namespace DnD_CharacterBuilder_GUI
@@ -54,12 +53,12 @@ namespace DnD_CharacterBuilder_GUI
         {
             if (number > 0)
             {
-                label.ForeColor = System.Drawing.Color.Green;
+                label.ForeColor = Color.Green;
                 label.Text = $"+{number}".ToString();
             }
             else if (number < 0)
             {
-                label.ForeColor = System.Drawing.Color.Red;
+                label.ForeColor = Color.Red;
                 label.Text = number.ToString();
             }
             else
@@ -69,15 +68,14 @@ namespace DnD_CharacterBuilder_GUI
         }     
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            string filename = $"{CharacterDTO.CName}_the_{CharacterDTO.CRace}";
+            Forms.BasePage.Save();
+            string filename = $"{CharacterDTO.CName}_the_{CharacterDTO.CRace}.html";
+            var pdflayout = new HtmlLayout();
 
-            PDFLayout pdflayout = new PDFLayout();
-            File.WriteAllText(filename + ".html", pdflayout.htmlCode);
+            File.WriteAllText(filename, pdflayout.htmlCode);
 
-            Document pdf = new Document(filename + ".html");
-            pdf.Save(filename + ".PDF");
 
         }        
     }
-    
+
 }

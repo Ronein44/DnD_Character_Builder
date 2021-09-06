@@ -74,6 +74,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             CharacterDTO.CAlignment = CharacterLoad.CurrentRow.Cells[8].Value.ToString();
             CharacterDTO.CClass = CharacterLoad.CurrentRow.Cells[9].Value.ToString();
             CharacterDTO.CRace = CharacterLoad.CurrentRow.Cells[10].Value.ToString();
+            CharacterDTO.HP = Convert.ToInt32(SqLiteDataAccess.ImportOneThing("SELECT CharacterHP FROM Character WHERE CharacterID = @CharacterID", "CharacterID", CharacterDTO.CharacterID));
             AbilityDTO.Strength = Convert.ToInt32(SqLiteDataAccess.ImportOneThing("SELECT Strength FROM Ability WHERE AbilityID = @AbilityID", "AbilityID", CharacterDTO.CAbilityID));
             AbilityDTO.StrMod = Convert.ToInt32(SqLiteDataAccess.ImportOneThing("SELECT StrengthMod FROM Ability WHERE AbilityID = @AbilityID", "AbilityID", CharacterDTO.CAbilityID));
             AbilityDTO.Dexterity = Convert.ToInt32(SqLiteDataAccess.ImportOneThing("SELECT Dexterity FROM Ability WHERE AbilityID = @AbilityID", "AbilityID", CharacterDTO.CAbilityID));
@@ -86,7 +87,7 @@ namespace DnD_CharacterBuilder_GUI.Forms
             AbilityDTO.WisMod = Convert.ToInt32(SqLiteDataAccess.ImportOneThing("SELECT WisdomMod FROM Ability WHERE AbilityID = @AbilityID", "AbilityID", CharacterDTO.CAbilityID));
             AbilityDTO.Charisma = Convert.ToInt32(SqLiteDataAccess.ImportOneThing("SELECT Charisma FROM Ability WHERE AbilityID = @AbilityID", "AbilityID", CharacterDTO.CAbilityID));
             AbilityDTO.ChaMod = Convert.ToInt32(SqLiteDataAccess.ImportOneThing("SELECT CharismaMod FROM Ability WHERE AbilityID = @AbilityID", "AbilityID", CharacterDTO.CAbilityID));
-            DialogResult LoadResult = MessageBox.Show($"{CharacterDTO.CName} \nCharacter Load Success!");
+            MessageBox.Show($"{CharacterDTO.CName} \nCharacter Load Success!");
         }
 
         private void BtnSearch_Click(object sender, EventArgs e)

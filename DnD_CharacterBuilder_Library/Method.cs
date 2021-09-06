@@ -18,7 +18,6 @@ namespace DnD_CharacterBuilder_Library
             {
                 rollvalue.Add(rnd.Next(1, side));
             }
-
             return rollvalue;
         }
         public static List<int> Diceroll(int amount, int side, int modif)//Dice Roll + modifier
@@ -27,8 +26,7 @@ namespace DnD_CharacterBuilder_Library
             for (int i = 0; i < amount; i++)
             {
                 rollvalue.Add(rnd.Next(1, side) + modif);
-            }
-
+            }            
             return rollvalue;
         }
         public static List<int> StatRoll()//Stat rolls
@@ -52,18 +50,18 @@ namespace DnD_CharacterBuilder_Library
 
             return stats;
         }
-        public static int PHp(int Lvl, int ClassHp) //HP Roll
+        public static int PHp(int lvl, int classHp) //HP Roll
         {
             int hp2;
-            if (Lvl != 1)
+            if (lvl != 1)
             {
                 List<int> hp1 = new List<int>();
-                hp1.AddRange(Diceroll(Lvl - 1, ClassHp, AbilityDTO.ConMod));
-                hp2 = hp1.Sum() + ClassHp + AbilityDTO.ConMod;
+                hp1.AddRange(Diceroll((lvl - 1), (classHp + 1), AbilityDTO.ConMod));
+                hp2 = hp1.Sum() + classHp + AbilityDTO.ConMod;
             }
             else
             {
-                hp2 = ClassHp + AbilityDTO.ConMod;
+                hp2 = classHp + AbilityDTO.ConMod;
             }
             return hp2;
         }
@@ -77,7 +75,45 @@ namespace DnD_CharacterBuilder_Library
                 i += 2;
             }
             return mod;
-        }       
+        }
+        public static int ProfBonus(int level)
+        {
+            int bns = 0;
+            if (level < 5)
+            {
+                bns = 2;
+            }
+            else if (level >=5 && level < 9)
+            {
+                bns = 3;
+            }
+            else if (level >= 9 && level < 13)
+            {
+                bns = 4;
+            }
+            else if (level >= 13 && level < 17)
+            {
+                bns = 5;
+            }
+            else
+            {
+                bns = 6;
+            }
+            return bns;
+        }
+        public static int SkillBonus(int skill, bool skillProf)
+        {
+            int bns;
+            if (skillProf)
+            {
+                bns = (ProfBonus(CharacterDTO.CLvl) + skill);
+            }
+            else
+            {
+                bns = skill;
+            }
+            return bns;
+        }
         public static void NewCha()
         {           
             AbilityDTO.Strength = 1;
@@ -91,12 +127,15 @@ namespace DnD_CharacterBuilder_Library
             AbilityDTO.ConMod = -5;
             AbilityDTO.IntMod = -5;
             AbilityDTO.WisMod = -5;
-            AbilityDTO.ChaMod= -5;
+            AbilityDTO.ChaMod = -5;
+            RaceDTO.RaceSpeed = 0;
+            ClassDTO.ClassHitDice = 0;
             CharacterDTO.CharacterID = 0;
             CharacterDTO.CName = "";
             CharacterDTO.PName = "";
             CharacterDTO.CLvl = 1;
             CharacterDTO.CAge = 1;
+            CharacterDTO.HP = 0;
             CharacterDTO.CWeight = 1;
             CharacterDTO.CHeight = 1;
             CharacterDTO.CGender = "";
@@ -105,6 +144,5 @@ namespace DnD_CharacterBuilder_Library
             CharacterDTO.CRace = "";
         }
         
-
     }
 }

@@ -21,3 +21,4 @@ F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_Library\obj\Debug\ne
 F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_Library\obj\Debug\net5.0-windows\DnD_CharacterBuilder_Library.dll
 F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_Library\obj\Debug\net5.0-windows\ref\DnD_CharacterBuilder_Library.dll
 F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_Library\obj\Debug\net5.0-windows\DnD_CharacterBuilder_Library.pdb
+F:\VS\Rónai_Péter_SZF57_Szakdolgozat\DnD_CharacterBuilder_Library\obj\Debug\net5.0-windows\DnD_CharacterBuilder_Library.csproj.AssemblyReference.cache

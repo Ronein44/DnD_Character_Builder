@@ -43,7 +43,7 @@ namespace DnD_CharacterBuilder_Library
             {
                 SqlConOpen("UPDATE CHARACTER SET CharacterName=@CharacterName, PlayerName=@PlayerName, CharacterLvl=@CharacterLvl, CharacterGender=@CharacterGender, " +
                     "CharacterAge=@CharacterAge, CharacterWeight=@CharacterWeight, CharacterHeight=@CharacterHeight, CharacterAlignment=@CharacterAlignment, CharacterRace=@CharacterRace, " +
-                    "CharacterClass=@CharacterClass, CharacterAbilityID=@CharacterAbilityID, CharacterProficienciesID=@CharacterProficienciesID WHERE CharacterID=@CharacterID");
+                    "CharacterClass=@CharacterClass, CharacterAbilityID=@CharacterAbilityID, CharacterProficienciesID=@CharacterProficienciesID, CharacterHP=@CharacterHP WHERE CharacterID=@CharacterID");
                 Parameters(CharacterDTO.CharacterID, true);
                 int rows = cmd.ExecuteNonQuery();
                 if (rows > 0)
@@ -228,7 +228,7 @@ namespace DnD_CharacterBuilder_Library
             cmd.Parameters.AddWithValue("@CharacterRace", CharacterDTO.CRace);
             cmd.Parameters.AddWithValue("@CharacterAbilityID", CharacterDTO.CAbilityID);
             cmd.Parameters.AddWithValue("@CharacterProficienciesID", CharacterDTO.CProficienciesID);
-
+            cmd.Parameters.AddWithValue("@CharacterHP", CharacterDTO.HP);
 
         }
         public static void Parameters(int characterid, bool needparameters)
